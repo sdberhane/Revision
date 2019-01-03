@@ -14,6 +14,7 @@
 		69DB6C6421DCF9C300B4C917 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */; };
 		69DB6C6F21DCF9C300B4C917 /* ReVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C6E21DCF9C300B4C917 /* ReVisionTests.swift */; };
 		69DB6C7A21DCF9C300B4C917 /* ReVisionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C7921DCF9C300B4C917 /* ReVisionUITests.swift */; };
+		69DB6C8821DE594300B4C917 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C8721DE594200B4C917 /* Petition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		69DB6C7521DCF9C300B4C917 /* ReVisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReVisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB6C7921DCF9C300B4C917 /* ReVisionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReVisionUITests.swift; sourceTree = "<group>"; };
 		69DB6C7B21DCF9C300B4C917 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69DB6C8721DE594200B4C917 /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */,
 				69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */,
+				69DB6C8721DE594200B4C917 /* Petition.swift */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
 				69DB6C6021DCF9C300B4C917 /* Assets.xcassets */,
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			files = (
 				69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */,
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
+				69DB6C8821DE594300B4C917 /* Petition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
