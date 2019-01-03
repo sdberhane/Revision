@@ -9,5 +9,13 @@
 import Foundation
 
 class Petition {
+    var goalSignatures: Int
+    var signatures: [String]
     
+    //
+    init() {
+        goalSignatures = 0
+        signatures = []
+        
+    }
 }
