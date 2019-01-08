@@ -1,0 +1,6 @@
+framework module Pods_ReVision {
+  umbrella header "Pods-ReVision-umbrella.h"
+
+  export *
+  module * { export * }
+}
