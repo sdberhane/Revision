@@ -17,7 +17,6 @@ class Petition {
     var signatures: [String]
     let image = UIImageView()
     let anonymous: Bool
-
     
     //
     init() {
@@ -40,6 +39,13 @@ class Petition {
         anonymous = anon
     }
     
+    func sign (userSigningPetition user: String){
+        signatures.append(user)
+    }
+    
+    func send (){
+        
+    }
     //func update
     //func sign
     //func send
