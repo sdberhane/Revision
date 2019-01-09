@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */; };
 		3F771A1221DE5C1D004F520B /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F771A1121DE5C1D004F520B /* Authentication.swift */; };
 		69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */; };
 		69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		39E57FF6CE7F7D6FAE4BE639 /* Pods-ReVision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReVision.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReVision/Pods-ReVision.release.xcconfig"; sourceTree = "<group>"; };
+		3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionTableViewCell.swift; sourceTree = "<group>"; };
 		3F771A1121DE5C1D004F520B /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		69DB6C5621DCF9BF00B4C917 /* ReVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				69DB6C6521DCF9C300B4C917 /* Info.plist */,
 				EE09001621E382AE006A9B10 /* GoogleService-Info (2).plist */,
 				3F771A1121DE5C1D004F520B /* Authentication.swift */,
+				3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */,
 			);
 			path = ReVision;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
 				69DB6C8821DE594300B4C917 /* Petition.swift in Sources */,
 				3F771A1221DE5C1D004F520B /* Authentication.swift in Sources */,
+				3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
