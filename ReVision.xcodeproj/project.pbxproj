@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */; };
+		3E963A3221E641BB00EC64EF /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E963A3121E641BB00EC64EF /* HomescreenViewController.swift */; };
+		3E963A3421E6424C00EC64EF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E963A3321E6424C00EC64EF /* SignUpViewController.swift */; };
+		3E963A3621E6444700EC64EF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E963A3521E6444700EC64EF /* LogInViewController.swift */; };
 		3F771A1221DE5C1D004F520B /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F771A1121DE5C1D004F520B /* Authentication.swift */; };
 		69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */; };
 		69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */; };
@@ -41,6 +44,9 @@
 /* Begin PBXFileReference section */
 		39E57FF6CE7F7D6FAE4BE639 /* Pods-ReVision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReVision.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReVision/Pods-ReVision.release.xcconfig"; sourceTree = "<group>"; };
 		3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionTableViewCell.swift; sourceTree = "<group>"; };
+		3E963A3121E641BB00EC64EF /* HomescreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
+		3E963A3321E6424C00EC64EF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3E963A3521E6444700EC64EF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3F771A1121DE5C1D004F520B /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		69DB6C5621DCF9BF00B4C917 /* ReVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +122,9 @@
 				69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */,
 				69DB6C8721DE594200B4C917 /* Petition.swift */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
+				3E963A3521E6444700EC64EF /* LogInViewController.swift */,
+				3E963A3321E6424C00EC64EF /* SignUpViewController.swift */,
+				3E963A3121E641BB00EC64EF /* HomescreenViewController.swift */,
 				69DB6C6021DCF9C300B4C917 /* Assets.xcassets */,
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
@@ -384,7 +393,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */,
+				3E963A3421E6424C00EC64EF /* SignUpViewController.swift in Sources */,
+				3E963A3221E641BB00EC64EF /* HomescreenViewController.swift in Sources */,
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
+				3E963A3621E6444700EC64EF /* LogInViewController.swift in Sources */,
 				69DB6C8821DE594300B4C917 /* Petition.swift in Sources */,
 				3F771A1221DE5C1D004F520B /* Authentication.swift in Sources */,
 				3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */,
