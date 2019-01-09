@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>623906666589-n87441hm6m1k356rs4fg9cp6hvshoju4.apps.googleusercontent.com</string>
+	<string>139614145926-hdbg9vo0vc73oikv1l2ujvc459o90vab.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.623906666589-n87441hm6m1k356rs4fg9cp6hvshoju4</string>
+	<string>com.googleusercontent.apps.139614145926-hdbg9vo0vc73oikv1l2ujvc459o90vab</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDidZuARD9DQ3DRyZSAzL2GdT7cKcz6xZ8</string>
+	<string>AIzaSyAAG8r1IRhkm98TkjURM6YSU-GLLxkVWZ4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>623906666589</string>
+	<string>139614145926</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>lmhs.ReVision</string>
 	<key>PROJECT_ID</key>
-	<string>revision-5f359</string>
+	<string>revision-f0ae5</string>
 	<key>STORAGE_BUCKET</key>
-	<string>revision-5f359.appspot.com</string>
+	<string>revision-f0ae5.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:623906666589:ios:46152092f8a9edaa</string>
+	<string>1:139614145926:ios:46152092f8a9edaa</string>
 	<key>DATABASE_URL</key>
-	<string>https://revision-5f359.firebaseio.com</string>
+	<string>https://revision-f0ae5.firebaseio.com</string>
 </dict>
 </plist>
