@@ -11,6 +11,7 @@ target 'ReVision' do
     pod 'Firebase/Messaging'
     pod 'Firebase/Invites'
     pod 'Firebase/DynamicLinks'
+    pod 'GoogleSignIn'
   
 
 end
