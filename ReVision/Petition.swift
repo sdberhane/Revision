@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 class Petition {
     var title: String
@@ -17,6 +18,7 @@ class Petition {
     var signatures: [String]
     let image = UIImageView()
     let anonymous: Bool
+    var ref: DatabaseReference! = Database.database().reference()
     
     //
     init() {
