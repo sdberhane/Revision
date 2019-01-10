@@ -97,7 +97,6 @@
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logInButton:" destination="0Gc-RX-Rrr" eventType="touchUpInside" id="Yll-Nf-rky"/>
-                                    <action selector="logInButton:" destination="STV-We-pIC" eventType="touchUpInside" id="iwo-GE-eJA"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="gZx-rZ-ntN"/>
                                 </connections>
                             </button>
@@ -157,7 +156,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="logInButton:" destination="STV-We-pIC" eventType="touchUpInside" id="0qh-eb-cBM"/>
                                     <action selector="nextButton:" destination="m3n-oF-sLy" eventType="touchUpInside" id="7Sr-ZE-Uxw"/>
                                     <segue destination="XaK-fl-FsI" kind="show" id="ieY-Wn-r8S"/>
                                 </connections>
@@ -310,8 +308,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="logInButton:" destination="STV-We-pIC" eventType="touchUpInside" id="vCY-5f-Z8V"/>
-                                    <action selector="nextButton:" destination="m3n-oF-sLy" eventType="touchUpInside" id="4b9-YB-YTv"/>
                                     <action selector="signUpButton:" destination="XaK-fl-FsI" eventType="touchUpInside" id="zcZ-zy-8b9"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="KIw-qa-wfG"/>
                                 </connections>
