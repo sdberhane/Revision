@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, GIDSignInUIDelegate {
 
     @IBAction func signUpButton(_ sender: UIButton) {
     }
@@ -20,7 +21,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var schoolNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //Google Signing In
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
         // Do any additional setup after loading the view.
     }
     

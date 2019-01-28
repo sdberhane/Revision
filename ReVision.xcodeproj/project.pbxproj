@@ -12,6 +12,7 @@
 		3E963A3421E6424C00EC64EF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E963A3321E6424C00EC64EF /* SignUpViewController.swift */; };
 		3E963A3621E6444700EC64EF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E963A3521E6444700EC64EF /* LogInViewController.swift */; };
 		3F771A1221DE5C1D004F520B /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F771A1121DE5C1D004F520B /* Authentication.swift */; };
+		3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */; };
 		69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */; };
 		69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */; };
 		69DB6C5F21DCF9BF00B4C917 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		3E963A3321E6424C00EC64EF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3E963A3521E6444700EC64EF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3F771A1121DE5C1D004F520B /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
 		69DB6C5621DCF9BF00B4C917 /* ReVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,9 @@
 				69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */,
 				69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */,
 				69DB6C8721DE594200B4C917 /* Petition.swift */,
+				3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */,
+				3F771A1121DE5C1D004F520B /* Authentication.swift */,
+				3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
 				3E963A3521E6444700EC64EF /* LogInViewController.swift */,
 				3E963A3321E6424C00EC64EF /* SignUpViewController.swift */,
@@ -129,8 +134,6 @@
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
 				69DB6C6521DCF9C300B4C917 /* Info.plist */,
-				3F771A1121DE5C1D004F520B /* Authentication.swift */,
-				3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */,
 			);
 			path = ReVision;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				3E963A3421E6424C00EC64EF /* SignUpViewController.swift in Sources */,
 				3E963A3221E641BB00EC64EF /* HomescreenViewController.swift in Sources */,
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
+				3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */,
 				3E963A3621E6444700EC64EF /* LogInViewController.swift in Sources */,
 				69DB6C8821DE594300B4C917 /* Petition.swift in Sources */,
 				3F771A1221DE5C1D004F520B /* Authentication.swift in Sources */,
