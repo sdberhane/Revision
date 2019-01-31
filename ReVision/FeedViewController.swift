@@ -7,13 +7,51 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    var dict: [String: AnyObject]?
+    var ref: DatabaseReference?
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dict?.count ?? 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PokemonTableViewCell
+        let row = indexPath.row
+        let sample: [String: AnyObject] = [:]
+        let componentArray = Array(dict?.keys ?? sample.keys)
+        if componentArray != []{
+            let ref2 = Database.database().reference().child("Pokemon").child(componentArray[row])
+            var postDict: [String: AnyObject] = [:]
+            ref2.observe(.value) { (snapshot) in
+                postDict = snapshot.value as? [String : AnyObject] ?? [:]
+                //self.tableView.reloadData()
+                let error = "error"
+                cell.nameLabel.text = postDict["Name"] as? String
+                cell.typeLabel.text = "Type: \(postDict["Type"] as? String ?? error)"
+                cell.hpLabel.text = "HP: \(postDict["HP"] as? String ?? error)"
+                cell.levelLabel.text = "Level: \(postDict["Level"] as? String ?? error)"
+                cell.abilityLabel.text = "Ability: \(postDict["Ability"] as? String ?? error)"
+                
+            }
+        }
+        return cell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        ref = Database.database().reference().child("Active Petitions")
+        self.ref!.observe(.value) { (snapshot) in
+            self.dict = snapshot.value as? [String : AnyObject] ?? [:]
+            self.tableView.reloadData()
+        }
+        
     }
     
 

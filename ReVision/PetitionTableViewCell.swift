@@ -12,6 +12,7 @@ class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionDescription: UILabel!
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
