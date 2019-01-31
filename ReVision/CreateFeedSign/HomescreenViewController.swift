@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomescreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomescreenViewController: UIViewController {
 
     @IBAction func logInButton(_ sender: UIButton) {
     }
