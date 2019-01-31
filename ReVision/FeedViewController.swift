@@ -31,11 +31,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             ref2.observe(.value) { (snapshot) in
                 postDict = snapshot.value as? [String : AnyObject] ?? [:]
                 let error = "error"
-                cell.petitionTitle.text = postDict["Name"] as? String
-                cell.typeLabel.text = "Type: \(postDict["Type"] as? String ?? error)"
-                cell.hpLabel.text = "HP: \(postDict["HP"] as? String ?? error)"
-                cell.levelLabel.text = "Level: \(postDict["Level"] as? String ?? error)"
-                cell.abilityLabel.text = "Ability: \(postDict["Ability"] as? String ?? error)"
+                cell.petitionTitle.text = postDict["Title"] as? String
+                cell.petitionDescription.text = postDict["Description"] as? String
+                //cell.petitionImage = ????
                 
             }
         }
