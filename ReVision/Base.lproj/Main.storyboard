@@ -308,6 +308,9 @@
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sign:" destination="zq9-8S-tT0" eventType="touchUpInside" id="aFg-2A-VtT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKh-fl-Hfg">
                                 <rect key="frame" x="59" y="163" width="300" height="21"/>
@@ -320,6 +323,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qvO-Ty-lPr"/>
                     </view>
+                    <connections>
+                        <outlet property="petitionAuthor" destination="bu7-QB-Hka" id="y4J-Id-9w0"/>
+                        <outlet property="petitionButton" destination="h5H-zQ-HFS" id="3dD-2E-GGM"/>
+                        <outlet property="petitionDescription" destination="HKh-fl-Hfg" id="Y4I-KO-YVU"/>
+                        <outlet property="petitionImage" destination="T2J-rQ-thm" id="cqw-wF-74k"/>
+                        <outlet property="petitionTitle" destination="O2O-ls-Hfe" id="nnt-i4-g5V"/>
+                        <outlet property="petitonProgress" destination="wal-SW-qZp" id="Cwm-rT-Fqu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rn8-A7-c8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
