@@ -176,7 +176,7 @@
         <!--Feed View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Feed View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Feed View Controller" id="BYZ-38-t0r" customClass="HomescreenViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,6 +232,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="I79-M0-dsd"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eno-6q-dAm"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thX-m4-PnA">
                                 <rect key="frame" x="0.0" y="37" width="375" height="44"/>
@@ -442,6 +446,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gZx-rZ-ntN"/>
+        <segue reference="KIw-qa-wfG"/>
     </inferredMetricsTieBreakers>
 </document>
