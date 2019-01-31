@@ -10,6 +10,15 @@ import UIKit
 
 class PetitionViewController: UIViewController {
 
+    @IBOutlet weak var petitionTitle: UILabel!
+    @IBOutlet weak var petitionAuthor: UILabel!
+    
+    @IBOutlet weak var petitionButton: UIButton!
+    @IBOutlet weak var petitionImage: UIImageView!
+    @IBOutlet weak var petitonProgress: UIProgressView!
+    @IBOutlet weak var petitionDescription: UILabel!
+    @IBAction func sign(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
@@ -38,9 +39,9 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
-        passwordTextField.delegate = self
-        usernameTextField.delegate = self
-        schoolNameTextField.delegate = self
+        passwordTextField.delegate = self as! UITextFieldDelegate 
+        usernameTextField.delegate = self as! UITextFieldDelegate
+        schoolNameTextField.delegate = self as! UITextFieldDelegate
         
         emailTextField.becomeFirstResponder()
 
