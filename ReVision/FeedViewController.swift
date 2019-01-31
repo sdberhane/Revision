@@ -1,19 +1,15 @@
 //
-//  HomescreenViewController.swift
+//  FeedViewController.swift
 //  ReVision
 //
-//  Created by Sihan Wu (student LM) on 1/9/19.
+//  Created by Eugenia Feng (student LM) on 1/31/19.
 //  Copyright © 2019 Eugenia Feng (student LM). All rights reserved.
 //
 
 import UIKit
 
-class HomescreenViewController: UIViewController {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBAction func logInButton(_ sender: UIButton) {
-    }
-    @IBAction func signUpButton(_ sender: UIButton) {
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
