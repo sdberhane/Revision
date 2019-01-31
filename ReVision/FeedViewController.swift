@@ -21,18 +21,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PokemonTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PetitionTableViewCell
         let row = indexPath.row
         let sample: [String: AnyObject] = [:]
         let componentArray = Array(dict?.keys ?? sample.keys)
         if componentArray != []{
-            let ref2 = Database.database().reference().child("Pokemon").child(componentArray[row])
+            let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[row])
             var postDict: [String: AnyObject] = [:]
             ref2.observe(.value) { (snapshot) in
                 postDict = snapshot.value as? [String : AnyObject] ?? [:]
-                //self.tableView.reloadData()
                 let error = "error"
-                cell.nameLabel.text = postDict["Name"] as? String
+                cell.petitionTitle.text = postDict["Name"] as? String
                 cell.typeLabel.text = "Type: \(postDict["Type"] as? String ?? error)"
                 cell.hpLabel.text = "HP: \(postDict["HP"] as? String ?? error)"
                 cell.levelLabel.text = "Level: \(postDict["Level"] as? String ?? error)"
