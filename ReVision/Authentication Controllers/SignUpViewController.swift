@@ -10,7 +10,7 @@ import UIKit
 import GoogleSignIn
 import FirebaseAuth
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -39,10 +39,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self as! UITextFieldDelegate
-        passwordTextField.delegate = self as! UITextFieldDelegate 
-        usernameTextField.delegate = self as! UITextFieldDelegate
-        schoolNameTextField.delegate = self as! UITextFieldDelegate
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+//usernameTextField.delegate = self
+        schoolNameTextField.delegate = self
         
         emailTextField.becomeFirstResponder()
 
@@ -69,14 +69,6 @@ class SignUpViewController: UIViewController {
         }
         return true
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
 
 }
