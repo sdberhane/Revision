@@ -1,20 +1,18 @@
 //
-//  HomescreenViewController.swift
+//  CreatePetitionViewController.swift
 //  ReVision
 //
-//  Created by Sihan Wu (student LM) on 1/9/19.
+//  Created by Sihan Wu (student LM) on 2/1/19.
 //  Copyright © 2019 Eugenia Feng (student LM). All rights reserved.
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseStorage
 
-class HomescreenViewController: UIViewController {
+class CreatePetitionViewController: UIViewController {
 
-    @IBAction func logInButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "TEST", sender: nil)
-    }
-    @IBAction func signUpButton(_ sender: UIButton) {
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
