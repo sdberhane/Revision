@@ -41,7 +41,7 @@
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logInButton:" destination="STV-We-pIC" eventType="touchUpInside" id="7AI-VJ-CA6"/>
-                                    <segue destination="0Gc-RX-Rrr" kind="show" id="bOE-j4-wYY"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="TEST" id="4dn-zD-W2E"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -460,6 +460,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KIw-qa-wfG"/>
+        <segue reference="4dn-zD-W2E"/>
     </inferredMetricsTieBreakers>
 </document>

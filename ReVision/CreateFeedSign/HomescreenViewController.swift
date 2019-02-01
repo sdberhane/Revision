@@ -11,6 +11,7 @@ import UIKit
 class HomescreenViewController: UIViewController {
 
     @IBAction func logInButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "TEST", sender: nil)
     }
     @IBAction func signUpButton(_ sender: UIButton) {
     }
