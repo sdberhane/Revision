@@ -19,6 +19,7 @@ class Petition {
     var signatures: [String]
     let image = UIImageView()
     let anonymous: Bool
+    var timeCreated: Date
     
     //
     init() {
@@ -29,6 +30,7 @@ class Petition {
         goalSignatures = 0
         signatures = []
         anonymous = false
+        timeCreated = Date.init()
     }
     
     init(title titleOfPetition: String, description descriptionOfPetition: String, creator creatorOfPetition: String, goalSignatures goalSignaturesOfPetition: Int, signatures currentSignaturesOnPetition: [String], anonymous anon: Bool) {
@@ -39,6 +41,7 @@ class Petition {
         goalSignatures = goalSignaturesOfPetition
         signatures = currentSignaturesOnPetition
         anonymous = anon
+        timeCreated = Date.init()
     }
     
     func sign (userSigningPetition user: String){
