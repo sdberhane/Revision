@@ -18,7 +18,8 @@ class SignUpViewController: UIViewController {
     }
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var schoolNameTextField: UITextField!
-    @IBAction func signUpButton(_ sender: UIButton) {
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let username = usernameTextField.text else {return}
@@ -38,7 +39,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
+        emailTextField.delegate = self as! UITextFieldDelegate
         passwordTextField.delegate = self as! UITextFieldDelegate 
         usernameTextField.delegate = self as! UITextFieldDelegate
         schoolNameTextField.delegate = self as! UITextFieldDelegate
