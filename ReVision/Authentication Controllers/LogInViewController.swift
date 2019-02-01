@@ -11,6 +11,7 @@ import UIKit
 class LogInViewController: UIViewController {
 
     @IBAction func logInButton(_ sender: UIButton) {
+        
     }
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
