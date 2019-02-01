@@ -434,12 +434,23 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="KIw-qa-wfG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dg-r5-ETt">
+                                <rect key="frame" x="142" y="459" width="90" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.60626585580000003" green="1" blue="0.75029753840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpButtonTouchedUp:" destination="XaK-fl-FsI" eventType="touchUpInside" id="NNz-uz-ddy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Wb-pP-y4O"/>
                     </view>
                     <connections>
                         <outlet property="schoolNameTextField" destination="6XD-Rf-JbD" id="7hg-bv-maZ"/>
+                        <outlet property="signUpButton" destination="yZe-r7-7eO" id="pcb-gV-GjZ"/>
                         <outlet property="usernameTextField" destination="Q2c-rb-PjV" id="0Xi-01-Rma"/>
                     </connections>
                 </viewController>
