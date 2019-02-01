@@ -12,13 +12,15 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class Petition {
-    var title: String
-    var description: String
-    var creator: String
-    var goalSignatures: Int
+    var title: String?
+    var description: String?
+    var creator: String?
+    var goalSignatures: Int = 0
     var signatures: [String]
     let image = UIImageView()
-    let anonymous: Bool
+    let anonymous: Bool?
+    let dateCreated: Date?
+    let dateFinished: Date?
     
     //
     init() {
@@ -29,6 +31,8 @@ class Petition {
         goalSignatures = 0
         signatures = []
         anonymous = false
+        dateCreated = Date()
+        dateFinished = nil
     }
     
     init(title titleOfPetition: String, description descriptionOfPetition: String, creator creatorOfPetition: String, goalSignatures goalSignaturesOfPetition: Int, signatures currentSignaturesOnPetition: [String], anonymous anon: Bool) {
@@ -39,6 +43,8 @@ class Petition {
         goalSignatures = goalSignaturesOfPetition
         signatures = currentSignaturesOnPetition
         anonymous = anon
+        dateCreated = Date()
+        dateFinished = nil
     }
     
     func sign (userSigningPetition user: String){
