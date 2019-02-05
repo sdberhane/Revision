@@ -353,11 +353,20 @@
                                 <color key="backgroundColor" red="0.0" green="0.96006503809999999" blue="0.942090977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createPetitionButton:" destination="KLD-y7-Qzr" eventType="touchUpInside" id="p2I-uF-wa4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Y3q-pK-swU"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="AtU-sZ-9fZ" id="SyO-mH-3xs"/>
+                        <outlet property="goalTextField" destination="1b3-TO-E2F" id="ChL-ep-2jZ"/>
+                        <outlet property="subtitleTextView" destination="LNN-PF-xPN" id="V7U-8V-LXd"/>
+                        <outlet property="titleTextField" destination="vnE-el-CRu" id="tEn-Yz-UaT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Igu-lN-Ar8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
