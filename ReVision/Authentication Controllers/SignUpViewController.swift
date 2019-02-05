@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signupButton: UIButton!
     
     
-    @IBAction func signUpButton(_ sender: UIButton) {
+    @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let username = usernameTextField.text else {return}
@@ -66,7 +66,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             passwordTextField.resignFirstResponder()
-            signUpButton.isEnabled = true
+            signupButton.isEnabled = true
         }
         return true
     }
