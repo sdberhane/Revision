@@ -22,6 +22,12 @@ class CreatePetitionViewController: UIViewController {
     @IBAction func createPetitionButton(_ sender: UIButton) {
         petition = Petition(title: titleTextField.text ?? " ", description: descriptionTextView.text, creator: userID ?? " ", goalSignatures: Int(goalTextField.text ?? "0") ?? 0, signatures: [String](), anonymous: false)
         
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     
