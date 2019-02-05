@@ -21,6 +21,7 @@ class Petition {
     let anonymous: Bool?
     let dateCreated: Date?
     let dateFinished: Date?
+    var subtitle: String?
     
     //
     init() {
@@ -33,10 +34,12 @@ class Petition {
         anonymous = false
         dateCreated = Date()
         dateFinished = nil
+        subtitle=" "
     }
     
-    init(title titleOfPetition: String, description descriptionOfPetition: String, creator creatorOfPetition: String, goalSignatures goalSignaturesOfPetition: Int, signatures currentSignaturesOnPetition: [String], anonymous anon: Bool) {
+    init(title titleOfPetition: String, subtitle subtitleOfPetition: String, description descriptionOfPetition: String, creator creatorOfPetition: String, goalSignatures goalSignaturesOfPetition: Int, signatures currentSignaturesOnPetition: [String], anonymous anon: Bool) {
         title = titleOfPetition
+        subtitle = subtitleOfPetition
         description = descriptionOfPetition
         creator = creatorOfPetition
         //creator = Auth.auth().currentUser.uid
@@ -45,6 +48,7 @@ class Petition {
         anonymous = anon
         dateCreated = Date()
         dateFinished = nil
+        
     }
     
     func sign (userSigningPetition user: String){

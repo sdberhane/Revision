@@ -12,22 +12,34 @@ import FirebaseAuth
 import FirebaseStorage
 
 class CreatePetitionViewController: UIViewController {
-    var ref = Database.database().reference().child("Active Petitions").child("uid")
+    var ref = Database.database().reference()
     var petition:Petition?
     let userID = Auth.auth().currentUser?.uid
+    var petitionDict: [String:Any]?
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextView: UITextView!
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBAction func createPetitionButton(_ sender: UIButton) {
-        petition = Petition(title: titleTextField.text ?? " ", description: descriptionTextView.text, creator: userID ?? " ", goalSignatures: Int(goalTextField.text ?? "0") ?? 0, signatures: [String](), anonymous: false)
+//        petition = Petition(title: titleTextField.text ?? " ", subtitle: subtitleTextView.text, description: descriptionTextView.text, creator: userID ?? " ", goalSignatures: Int(goalTextField.text ?? "0") ?? 0, signatures: [String](), anonymous: false)
         
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        petitionDict = [
+            "Title" : petition?.title,
+            "Subtitle" : petition?.subtitle,
+            "Signatures" : [String](),
+            "Goal": Int(goalTextField.text ?? "0"),
+            "Description": descriptionTextView.text
+        ]
+        ref.child("Active Petitions").child(userID ?? " ").setValue(petitionDict)
+//        ref.child("Active Petitions").child(userID ?? " ").observeSingleEvent(of: .value, with: { (snapshot) in
+//            let petitionDict = snapshot.value as? [String: Any]
+//
+//            for i in petitionDict{
+//
+//            }
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
     }
     
     
