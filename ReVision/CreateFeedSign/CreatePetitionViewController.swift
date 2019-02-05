@@ -21,25 +21,18 @@ class CreatePetitionViewController: UIViewController {
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBAction func createPetitionButton(_ sender: UIButton) {
-//        petition = Petition(title: titleTextField.text ?? " ", subtitle: subtitleTextView.text, description: descriptionTextView.text, creator: userID ?? " ", goalSignatures: Int(goalTextField.text ?? "0") ?? 0, signatures: [String](), anonymous: false)
         
+       
         petitionDict = [
-            "Title" : petition?.title,
-            "Subtitle" : petition?.subtitle,
-            "Signatures" : [String](),
+            "Title" : titleTextField?.text ?? " ",
+            "Subtitle" : subtitleTextView.text ?? " ",
+            "Signatures" : [userID," "],
             "Goal": Int(goalTextField.text ?? "0"),
-            "Description": descriptionTextView.text
+            "Description": descriptionTextView?.text
         ]
+        
         ref.child("Active Petitions").child(userID ?? " ").setValue(petitionDict)
-//        ref.child("Active Petitions").child(userID ?? " ").observeSingleEvent(of: .value, with: { (snapshot) in
-//            let petitionDict = snapshot.value as? [String: Any]
-//
-//            for i in petitionDict{
-//
-//            }
-//        }) { (error) in
-//            print(error.localizedDescription)
-//        }
+
     }
     
     
