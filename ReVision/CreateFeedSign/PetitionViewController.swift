@@ -14,7 +14,6 @@ class PetitionViewController: UIViewController {
     var uid: String?
     var ref : DatabaseReference?
     
-    var userID
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionAuthor: UILabel!
     @IBOutlet weak var petitionButton: UIButton!

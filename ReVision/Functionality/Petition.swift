@@ -18,10 +18,10 @@ class Petition {
     var goalSignatures: Int = 0
     var signatures: [String]
     let image = UIImageView()
-    let anonymous: Bool?
-    let dateCreated: Date?
-    let dateFinished: Date?
-    var subtitle: String?
+//    let anonymous: Bool?
+//    let dateCreated: Date?
+//    let dateFinished: Date?
+//    var subtitle: String?
     
     //
     init() {
@@ -31,23 +31,23 @@ class Petition {
         //creator = Auth.auth().currentUser.uid
         goalSignatures = 0
         signatures = []
-        anonymous = false
-        dateCreated = Date()
-        dateFinished = nil
-        subtitle=" "
+//        anonymous = false
+//        dateCreated = Date()
+//        dateFinished = nil
+//        subtitle=" "
     }
     
-    init(title titleOfPetition: String, subtitle subtitleOfPetition: String, description descriptionOfPetition: String, creator creatorOfPetition: String, goalSignatures goalSignaturesOfPetition: Int, signatures currentSignaturesOnPetition: [String], anonymous anon: Bool) {
+    init(title titleOfPetition: String, description descriptionOfPetition: String, creator creatorOfPetition: String, goalSignatures goalSignaturesOfPetition: Int, signatures currentSignaturesOnPetition: [String]) {
         title = titleOfPetition
-        subtitle = subtitleOfPetition
+//        subtitle = subtitleOfPetition
         description = descriptionOfPetition
         creator = creatorOfPetition
         //creator = Auth.auth().currentUser.uid
         goalSignatures = goalSignaturesOfPetition
         signatures = currentSignaturesOnPetition
-        anonymous = anon
-        dateCreated = Date()
-        dateFinished = nil
+//        anonymous = anon
+//        dateCreated = Date()
+//        dateFinished = nil
         
     }
     
