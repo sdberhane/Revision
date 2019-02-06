@@ -9,7 +9,8 @@
 import UIKit
 
 class PetitionViewController: UIViewController {
-
+    
+    var userID
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionAuthor: UILabel!
     
