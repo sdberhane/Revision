@@ -12,7 +12,28 @@ import FirebaseAuth
 import FirebaseStorage
 
 class CreatePetitionViewController: UIViewController {
-    var ref: DatabaseReference?
+    var ref = Database.database().reference()
+    var petition:Petition?
+    let userID = Auth.auth().currentUser?.uid
+    var petitionDict: [String:Any]?
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var subtitleTextView: UITextView!
+    @IBOutlet weak var goalTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBAction func createPetitionButton(_ sender: UIButton) {
+        
+       
+        petitionDict = [
+            "Title" : titleTextField?.text ?? " ",
+            "Subtitle" : subtitleTextView.text ?? " ",
+            "Signatures" : [userID," "],
+            "Goal": Int(goalTextField.text ?? "0"),
+            "Description": descriptionTextView?.text
+        ]
+        
+        ref.child("Active Petitions").child(userID ?? " ").setValue(petitionDict)
+
+    }
     
     
     override func viewDidLoad() {

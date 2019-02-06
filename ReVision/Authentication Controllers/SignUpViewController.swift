@@ -32,7 +32,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             if user != nil, error == nil{
                 print("user created")
                 self.dismiss(animated: true, completion: nil)
-                
+            }
+            else{
+                print(error.debugDescription)
             }
         }
     }

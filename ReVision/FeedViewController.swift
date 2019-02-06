@@ -16,6 +16,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var dict: [String: AnyObject]?
     var ref: DatabaseReference?
     //create an array of Petition objects
+    //var petitions = [Petition]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dict?.count ?? 1
