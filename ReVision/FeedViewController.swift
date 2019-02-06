@@ -61,7 +61,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexPath.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        <#code#>
+    }
+    
+    
     /*
     // MARK: - Navigation
 
