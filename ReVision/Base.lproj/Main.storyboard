@@ -335,19 +335,12 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Goal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1b3-TO-E2F">
-                                <rect key="frame" x="139" y="198" width="97" height="30"/>
+                                <rect key="frame" x="133" y="171" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AtU-sZ-9fZ">
-                                <rect key="frame" x="28" y="258" width="320" height="264"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.98668574939999998" blue="0.82870266780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRv-6j-iRQ">
                                 <rect key="frame" x="155" y="574" width="75" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -359,6 +352,21 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="GzA-9t-2Sj"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0E-jC-PJI">
+                                <rect key="frame" x="67" y="216" width="240" height="204"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8WL-Pc-LSd" appends="YES" id="ALc-cc-exZ"/>
+                                </connections>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AtU-sZ-9fZ">
+                                <rect key="frame" x="28" y="428" width="320" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.98668574939999998" blue="0.82870266780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Y3q-pK-swU"/>
@@ -366,13 +374,19 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="AtU-sZ-9fZ" id="SyO-mH-3xs"/>
                         <outlet property="goalTextField" destination="1b3-TO-E2F" id="ChL-ep-2jZ"/>
+                        <outlet property="petitionImageView" destination="Z0E-jC-PJI" id="Pe7-kz-Agl"/>
                         <outlet property="subtitleTextView" destination="LNN-PF-xPN" id="V7U-8V-LXd"/>
                         <outlet property="titleTextField" destination="vnE-el-CRu" id="tEn-Yz-UaT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Igu-lN-Ar8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8WL-Pc-LSd">
+                    <connections>
+                        <action selector="imageTapped:" destination="KLD-y7-Qzr" id="qND-9T-aCL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-164" y="800"/>
+            <point key="canvasLocation" x="-164" y="799.2503748125938"/>
         </scene>
         <!--Petition View Controller-->
         <scene sceneID="5H8-An-cMg">
@@ -448,6 +462,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kal-bf-P4Q"/>
+        <segue reference="GzA-9t-2Sj"/>
     </inferredMetricsTieBreakers>
 </document>
