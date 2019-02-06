@@ -156,8 +156,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
-                                    <action selector="nextButton:" destination="m3n-oF-sLy" eventType="touchUpInside" id="7Sr-ZE-Uxw"/>
-                                    <action selector="signUpButton:" destination="m3n-oF-sLy" eventType="touchUpInside" id="rkb-sK-LJr"/>
+                                    <action selector="signUpButtonTouchedUp:" destination="m3n-oF-sLy" eventType="touchUpInside" id="tP5-pt-zMj"/>
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="L9I-UW-lXf"/>
                                 </connections>
                             </button>
@@ -203,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHW-PB-8VJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-878" y="9"/>
+            <point key="canvasLocation" x="-879.20000000000005" y="8.5457271364317844"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -389,6 +388,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="L9I-UW-lXf"/>
+        <segue reference="gZx-rZ-ntN"/>
     </inferredMetricsTieBreakers>
 </document>

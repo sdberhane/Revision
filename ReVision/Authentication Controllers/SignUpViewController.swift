@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GoogleSignIn
+//import GoogleSignIn
 import FirebaseAuth
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
@@ -20,29 +20,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var schoolNameTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     
-    
-    @IBAction func signUpButton(_ sender: UIButton) {
+    @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
+        
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let username = usernameTextField.text else {return}
         guard let school = schoolNameTextField.text else {return}
         
+
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if user != nil, error == nil{
                 print("user created")
                 self.dismiss(animated: true, completion: nil)
-            }
-            else{
-                print(error.debugDescription)
+                
             }
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-//usernameTextField.delegate = self
+        usernameTextField.delegate = self
         schoolNameTextField.delegate = self
         
         emailTextField.becomeFirstResponder()
@@ -66,7 +66,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             passwordTextField.resignFirstResponder()
-            signUpButton.isEnabled = true
+            signupButton.isEnabled = true
         }
         return true
     }
