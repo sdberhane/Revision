@@ -17,6 +17,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     let userID = Auth.auth().currentUser?.uid
     var petitionDict: [String:Any]?
     var imagePicker: UIImagePickerController?
+    var imageURL = String()
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextView: UITextView!
     @IBOutlet weak var goalTextField: UITextField!
@@ -28,11 +29,13 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Subtitle" : subtitleTextView.text ?? " ",
             "Signatures" : [" "],
             "Goal": Int(goalTextField.text ?? "0"),
-            "Description": descriptionTextView?.text
+            "Description": descriptionTextView?.text,
+            "ImageURL" : imageURL
         ]
         ref.child("Active Petitions").child(userID ?? " ").setValue(petitionDict)
 
     }
+  
     @IBAction func imageTapped(_ sender: Any) {
         self.present(imagePicker!,animated:true, completion:nil)
     }
@@ -84,12 +87,11 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         dismiss(animated: true, completion: nil)
         
         uploadPetitionImage(selectedImage){ url in
-            guard let imageURL = url else {return}
-            let database = self.ref.child("Active Petitions").child(self.userID!)
-            let userObject: [String:Any] = ["imageURL":imageURL.absoluteString]
-            database.child("imageURL").setValue(userObject)
+            guard let i = url else {return}
+            //let database = self.ref.child("Active Petitions").child(self.userID!)
+            self.imageURL = i.absoluteString
+            //database.child("imageURL").setValue(userObject)
         }
-        
     }
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
