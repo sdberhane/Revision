@@ -16,7 +16,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var dict: [String: AnyObject]?
     var ref: DatabaseReference?
     //create an array of Petition objects
-    //var petitions = [Petition]()
+    var petitions = [Petition]()
+    var uid: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dict?.count ?? 1
@@ -42,6 +43,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.petitionTitle.text = postDict["Title"] as? String
                 cell.petitionDescription.text = postDict["Description"] as? String
                 //cell.petitionImage = ????
+                //petitions.append(Petition(title: postDict["Title"] as? String, description: postDict["Description"] as? String, creator: componentArray[row], goalSignatures: postDict["Goal"] as? String, signatures: postDict["Signatures"] as? Array))
                 
             }
         }
@@ -61,7 +63,26 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        // sample is an empty placeholder dictionary
+        let sample: [String: AnyObject] = [:]
+        // componentArray is an array of the keys in the dictionary
+        let componentArray = Array(dict?.keys ?? sample.keys)
+        // if there are keys and elements in the dictionary, this will run
+        if componentArray != []{
+            uid = componentArray[row]
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PetitionViewController {
+            vc.uid = uid
+            print(uid)
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
