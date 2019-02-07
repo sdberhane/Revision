@@ -46,6 +46,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.petitionTitle.text = postDict["Title"] as? String
                 cell.petitionDescription.text = postDict["Description"] as? String
                 //cell.petitionImage = ????
+                cell.creator = componentArray[row]
                 //petitions.append(Petition(title: postDict["Title"] as? String, description: postDict["Description"] as? String, creator: componentArray[row], goalSignatures: postDict["Goal"] as? String, signatures: postDict["Signatures"] as? Array))
                 
             }
@@ -63,41 +64,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
             self.tableView.reloadData()
         }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let row = indexPath.row
-        // sample is an empty placeholder dictionary
-        let sample: [String: AnyObject] = [:]
-        self.ref!.observe(.value) { (snapshot) in
-            self.dict = snapshot.value as? [String : AnyObject] ?? [:]
-        }
-        // componentArray is an array of the keys in the dictionary
-        let componentArray = Array(dict?.keys ?? sample.keys)
-        // if there are keys and elements in the dictionary, this will run
-        if componentArray != []{
-            userid = componentArray[row]
-            performSegue(withIdentifier: "toPetitionViewController", sender: nil)
-            print(userid)
-        }
        // performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
         
     }
     
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        if let vc = segue.destination as? PetitionViewController {
-//            vc.uid = userid
-//            print(userid)
-//        }
-//    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? PetitionViewController {
-            vc.userId = userid
-            print(userid)
-            print("Prepare")
+        if let cell = sender as? PetitionTableViewCell {
+            if let vc = segue.destination as? PetitionViewController {
+                vc.uid = cell.creator                
+            }
         }
     }
     
