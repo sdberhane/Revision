@@ -17,7 +17,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var ref: DatabaseReference?
     //create an array of Petition objects
     var petitions = [Petition]()
-    var uid: String?
+    var userid: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dict?.count ?? 1
@@ -67,18 +67,32 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let row = indexPath.row
         // sample is an empty placeholder dictionary
         let sample: [String: AnyObject] = [:]
+        self.ref!.observe(.value) { (snapshot) in
+            self.dict = snapshot.value as? [String : AnyObject] ?? [:]
+        }
         // componentArray is an array of the keys in the dictionary
         let componentArray = Array(dict?.keys ?? sample.keys)
         // if there are keys and elements in the dictionary, this will run
         if componentArray != []{
-            uid = componentArray[row]
+            userid = componentArray[row]
+            print(userid)
         }
+        performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
+        
     }
+    
+//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+//        if let vc = segue.destination as? PetitionViewController {
+//            vc.uid = userid
+//            print(userid)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PetitionViewController {
-            vc.uid = uid
-            print(uid)
+            vc.uid = userid
+            print(userid)
+            print("Prepare")
         }
     }
     
