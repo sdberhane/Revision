@@ -259,7 +259,6 @@
                                             <outlet property="petitionDescription" destination="sIo-5u-ddD" id="6le-UN-D3b"/>
                                             <outlet property="petitionImage" destination="LUO-Qx-Mfq" id="70c-Mi-a3X"/>
                                             <outlet property="petitionTitle" destination="RzZ-Ll-MOu" id="9Un-WZ-hir"/>
-                                            <segue destination="zq9-8S-tT0" kind="show" identifier="tableToPetitionSegue" id="upD-jJ-cxM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -301,6 +300,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="7g1-JU-olz" id="6N5-1e-0so"/>
+                        <segue destination="zq9-8S-tT0" kind="show" identifier="toPetitionViewController" id="JqM-1V-Zf5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -458,6 +458,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GzA-9t-2Sj"/>
+        <segue reference="kal-bf-P4Q"/>
     </inferredMetricsTieBreakers>
 </document>

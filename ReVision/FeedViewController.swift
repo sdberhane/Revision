@@ -78,9 +78,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // if there are keys and elements in the dictionary, this will run
         if componentArray != []{
             userid = componentArray[row]
+            performSegue(withIdentifier: "toPetitionViewController", sender: nil)
             print(userid)
         }
-        performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
+       // performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
         
     }
     
@@ -91,9 +92,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        }
 //    }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PetitionViewController {
-            vc.uid = userid
+            vc.userId = userid
             print(userid)
             print("Prepare")
         }
