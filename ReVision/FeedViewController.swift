@@ -72,7 +72,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {
             if let vc = segue.destination as? PetitionViewController {
-                vc.uid = cell.creator                
+                vc.userId = cell.creator                
             }
         }
     }
