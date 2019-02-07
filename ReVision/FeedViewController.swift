@@ -12,6 +12,9 @@ import FirebaseAuth
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func createPetition(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toCreateController", sender: nil)
+    }
     @IBOutlet weak var tableView: UITableView!
     var dict: [String: AnyObject]?
     var ref: DatabaseReference?
@@ -72,9 +75,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // if there are keys and elements in the dictionary, this will run
         if componentArray != []{
             uid = componentArray[row]
+        
         }
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PetitionViewController {
             vc.uid = uid
