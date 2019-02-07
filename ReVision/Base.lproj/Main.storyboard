@@ -259,7 +259,7 @@
                                             <outlet property="petitionDescription" destination="sIo-5u-ddD" id="6le-UN-D3b"/>
                                             <outlet property="petitionImage" destination="LUO-Qx-Mfq" id="70c-Mi-a3X"/>
                                             <outlet property="petitionTitle" destination="RzZ-Ll-MOu" id="9Un-WZ-hir"/>
-                                            <segue destination="zq9-8S-tT0" kind="show" id="upD-jJ-cxM"/>
+                                            <segue destination="zq9-8S-tT0" kind="show" identifier="tableToPetitionSegue" id="upD-jJ-cxM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
