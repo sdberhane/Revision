@@ -12,6 +12,7 @@ class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionDescription: UILabel!
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
+    var creator: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
