@@ -28,9 +28,13 @@ class PetitionViewController: UIViewController {
         ref = Database.database().reference().child("Active Petitions/\(uid)")
         ref?.observe(.value, with: { (snapshot) in
             let petition = snapshot.value as? NSDictionary
-            self.petitionTitle.text = "\(petition?.value(forKey: "Title"))"
-            self.petitionAuthor.text = "\(petition?.value(forKey: "Title"))"
-            self.petitionDescription.text = "\(petition?.value(forKey: "Title"))"
+            self.petitionTitle.text = "\(String(describing: petition?.value(forKey: "Title")))"
+            self.petitionAuthor.text = "\(String(describing: petition?.value(forKey: "Title")))"
+            self.petitionDescription.text = "\(String(describing: petition?.value(forKey: "Title")))"
+            let currentSingatures = petition?.value(forKey: "Signatures") as? [String]
+            let goalSignatures = petition?.value(forKey: "Goal") as? Double
+            self.petitonProgress.progress = Float(Double(currentSingatures?.count ?? 0) / (goalSignatures ?? 100))
+            
         })
         // Do any additional setup after loading the view.
         
