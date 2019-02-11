@@ -13,6 +13,7 @@ class PetitionViewController: UIViewController {
 
     var userId: String?
     var ref : DatabaseReference?
+    var currentSignatures : [String]?
     
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionAuthor: UILabel!
@@ -21,6 +22,11 @@ class PetitionViewController: UIViewController {
     @IBOutlet weak var petitonProgress: UIProgressView!
     @IBOutlet weak var petitionDescription: UILabel!
     @IBAction func sign(_ sender: Any) {
+        guard let uid = userId else {return}
+        print(currentSignatures?.count)
+        ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
+        //Will replace with users name later
+        ref?.setValue("HELLO")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +37,11 @@ class PetitionViewController: UIViewController {
             ref?.observe(.value, with: { (snapshot) in
                 let petition = snapshot.value as? NSDictionary
                 self.petitionTitle.text = petition?.value(forKey: "Title") as? String
-                self.petitionAuthor.text = petition?.value(forKey: "Author") as? String
+                self.petitionAuthor.text = "Written By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
-                let currentSingatures = petition?.value(forKey: "Signatures") as? [String]
+                self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
                 let goalSignatures = petition?.value(forKey: "Goal") as? Double
-                self.petitonProgress.progress = Float(Double(currentSingatures?.count ?? 0) / (goalSignatures ?? 100))
+                self.petitonProgress.progress = Float(Double(self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
                 
             })
         }else{
