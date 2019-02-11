@@ -31,6 +31,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "ImageURL" : imageURL
+            
         ]
         ref.child("Active Petitions").child(userID ?? " ").setValue(petitionDict)
 
