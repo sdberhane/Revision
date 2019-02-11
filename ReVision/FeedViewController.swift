@@ -12,11 +12,15 @@ import FirebaseAuth
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func createPetition(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toCreateController", sender: nil)
+    }
     @IBOutlet weak var tableView: UITableView!
     var dict: [String: AnyObject]?
     var ref: DatabaseReference?
     //create an array of Petition objects
-    //var petitions = [Petition]()
+    var petitions = [Petition]()
+    var userid: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dict?.count ?? 1
@@ -42,6 +46,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.petitionTitle.text = postDict["Title"] as? String
                 cell.petitionDescription.text = postDict["Description"] as? String
                 //cell.petitionImage = ????
+                cell.creator = componentArray[row]
+                //petitions.append(Petition(title: postDict["Title"] as? String, description: postDict["Description"] as? String, creator: componentArray[row], goalSignatures: postDict["Goal"] as? String, signatures: postDict["Signatures"] as? Array))
                 
             }
         }
@@ -58,10 +64,20 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
             self.tableView.reloadData()
         }
+       // performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
         
     }
     
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? PetitionTableViewCell {
+            if let vc = segue.destination as? PetitionViewController {
+                vc.userId = cell.creator                
+            }
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
