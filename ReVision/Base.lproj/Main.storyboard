@@ -478,6 +478,7 @@
                         <outlet property="petitionImage" destination="T2J-rQ-thm" id="cqw-wF-74k"/>
                         <outlet property="petitionTitle" destination="O2O-ls-Hfe" id="nnt-i4-g5V"/>
                         <outlet property="petitonProgress" destination="wal-SW-qZp" id="Cwm-rT-Fqu"/>
+                        <outlet property="signButton" destination="h5H-zQ-HFS" id="ZKi-dr-arj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rn8-A7-c8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
