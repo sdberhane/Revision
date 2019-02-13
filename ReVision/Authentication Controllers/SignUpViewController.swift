@@ -9,6 +9,7 @@
 import UIKit
 //import GoogleSignIn
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -37,6 +38,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 print(error.debugDescription)
             }
         }
+        
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        print(uid)
+        let ref = Database.database().reference()
+        ref.child("Users/\(uid)/Name").value(forKey: username)
+        ref.child("Users/\(uid)/School").value(forKey: school)
+        ref.child("Users/\(uid)/Role").value(forKey: "Student")
+        
+        try! Auth.auth().signOut()
+        
+        
     }
     
     
@@ -65,7 +77,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         else if schoolNameTextField.isFirstResponder {
             passwordTextField.becomeFirstResponder()
-        }
+        }   
         else {
             passwordTextField.resignFirstResponder()
             signupButton.isEnabled = true
