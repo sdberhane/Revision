@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         else if schoolNameTextField.isFirstResponder {
             passwordTextField.becomeFirstResponder()
-        }
+        }   
         else {
             passwordTextField.resignFirstResponder()
             signupButton.isEnabled = true
