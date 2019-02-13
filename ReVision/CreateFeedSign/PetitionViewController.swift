@@ -24,10 +24,15 @@ class PetitionViewController: UIViewController {
     @IBOutlet weak var petitionDescription: UILabel!
     @IBOutlet weak var signButton: UIButton!
     @IBAction func sign(_ sender: Any) {
-        guard let uid = userId else {return}
-        ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
-        //Will replace with users name later
-        ref?.setValue("HELLO")
+        if self.signButton.titleLabel?.text == "SIGN" {
+            guard let uid = userId else {return}
+            ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
+            //Will replace with users name later
+            ref?.setValue("HELLO")
+        }
+        else if self.signButton.titleLabel?.text == "SEND" {
+            
+        }
         
     }
     override func viewDidLoad() {
@@ -43,11 +48,11 @@ class PetitionViewController: UIViewController {
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int
-                self.petitonProgress.progress = Float(Double(self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
+                self.petitonProgress.progress = Float((self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
                 
                 // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
                 if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures ?? 100 {
-                    signButton.text = "SEND"
+                    self.signButton.titleLabel?.text = "SEND"
                 }
             })
         }else{
