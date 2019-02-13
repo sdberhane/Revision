@@ -274,7 +274,11 @@
                                 <items>
                                     <navigationItem title="ReVision" id="Mba-oA-9QV">
                                         <barButtonItem key="backBarButtonItem" title="&lt;" id="Zs8-9Q-ijs"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="kqd-Tq-PBJ"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="kqd-Tq-PBJ">
+                                            <connections>
+                                                <action selector="signOut:" destination="BYZ-38-t0r" id="75e-vb-tXC"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="wqx-NV-V8E">
                                             <connections>
                                                 <action selector="createPetition:" destination="BYZ-38-t0r" id="Wqc-WX-78G"/>

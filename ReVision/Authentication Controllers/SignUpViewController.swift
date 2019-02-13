@@ -40,10 +40,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        let ref = Database.database().reference(withPath: "Users")
+        print(uid)
+        let ref = Database.database().reference()
         ref.child("Users/\(uid)/Name").value(forKey: username)
         ref.child("Users/\(uid)/School").value(forKey: school)
         ref.child("Users/\(uid)/Role").value(forKey: "Student")
+        
+        try! Auth.auth().signOut()
+        
         
     }
     

@@ -43,11 +43,11 @@ class PetitionViewController: UIViewController {
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int
-                self.petitonProgress.progress = Float(Double(self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
+            //    self.petitonProgress.progress = Float(Double(self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
                 
                 // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
                 if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures ?? 100 {
-                    signButton.text = "SEND"
+                 //   signButton.text = "SEND"
                 }
             })
         }else{

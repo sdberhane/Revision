@@ -12,6 +12,10 @@ import FirebaseAuth
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func signOut(_ sender: Any) {
+        try! Auth.auth().signOut()
+        dismiss(animated: false, completion: nil)
+    }
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
