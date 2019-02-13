@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomescreenViewController: UIViewController {
 
@@ -19,6 +20,13 @@ class HomescreenViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil{
+            print("HOWDYYYY")
+            performSegue(withIdentifier: "toFeedViewController", sender: nil)
+        }
     }
     
 
