@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class PetitionViewController: UIViewController {
 
@@ -21,12 +22,13 @@ class PetitionViewController: UIViewController {
     @IBOutlet weak var petitionImage: UIImageView!
     @IBOutlet weak var petitonProgress: UIProgressView!
     @IBOutlet weak var petitionDescription: UILabel!
+    @IBOutlet weak var signButton: UIButton!
     @IBAction func sign(_ sender: Any) {
         guard let uid = userId else {return}
-        print(currentSignatures?.count)
         ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
         //Will replace with users name later
         ref?.setValue("HELLO")
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +42,13 @@ class PetitionViewController: UIViewController {
                 self.petitionAuthor.text = "Written By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
-                let goalSignatures = petition?.value(forKey: "Goal") as? Double
+                let goalSignatures = petition?.value(forKey: "Goal") as? Int
                 self.petitonProgress.progress = Float(Double(self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
                 
+                // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
+                if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures ?? 100 {
+                    signButton.text = "SEND"
+                }
             })
         }else{
             print("user id is nil!!")
