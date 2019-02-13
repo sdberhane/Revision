@@ -12,12 +12,15 @@ import FirebaseAuth
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func createPetition(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toCreateController", sender: nil)
+    }
     @IBOutlet weak var tableView: UITableView!
     var dict: [String: AnyObject]?
     var ref: DatabaseReference?
     //create an array of Petition objects
     var petitions = [Petition]()
-    var uid: String?
+    var userid: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dict?.count ?? 1
@@ -43,6 +46,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.petitionTitle.text = postDict["Title"] as? String
                 cell.petitionDescription.text = postDict["Description"] as? String
                 //cell.petitionImage = ????
+                cell.creator = componentArray[row]
                 //petitions.append(Petition(title: postDict["Title"] as? String, description: postDict["Description"] as? String, creator: componentArray[row], goalSignatures: postDict["Goal"] as? String, signatures: postDict["Signatures"] as? Array))
                 
             }
@@ -60,25 +64,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
             self.tableView.reloadData()
         }
+       // performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let row = indexPath.row
-        // sample is an empty placeholder dictionary
-        let sample: [String: AnyObject] = [:]
-        // componentArray is an array of the keys in the dictionary
-        let componentArray = Array(dict?.keys ?? sample.keys)
-        // if there are keys and elements in the dictionary, this will run
-        if componentArray != []{
-            uid = componentArray[row]
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? PetitionViewController {
-            vc.uid = uid
-            print(uid)
+        if let cell = sender as? PetitionTableViewCell {
+            if let vc = segue.destination as? PetitionViewController {
+                vc.userId = cell.creator                
+            }
         }
     }
     
