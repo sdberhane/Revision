@@ -9,6 +9,7 @@
 import UIKit
 //import GoogleSignIn
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -37,6 +38,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 print(error.debugDescription)
             }
         }
+        
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference(withPath: "Users")
+        ref.child("Users/\(uid)/Name").value(forKey: username)
+        ref.child("Users/\(uid)/School").value(forKey: school)
+        ref.child("Users/\(uid)/Role").value(forKey: "Student")
+        
     }
     
     
