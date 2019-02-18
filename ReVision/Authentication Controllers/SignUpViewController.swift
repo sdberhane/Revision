@@ -11,27 +11,45 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    
+
+    @IBOutlet weak var gradeRoleChooser: UIPickerView!
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
     @IBOutlet weak var usernameTextField: UITextField!
-    
     @IBOutlet weak var schoolNameTextField: UITextField!
+    
     @IBOutlet weak var signupButton: UIButton!
+    
+    var role : String?
+    var choices = [String]()
     
     @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
         
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        guard let username = usernameTextField.text else {return}
+        guard let name = usernameTextField.text else {return}
         guard let school = schoolNameTextField.text else {return}
         
 
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if user != nil, error == nil{
                 print("user created")
+                
+                guard let uid = Auth.auth().currentUser?.uid else {return}
+                guard var role = self.role else {return}
+                if role != "Freshmen"{
+                    role = role + "s"
+                }
+                let ref = Database.database().reference().child("Users/\(role)/\(uid)")
+
+                ref.child("Name").setValue(name)
+                ref.child("School").setValue(school)
+                
+                
                 self.dismiss(animated: true, completion: nil)
             }
             else{
@@ -39,15 +57,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        print(uid)
-        let ref = Database.database().reference()
-        ref.child("Users/\(uid)/Name").value(forKey: username)
-        ref.child("Users/\(uid)/School").value(forKey: school)
-        ref.child("Users/\(uid)/Role").value(forKey: "Student")
-        
-        try! Auth.auth().signOut()
-        
+
         
     }
     
@@ -58,8 +68,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         usernameTextField.delegate = self
         schoolNameTextField.delegate = self
+        gradeRoleChooser.delegate = self
         
-        emailTextField.becomeFirstResponder()
 
         // Do any additional setup after loading the view.
     }
@@ -85,5 +95,27 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
  
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 7
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        choices.append("")
+        choices.append("Freshmen")
+        choices.append("Sophmore")
+        choices.append("Junior")
+        choices.append("Senior")
+        choices.append("Teacher")
+        choices.append("Parent")
+        return choices[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        role = choices[row]
+        emailTextField.becomeFirstResponder()
+    }
 }

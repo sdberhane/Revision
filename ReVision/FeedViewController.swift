@@ -14,7 +14,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func signOut(_ sender: Any) {
         try! Auth.auth().signOut()
-        dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
@@ -63,6 +63,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
+        if let uid = Auth.auth().currentUser?.uid{
+            print(uid)
+        }
         ref = Database.database().reference().child("Active Petitions")
         self.ref!.observe(.value) { (snapshot) in
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
