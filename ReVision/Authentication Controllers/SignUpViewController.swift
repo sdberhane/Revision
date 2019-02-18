@@ -44,16 +44,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 print("user created")
                 
                 guard let uid = Auth.auth().currentUser?.uid else {return}
+                
+                //Checks to see if they are not a freshmen, if they aren't it adds an s so that
+                //it will be Sophmores and not Sophmore in the database
                 guard var role = self.role else {return}
                 if role != "Freshmen"{
                     role = role + "s"
                 }
+                
+                //Creates the user
                 let ref = Database.database().reference().child("Users/\(role)/\(uid)")
-
+                
+                //Sets particular values
                 ref.child("Name").setValue(name)
                 ref.child("School").setValue(school)
                 
-                
+                //Dismisses to Home Screen View Controller
                 self.dismiss(animated: true, completion: nil)
             }
             else{
@@ -68,6 +74,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Sets delegates
         emailTextField.delegate = self
         passwordTextField.delegate = self
         usernameTextField.delegate = self
@@ -80,6 +87,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Text field protocol
         if emailTextField.isFirstResponder {
             passwordTextField.becomeFirstResponder()
         }
@@ -99,6 +107,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return true
     }
  
+    //Picker View Protocol
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -119,6 +128,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //So they won't have a blank role
         if choices[row] != ""{
             role = choices[row]
             emailTextField.becomeFirstResponder()
