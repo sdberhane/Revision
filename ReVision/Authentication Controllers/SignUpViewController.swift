@@ -14,7 +14,7 @@ import FirebaseDatabase
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     
-
+    //Outlets
     @IBOutlet weak var gradeRoleChooser: UIPickerView!
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,17 +24,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     @IBOutlet weak var signupButton: UIButton!
     
-    var role : String?
-    var choices = [String]()
+    //Instances that will need to be used multiple times throughout signing up
+    var role : String?          //Grade, Teacher, or Parent chosen
+    var choices = [String]()    //Array that contains all the choices for role
     
+    //When the user is ready to sign up, the button must be turned on first by completing all the other functions
     @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
         
+        //Creates strings for most of the values
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let name = usernameTextField.text else {return}
         guard let school = schoolNameTextField.text else {return}
         
 
+        //Creates the user and then adds information about them into the database
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if user != nil, error == nil{
                 print("user created")
@@ -115,7 +119,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        role = choices[row]
-        emailTextField.becomeFirstResponder()
+        if choices[row] != ""{
+            role = choices[row]
+            emailTextField.becomeFirstResponder()
+        }else{
+            emailTextField.resignFirstResponder()
+        }
     }
 }

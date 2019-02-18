@@ -41,7 +41,7 @@
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logInButton:" destination="STV-We-pIC" eventType="touchUpInside" id="7AI-VJ-CA6"/>
-                                    <segue destination="0Gc-RX-Rrr" kind="show" id="pdU-hs-qGa"/>
+                                    <segue destination="0Gc-RX-Rrr" kind="show" id="h5o-1o-d8a"/>
                                 </connections>
                             </button>
                         </subviews>

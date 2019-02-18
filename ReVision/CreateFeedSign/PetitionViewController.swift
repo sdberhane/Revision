@@ -16,6 +16,7 @@ class PetitionViewController: UIViewController {
     var ref : DatabaseReference?
     var currentSignatures : [String]?
     
+    //Outlets
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionAuthor: UILabel!
     @IBOutlet weak var petitionButton: UIButton!
@@ -23,11 +24,18 @@ class PetitionViewController: UIViewController {
     @IBOutlet weak var petitonProgress: UIProgressView!
     @IBOutlet weak var petitionDescription: UILabel!
     @IBOutlet weak var signButton: UIButton!
+    
+    //Action that Signs the petition or Sends the Petitoin if the proper requirements have been met
     @IBAction func sign(_ sender: Any) {
         if self.signButton.titleLabel?.text == "SIGN" {
+            
+            //Chooses the proper node of this petition
             guard let uid = userId else {return}
             ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
             //Will replace with users name later
+          //  let userName = Database.database().reference().child("Users/\()")
+            
+            //Adds the name
             ref?.setValue("HELLO")
         }
         else if self.signButton.titleLabel?.text == "SEND" {
@@ -37,12 +45,17 @@ class PetitionViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //guard let uid = uid else {return}
+
+        //If the node is properly chosen
         if let uid = userId{
-            print("IT IS WORKKING \n \n YEAH")
+            
+            //Proper reference and then listening to that reference
             ref = Database.database().reference().child("Active Petitions/\(uid)")
             ref?.observe(.value, with: { (snapshot) in
+                //Dictionary from the petition
                 let petition = snapshot.value as? NSDictionary
+                
+                //Displays all the values of the petitions
                 self.petitionTitle.text = petition?.value(forKey: "Title") as? String
                 self.petitionAuthor.text = "Written By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String

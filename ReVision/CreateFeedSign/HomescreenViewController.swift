@@ -12,7 +12,6 @@ import FirebaseAuth
 class HomescreenViewController: UIViewController {
 
     @IBAction func logInButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "TEST", sender: nil)
     }
     @IBAction func signUpButton(_ sender: UIButton) {
     }
@@ -25,7 +24,7 @@ class HomescreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil{
             print("HOWDYYYY")
-            performSegue(withIdentifier: "toFeedViewController", sender: nil)
+            performSegue(withIdentifier: "toFeedViewController", sender: self)
         }
     }
     

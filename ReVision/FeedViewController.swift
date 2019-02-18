@@ -43,6 +43,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             // creating another dictionary based on the user ID
             // key is the title/description/whatever
             // value is whatever the value it is
+            guard let user = Auth.auth().currentUser else {return UITableViewCell()}
             let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[row])
             ref2.observe(.value) { (snapshot) in
                 var postDict = snapshot.value as? [String : AnyObject] ?? [:]
@@ -63,9 +64,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
-        if let uid = Auth.auth().currentUser?.uid{
-            print(uid)
-        }
+        guard let user = Auth.auth().currentUser else {return}
         ref = Database.database().reference().child("Active Petitions")
         self.ref!.observe(.value) { (snapshot) in
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
