@@ -291,6 +291,7 @@
                                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="wqx-NV-V8E">
                                             <connections>
                                                 <action selector="createPetition:" destination="BYZ-38-t0r" id="Wqc-WX-78G"/>
+                                                <segue destination="KLD-y7-Qzr" kind="show" id="dHI-aG-jhe"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -359,7 +360,6 @@
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="createPetitionButton:" destination="KLD-y7-Qzr" eventType="touchUpInside" id="p2I-uF-wa4"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toCreateController" id="GzA-9t-2Sj"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0E-jC-PJI">
@@ -396,7 +396,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-164" y="799.2503748125938"/>
+            <point key="canvasLocation" x="-149" y="800"/>
         </scene>
         <!--Petition View Controller-->
         <scene sceneID="5H8-An-cMg">
@@ -438,7 +438,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sign:" destination="zq9-8S-tT0" eventType="touchUpInside" id="aFg-2A-VtT"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="kal-bf-P4Q"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2O-ls-Hfe">
@@ -496,10 +495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rn8-A7-c8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-185.50724637681162" y="1556.25"/>
+            <point key="canvasLocation" x="-988" y="1572"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="trl-hA-ZbS"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -23,6 +23,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var petitionImageView: UIImageView!
+    
     @IBAction func createPetitionButton(_ sender: UIButton) {
         petitionDict = [
             "Title" : titleTextField?.text ?? " ",
@@ -34,6 +35,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             
         ]
         ref.child("Active Petitions").child(userID ?? " ").setValue(petitionDict)
+        self.dismiss(animated: true, completion: nil)
 
     }
   

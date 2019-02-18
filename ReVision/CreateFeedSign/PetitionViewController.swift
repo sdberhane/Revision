@@ -41,6 +41,7 @@ class PetitionViewController: UIViewController {
         else if self.signButton.titleLabel?.text == "SEND" {
             
         }
+        self.dismiss(animated: true, completion: nil)
         
     }
     override func viewDidLoad() {
