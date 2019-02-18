@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             }
         }
         
-
+ 
         
     }
     
