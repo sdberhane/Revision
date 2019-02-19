@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import MessageUI
 
-class PetitionViewController: UIViewController {
+class PetitionViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     var userId: String?
     var ref : DatabaseReference?
@@ -39,6 +40,12 @@ class PetitionViewController: UIViewController {
             ref?.setValue("HELLO")
         }
         else if self.signButton.titleLabel?.text == "SEND" {
+            let mailComposeViewController = configureMailController(petitionTitle: self.petitionTitle.text ?? "title")
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                showMailError()
+            }
             
         }
         self.dismiss(animated: true, completion: nil)
@@ -76,8 +83,30 @@ class PetitionViewController: UIViewController {
         // Do any additional setup after loading the view.
         
     }
-    
 
+    func configureMailController(petitionTitle: String) -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setSubject(petitionTitle)
+        mailComposerVC.setMessageBody("hey here's a petition", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showMailError() {
+        let sendMailErrorAlert = UIAlertController(title: "Could not send email", message: "Your device could not send email", preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        sendMailErrorAlert.addAction(dismiss)
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+    }
+    
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    
     /*
     // MARK: - Navigation
 
