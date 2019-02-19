@@ -34,10 +34,17 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             guard let uid = userId else {return}
             ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
             //Will replace with users name later
-          //  let userName = Database.database().reference().child("Users/\()")
+            guard let userid = Auth.auth().currentUser?.uid else {return}
+            print(userid)
+            
+            Database.database().reference().child("Users/\(userid)/Name").observeSingleEvent(of: .value) { (snapshot) in
+                let val = snapshot.value as! NSString
+                self.ref?.setValue(val as String)
+            }
+           // print(userName)
             
             //Adds the name
-            ref?.setValue("HELLO")
+          //  ref?.setValue(userName)
         }
         else if self.signButton.titleLabel?.text == "SEND" {
             let mailComposeViewController = configureMailController(petitionTitle: self.petitionTitle.text ?? "title")
