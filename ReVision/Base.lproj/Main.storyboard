@@ -485,7 +485,6 @@
                     <navigationItem key="navigationItem" id="KYE-wH-Fam"/>
                     <connections>
                         <outlet property="petitionAuthor" destination="bu7-QB-Hka" id="y4J-Id-9w0"/>
-                        <outlet property="petitionButton" destination="h5H-zQ-HFS" id="3dD-2E-GGM"/>
                         <outlet property="petitionDescription" destination="HKh-fl-Hfg" id="Y4I-KO-YVU"/>
                         <outlet property="petitionImage" destination="T2J-rQ-thm" id="cqw-wF-74k"/>
                         <outlet property="petitionTitle" destination="O2O-ls-Hfe" id="nnt-i4-g5V"/>

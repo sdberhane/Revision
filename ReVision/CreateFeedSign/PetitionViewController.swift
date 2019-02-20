@@ -20,7 +20,6 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     //Outlets
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionAuthor: UILabel!
-    @IBOutlet weak var petitionButton: UIButton!
     @IBOutlet weak var petitionImage: UIImageView!
     @IBOutlet weak var petitonProgress: UIProgressView!
     @IBOutlet weak var petitionDescription: UILabel!
@@ -28,7 +27,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     //Action that Signs the petition or Sends the Petitoin if the proper requirements have been met
     @IBAction func sign(_ sender: Any) {
-        if self.signButton.titleLabel?.text == "SIGN" {
+        if self.signButton.currentTitle == "SIGN" {
             
             //Chooses the proper node of this petition
             guard let uid = userId else {return}
@@ -37,7 +36,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             guard let userid = Auth.auth().currentUser?.uid else {return}
             print(userid)
             
-            Database.database().reference().child("Users/\(userid)/Name").observeSingleEvent(of: .value) { (snapshot) in
+            Database.database().reference().child("Users/\(uid)/Name").observeSingleEvent(of: .value) { (snapshot) in
                 let val = snapshot.value as! NSString
                 self.ref?.setValue(val as String)
             }
@@ -46,7 +45,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             //Adds the name
           //  ref?.setValue(userName)
         }
-        else if self.signButton.titleLabel?.text == "SEND" {
+        else if self.signButton.currentTitle == "SEND" {
             let mailComposeViewController = configureMailController(petitionTitle: self.petitionTitle.text ?? "title")
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: nil)
@@ -75,14 +74,17 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                 self.petitionAuthor.text = "Written By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
-                let goalSignatures = petition?.value(forKey: "Goal") as? Int
+                let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
                 self.petitonProgress.progress = Float((self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
-                
                 // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
-                if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures ?? 100 {
+                if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
                     self.signButton.titleLabel?.text = "SEND"
+                    
                 }
+                
             })
+            
+            
         }else{
             print("user id is nil!!")
         
