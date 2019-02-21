@@ -36,7 +36,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             guard let userid = Auth.auth().currentUser?.uid else {return}
             print(userid)
             
-            Database.database().reference().child("Users/\(uid)/Name").observeSingleEvent(of: .value) { (snapshot) in
+            Database.database().reference().child("Users/\(userid)/Name").observeSingleEvent(of: .value) { (snapshot) in
                 let val = snapshot.value as! NSString
                 self.ref?.setValue(val as String)
             }
@@ -77,11 +77,9 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
                 self.petitonProgress.progress = Float((self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
                 // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
-                print(uid == Auth.auth().currentUser?.uid)
-                print(self.currentSignatures?.count ?? 0 >= goalSignatures)
                 if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
-                    self.signButton.titleLabel?.text = "SEND"
-                    
+                    self.signButton.setTitle("SEND", for: .normal)
+
                 }
                 
             })
@@ -99,6 +97,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
+        mailComposerVC.setToRecipients(["revision429@gmail.com"])
         mailComposerVC.setSubject(petitionTitle)
         mailComposerVC.setMessageBody("hey here's a petition", isHTML: false)
         

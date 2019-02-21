@@ -64,7 +64,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
-        guard let user = Auth.auth().currentUser else {return}
+      //  guard let user = Auth.auth().currentUser else {return}
         ref = Database.database().reference().child("Active Petitions")
         self.ref!.observe(.value) { (snapshot) in
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
