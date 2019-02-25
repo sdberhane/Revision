@@ -46,7 +46,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
           //  ref?.setValue(userName)
         }
         else if self.signButton.currentTitle == "SEND" {
-            let mailComposeViewController = configureMailController(petitionTitle: self.petitionTitle.text ?? "title")
+            let mailComposeViewController = configureMailController()
             if MFMailComposeViewController.canSendMail() {
                 print("yo")
                 self.present(mailComposeViewController, animated: true, completion: nil)
@@ -56,7 +56,6 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             }
             
         }
-        self.dismiss(animated: true, completion: nil)
         
     }
     override func viewDidLoad() {
@@ -95,12 +94,12 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         
     }
 
-    func configureMailController(petitionTitle: String) -> MFMailComposeViewController {
+    func configureMailController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
         mailComposerVC.setToRecipients(["revision429@gmail.com"])
-        mailComposerVC.setSubject(petitionTitle)
+        mailComposerVC.setSubject(self.petitionTitle.text ?? "title")
         mailComposerVC.setMessageBody("hey here's a petition", isHTML: false)
         
         return mailComposerVC
@@ -116,7 +115,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
-        
+
     }
     
     /*
