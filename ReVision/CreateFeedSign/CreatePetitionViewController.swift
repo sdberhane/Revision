@@ -14,6 +14,7 @@ import FirebaseStorage
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     var ref = Database.database().reference()
     var petition:Petition?
+    let fileID = Database.database().reference().child("Active Petitions").childByAutoId()
     let userID = Auth.auth().currentUser?.uid
     var petitionDict: [String:Any]?
     var imagePicker: UIImagePickerController?
@@ -31,10 +32,11 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Signatures" : [" "],
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
-            "ImageURL" : imageURL
-            
+            "ImageURL" : imageURL,
+            "user ID" : userID
         ]
-        ref.child("Active Petitions").child(userID ?? " ").setValue(petitionDict)
+        fileID.setValue(petitionDict)
+        
         self.dismiss(animated: true, completion: nil)
 
     }
@@ -45,9 +47,10 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     
     override func viewDidLoad() {
-        print("view did load")
+      //  print("view did load")
         super.viewDidLoad()
         
+       petitionImageView.isUserInteractionEnabled = true
         petitionImageView.layer.borderWidth = 1
         petitionImageView.layer.masksToBounds = false
         petitionImageView.layer.borderColor = UIColor.blue.cgColor
@@ -100,7 +103,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
-        let storage = Storage.storage().reference().child("petition images").child((self.titleTextField.text ?? " ")+".jpg")
+        let storage = Storage.storage().reference().child("petition images").child(fileID.key ?? " ")
         
         //images must be saved as data objects so convert and compress the image
         guard let image = petitionImageView?.image,let imageData = image.jpegData(compressionQuality: 0.75) else {return}
@@ -119,7 +122,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func getImageURL(_ completion: @escaping((_ url:String?)->())){
-        let databaseRef = self.ref.child("Active Petitions").child(userID ?? " ")
+        let databaseRef = self.ref.child("Active Petitions").child(fileID.key ?? " ")
         
         databaseRef.observeSingleEvent(of: .value, with: {snapshot in
             let postDict = snapshot.value as? [String:AnyObject] ?? [:]
