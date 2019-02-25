@@ -45,6 +45,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     
     override func viewDidLoad() {
+        print("view did load")
         super.viewDidLoad()
         
         petitionImageView.layer.borderWidth = 1
