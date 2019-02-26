@@ -46,13 +46,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let user = Auth.auth().currentUser else {return UITableViewCell()}
             let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[row])
             ref2.observe(.value) { (snapshot) in
-                var postDict = snapshot.value as? [String : AnyObject] ?? [:]
+                let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
-                cell.petitionTitle.text = postDict["Title"] as? String
-                cell.petitionDescription.text = postDict["Description"] as? String
-                //cell.petitionImage = ????
-                cell.creator = componentArray[row]
-                //petitions.append(Petition(title: postDict["Title"] as? String, description: postDict["Description"] as? String, creator: componentArray[row], goalSignatures: postDict["Goal"] as? String, signatures: postDict["Signatures"] as? Array))
+                let currentSignatures = petition?.value(forKey: "Signatures") as? [String]
+                let numSignatures = currentSignatures?.count ?? 0
+                let goal = petition?.value(forKey: "Goal") as? Int ?? 0
+                if numSignatures < goal {
+                    cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
+                    cell.petitionDescription.text = petition?.value(forKey: "Description") as? String
+                    //cell.petitionImage = ????
+                    cell.creator = componentArray[row]
+                }
+                else {
+                    Database.database().reference().child("Completed Petitions").setValue(ref2)
+                    Database.database().reference().child("Active Petitions").child(componentArray[row]).removeValue()
+                }
                 
             }
         }

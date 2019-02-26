@@ -113,6 +113,7 @@
 				3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */,
 				69952013220493BB0095AE52 /* HomescreenViewController.swift */,
 				3E44790422049931007CD62A /* CreatePetitionViewController.swift */,
+				699D5CC32203490D00077C94 /* FeedViewController.swift */,
 			);
 			path = CreateFeedSign;
 			sourceTree = "<group>";
@@ -156,7 +157,6 @@
 				3F32417D22034CB3004AD3DE /* Functionality */,
 				69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
-				699D5CC32203490D00077C94 /* FeedViewController.swift */,
 				69DB6C6021DCF9C300B4C917 /* Assets.xcassets */,
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
