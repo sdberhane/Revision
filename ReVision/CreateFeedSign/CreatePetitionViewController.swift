@@ -10,6 +10,8 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
+import MobileCoreServices
+import AVFoundation
 
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     var ref = Database.database().reference()
@@ -60,6 +62,8 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         imagePicker?.allowsEditing = true
         imagePicker?.sourceType = .photoLibrary
         imagePicker?.delegate = self
+        imagePicker?.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+
         
         getImageURL(){url in
             let storage = Storage.storage()
@@ -84,6 +88,10 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // The info dictionary may contain multiple representations of the image. You want to use the original.
+        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL]{
+            print("File url:", videoUrl)
+            
+        }
         guard let selectedImage = info[.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
@@ -110,6 +118,28 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         
         //store image
         storage.putData(imageData,metadata: StorageMetadata()){
+            (metaData, error) in
+            if error == nil && metaData != nil{
+                storage.downloadURL{ url, error in guard let downloadURL = url else {return}
+                    completion(downloadURL)
+                }
+            }else{
+                completion(nil)
+            }
+        }
+    }
+    
+    func uploadPetitionVideo(_ video: UIView, _ completion: @escaping((_ url:URL?)->())){
+        //reference to storage object
+        let storage = Storage.storage().reference().child("petition images").child(fileID.key ?? " ")
+        
+        //images must be saved as data objects so convert and compress the image
+//        guard let video = petitionImageView?.inputView,let videoData = video.movData(compressionQuality: 1) else {return}
+        
+        
+        
+        //store image
+        storage.putData(videoData,metadata: StorageMetadata()){
             (metaData, error) in
             if error == nil && metaData != nil{
                 storage.downloadURL{ url, error in guard let downloadURL = url else {return}
