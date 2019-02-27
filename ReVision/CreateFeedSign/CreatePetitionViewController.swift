@@ -84,14 +84,24 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // The info dictionary may contain multiple representations of the image. You want to use the original.
+        
+        if let videoUrl = info[.originalImage] as? UIImage {
+            
+        }
+        var selectedImage1:UIImage?
+        
+        if let originalImage = info[.originalImage] as? UIImage{
+            selectedImage1 = originalImage
+        }
+        
+        
         guard let selectedImage = info[.originalImage] as? UIImage else {
+            
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        // Set photoImageView to display the selected image.
         petitionImageView.image = selectedImage
         
-        // Dismiss the picker.
-        dismiss(animated: true, completion: nil)
+        // Set photoImageView to display the selected image.
         
         uploadPetitionImage(selectedImage){ url in
             guard let i = url else {return}
