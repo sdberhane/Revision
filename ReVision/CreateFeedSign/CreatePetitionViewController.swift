@@ -10,6 +10,8 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
+import AVFoundation
+import MobileCoreServices
 
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     var ref = Database.database().reference()
@@ -18,7 +20,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     let userID = Auth.auth().currentUser?.uid
     var petitionDict: [String:Any]?
     var imagePicker: UIImagePickerController?
-    var imageURL = String()
+    var fileUrl = String()
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextView: UITextView!
     @IBOutlet weak var goalTextField: UITextField!
@@ -32,7 +34,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Signatures" : [" "],
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
-            "ImageURL" : imageURL,
+            "Media File URL" : fileUrl,
             "user ID" : userID
         ]
         fileID.setValue(petitionDict)
@@ -60,11 +62,12 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         imagePicker?.allowsEditing = true
         imagePicker?.sourceType = .photoLibrary
         imagePicker?.delegate = self
+        imagePicker?.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
         
-        getImageURL(){url in
+        getfileUrl(){url in
             let storage = Storage.storage()
-            guard let imageURL = url else {return}
-            let ref = storage.reference(forURL: imageURL)
+            guard let fileUrl = url else {return}
+            let ref = storage.reference(forURL: fileUrl)
             
             ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 if error == nil && data != nil{
@@ -85,35 +88,65 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // The info dictionary may contain multiple representations of the image. You want to use the original.
         
-        if let videoUrl = info[.originalImage] as? UIImage {
+        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] {
+           //selected a video
+            
+            Storage.storage().reference().child("petition media files").child(fileID.key ?? " ").putFile(from: videoUrl as! URL, metadata: nil, completion: {(metadata,error) in
+                
+                if error != nil{
+                    print("Failed upload of video:",error)
+        
+                }
+//
+//                if let storageUrl = metadata.downloadURL()?,absoluteString{
+//                    print(storageUrl)
+//                }
+            })
+            
+        } else {
+            var selectedImageFromPicker:UIImage?
+            
+            if let originalImage = info[.originalImage] as? UIImage{
+                selectedImageFromPicker = originalImage
+            }
+            
+            if let selectedImage = selectedImageFromPicker {
+                
+                uploadPetitionImage(selectedImage){ url in
+                    guard let i = url else {return}
+                    //let database = self.ref.child("Active Petitions").child(self.userID!)
+                    self.fileUrl = i.absoluteString
+                    //database.child("fileUrl").setValue(userObject)
+                }
+                
+            }
+            
+            petitionImageView.image = selectedImageFromPicker
             
         }
-        var selectedImage1:UIImage?
-        
-        if let originalImage = info[.originalImage] as? UIImage{
-            selectedImage1 = originalImage
-        }
+    
+        imagePicker?.dismiss(animated: true, completion: nil)
         
         
-        guard let selectedImage = info[.originalImage] as? UIImage else {
-            
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        petitionImageView.image = selectedImage
-        
-        // Set photoImageView to display the selected image.
-        
-        uploadPetitionImage(selectedImage){ url in
-            guard let i = url else {return}
-            //let database = self.ref.child("Active Petitions").child(self.userID!)
-            self.imageURL = i.absoluteString
-            //database.child("imageURL").setValue(userObject)
-        }
+//        guard let selectedImage = info[.originalImage] as? UIImage else {
+//
+//            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+//        }
+//        petitionImageView.image = selectedImage
+//
+//        // Set photoImageView to display the selected image.
+//
+//        uploadPetitionImage(selectedImage){ url in
+//            guard let i = url else {return}
+//            //let database = self.ref.child("Active Petitions").child(self.userID!)
+//            self.fileUrl = i.absoluteString
+//            //database.child("fileUrl").setValue(userObject)
+//        }
     }
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
-        let storage = Storage.storage().reference().child("petition images").child(fileID.key ?? " ")
+        let storage = Storage.storage().reference().child("petition media files").child(fileID.key ?? " ")
         
         //images must be saved as data objects so convert and compress the image
         guard let image = petitionImageView?.image,let imageData = image.jpegData(compressionQuality: 0.75) else {return}
@@ -131,7 +164,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
-    func getImageURL(_ completion: @escaping((_ url:String?)->())){
+    func getfileUrl(_ completion: @escaping((_ url:String?)->())){
         let databaseRef = self.ref.child("Active Petitions").child(fileID.key ?? " ")
         
         databaseRef.observeSingleEvent(of: .value, with: {snapshot in
