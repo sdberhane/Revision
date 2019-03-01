@@ -69,11 +69,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
             self.tableView.reloadData()
         }
+        
+    }
 
-
+        
+    
+    override func viewDidAppear(_ animated: Bool) {
         let sample: [String: AnyObject] = [:]
         // componentArray is an array of the keys in the dictionary
-        let componentArray = Array(dict?.keys ?? sample.keys)
+        let componentArray = Array(self.dict?.keys ?? sample.keys)
         // if there are keys and elements in the dictionary, this will run
         if componentArray != []{
             for row in componentArray{
@@ -84,7 +88,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let currentSignatures = petition["Signatures"] as? [String]
                     let numSignatures = currentSignatures?.count ?? 0
                     let goal = petition["Goal"] as? Int ?? 0
-                    if numSignatures <= goal {
+                    if numSignatures >= goal {
                         petition["Creator"] = row as AnyObject
                         completedRef.childByAutoId().updateChildValues(petition)
                         activeRef.removeValue()
@@ -94,7 +98,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {
