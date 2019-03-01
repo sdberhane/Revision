@@ -113,7 +113,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeX-aE-nyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2290" y="779"/>
+            <point key="canvasLocation" x="-2291" y="-632"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="zZV-GE-mGz">
+            <objects>
+                <viewController id="hla-ZC-gNg" customClass="SearchViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tbv-3p-hqY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="M0R-sT-Ehp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wOT-U0-7YV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1978" y="800"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="bBz-LS-dyj">
