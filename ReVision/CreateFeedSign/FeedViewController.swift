@@ -48,19 +48,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             ref2.observe(.value) { (snapshot) in
                 let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
-                let currentSignatures = petition?.value(forKey: "Signatures") as? [String]
-                let numSignatures = currentSignatures?.count ?? 0
-                let goal = petition?.value(forKey: "Goal") as? Int ?? 0
-                if numSignatures < goal {
-                    cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
-                    cell.petitionDescription.text = petition?.value(forKey: "Description") as? String
-                    //cell.petitionImage = ????
-                    cell.creator = componentArray[row]
-                }
-                else {
-                    Database.database().reference().child("Completed Petitions").setValue(ref2)
-                    Database.database().reference().child("Active Petitions").child(componentArray[row]).removeValue()
-                }
+                cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
+                cell.petitionDescription.text = petition?.value(forKey: "Description") as? String
+                //cell.petitionImage = ????
+                cell.creator = componentArray[row]
                 
             }
         }
@@ -78,8 +69,30 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
             self.tableView.reloadData()
         }
-       // performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
-        
+
+
+        let sample: [String: AnyObject] = [:]
+        // componentArray is an array of the keys in the dictionary
+        let componentArray = Array(dict?.keys ?? sample.keys)
+        // if there are keys and elements in the dictionary, this will run
+        if componentArray != []{
+            for row in componentArray{
+                let activeRef = Database.database().reference().child("Active Petitions").child(row)
+                let completedRef = Database.database().reference().child("Completed Petitions")
+                activeRef.observe(.value) { (snapshot) in
+                    var petition = snapshot.value as? [String: AnyObject] ?? [:]
+                    let currentSignatures = petition["Signatures"] as? [String]
+                    let numSignatures = currentSignatures?.count ?? 0
+                    let goal = petition["Goal"] as? Int ?? 0
+                    if numSignatures <= goal {
+                        petition["Creator"] = row as AnyObject
+                        completedRef.childByAutoId().updateChildValues(petition)
+                        activeRef.removeValue()
+                    }
+                    
+                }
+            }
+        }
     }
     
     
