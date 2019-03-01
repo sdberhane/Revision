@@ -35,7 +35,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "Media File URL" : fileUrl,
-            "Author" : Auth.auth().currentUser?.displayName
+            "Author" : Database.database().reference().child("Users").value(forKey: userID ?? " ")
         ]
         fileID.setValue(petitionDict)
         
