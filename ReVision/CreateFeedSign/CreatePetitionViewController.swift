@@ -35,7 +35,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "Media File URL" : fileUrl,
-            "user ID" : userID
+            "Author" : Database.database().reference().child("Users").value(forKey: userID ?? " ")
         ]
         fileID.setValue(petitionDict)
         
@@ -90,58 +90,34 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         
         if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] {
            //selected a video
+            let storage = Storage.storage().reference().child("petition media files").child(fileID.key ?? " ")
             
-            Storage.storage().reference().child("petition media files").child(fileID.key ?? " ").putFile(from: videoUrl as! URL, metadata: nil, completion: {(metadata,error) in
-                
-                if error != nil{
-                    print("Failed upload of video:",error)
-        
+            storage.putFile(from: videoUrl as! URL, metadata: nil, completion: {(metadata,error) in
+                if error != nil {
+                    print("Failed to upload video:", error)
                 }
-//
-//                if let storageUrl = metadata.downloadURL()?,absoluteString{
-//                    print(storageUrl)
-//                }
             })
+            
+           
             
         } else {
             var selectedImageFromPicker:UIImage?
             
+            print("uploaded image")
+            
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
-            }
-            
-            if let selectedImage = selectedImageFromPicker {
                 
-                uploadPetitionImage(selectedImage){ url in
-                    guard let i = url else {return}
-                    //let database = self.ref.child("Active Petitions").child(self.userID!)
-                    self.fileUrl = i.absoluteString
-                    //database.child("fileUrl").setValue(userObject)
+                    uploadPetitionImage(originalImage){ url in
+                        guard let i = url else {return}
+                        self.fileUrl = i.absoluteString
+
                 }
-                
             }
-            
             petitionImageView.image = selectedImageFromPicker
-            
         }
-    
+        
         imagePicker?.dismiss(animated: true, completion: nil)
-        
-        
-//        guard let selectedImage = info[.originalImage] as? UIImage else {
-//
-//            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-//        }
-//        petitionImageView.image = selectedImage
-//
-//        // Set photoImageView to display the selected image.
-//
-//        uploadPetitionImage(selectedImage){ url in
-//            guard let i = url else {return}
-//            //let database = self.ref.child("Active Petitions").child(self.userID!)
-//            self.fileUrl = i.absoluteString
-//            //database.child("fileUrl").setValue(userObject)
-//        }
     }
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
