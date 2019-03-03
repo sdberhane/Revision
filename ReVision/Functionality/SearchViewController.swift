@@ -9,17 +9,20 @@
 import UIKit
 import FirebaseDatabase
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var ref : DatabaseReference?
     var handle : DatabaseHandle?
     var activePetitions = [Petition]()
+    var filteredPetitions = [Petition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        searchBar.returnKeyType = UIReturnKeyType.done
         ref = Database.database().reference().child("Active Petitions")
         
         
@@ -48,8 +51,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if activePetitions.count > 0{
-            return activePetitions.count
+        if filteredPetitions.count > 0{
+            return filteredPetitions.count
         }
         return 0
     }
@@ -57,10 +60,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init()
         let row = indexPath.row
-        if activePetitions.count > 0{
-            cell.textLabel?.text = activePetitions[row].title
+        if filteredPetitions.count > 0{
+            cell.textLabel?.text = filteredPetitions[row].title
         }
         return cell
     }
-
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredPetitions = activePetitions.filter({ (petition) -> Bool in
+            guard let text = searchBar.text else {return false}
+            return petition.title?.contains(text) ?? false
+        })
+        tableView.reloadData()
+        //searchBar.text
+    }
 }
