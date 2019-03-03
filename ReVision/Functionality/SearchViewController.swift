@@ -58,10 +58,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchedPetition", for: indexPath) as! SearchTableViewCell
         let row = indexPath.row
         if filteredPetitions.count > 0{
-            cell.textLabel?.text = filteredPetitions[row].title
+            //cell.textLabel?.text = filteredPetitions[row].title
+            cell.title.text = filteredPetitions[row].title
+            cell.subtitle.text = filteredPetitions[row].subtitle
+            cell.author.text = filteredPetitions[row].creator
         }
         return cell
     }
@@ -69,7 +72,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredPetitions = activePetitions.filter({ (petition) -> Bool in
             guard let text = searchBar.text else {return false}
-            return petition.title?.contains(text) ?? false
+//            return petition.title?.contains(text) ?? false
+            if petition.title?.contains(text) ?? false || petition.creator?.contains(text) ?? false || petition.subtitle?.contains(text) ?? false || petition.description?.contains(text) ?? false {
+                return true
+            }
+            return false
         })
         tableView.reloadData()
         //searchBar.text
