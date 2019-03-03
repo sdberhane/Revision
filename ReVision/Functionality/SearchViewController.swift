@@ -9,25 +9,21 @@
 import UIKit
 import FirebaseDatabase
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    @IBOutlet weak var tableView: UITableView!
     var ref : DatabaseReference?
     var handle : DatabaseHandle?
     var activePetitions = [Petition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fillArrays()
-        print("OKKKKKKKKKKKKKAYYYYYYYYY")
-        print(activePetitions.description)
-        // Do any additional setup after loading the view.
-    }
     
-    func fillArrays(){
         ref = Database.database().reference().child("Active Petitions")
         
-        repeat {
-            ref?.observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             //Creating a dictionary of the Petitions
             let dicts = snapshot.value as? [String : AnyObject] ?? [:]
             for i in dicts.keys{
@@ -35,26 +31,36 @@ class SearchViewController: UIViewController {
                // print(petit)
                 //Getting the data
                 let petition = Petition()
-                petition.creator = petit["Title"] as? String
+                
+                
+                petition.title = petit["Title"] as? String
                 petition.subtitle = petit["Subtitle"] as? String
                 petition.creator = petit["Author"] as? String
                 petition.description = petit["Description"] as? String
                 self.activePetitions.append(petition)
-                print("OH YEAH")
-            }
-            })
-        } while activePetitions.count != 0
-    print(activePetitions.description)
-    print(activePetitions.count)
-    }
-    /*
-    // MARK: - Navigation
+                
+                }
+            print("    HERE                 ")
+            print(self.activePetitions[0].creator)
+            self.tableView.reloadData()
+        })
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if activePetitions.count > 0{
+            return activePetitions.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell.init()
+        let row = indexPath.row
+        if activePetitions.count > 0{
+            cell.textLabel?.text = activePetitions[row].title
+        }
+        return cell
+    }
 
 }
