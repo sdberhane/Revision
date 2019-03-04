@@ -19,7 +19,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             
             if error == nil && user != nil{
-                self.dismiss(animated: false, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
             else{
                 print(error!.localizedDescription)

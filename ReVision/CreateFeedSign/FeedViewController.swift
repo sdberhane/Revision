@@ -12,6 +12,10 @@ import FirebaseAuth
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBAction func signOut(_ sender: Any) {
+        try! Auth.auth().signOut()
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
@@ -39,15 +43,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             // creating another dictionary based on the user ID
             // key is the title/description/whatever
             // value is whatever the value it is
+            guard let user = Auth.auth().currentUser else {return UITableViewCell()}
             let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[row])
             ref2.observe(.value) { (snapshot) in
-                var postDict = snapshot.value as? [String : AnyObject] ?? [:]
+                let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
-                cell.petitionTitle.text = postDict["Title"] as? String
-                cell.petitionDescription.text = postDict["Description"] as? String
+                cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
+                cell.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 //cell.petitionImage = ????
                 cell.creator = componentArray[row]
-                //petitions.append(Petition(title: postDict["Title"] as? String, description: postDict["Description"] as? String, creator: componentArray[row], goalSignatures: postDict["Goal"] as? String, signatures: postDict["Signatures"] as? Array))
                 
             }
         }
@@ -59,15 +63,41 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
+      //  guard let user = Auth.auth().currentUser else {return}
         ref = Database.database().reference().child("Active Petitions")
         self.ref!.observe(.value) { (snapshot) in
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
             self.tableView.reloadData()
         }
-       // performSegue(withIdentifier: "tableToPetitionSegue", sender: nil)
         
     }
+
+        
     
+    override func viewDidAppear(_ animated: Bool) {
+        let sample: [String: AnyObject] = [:]
+        // componentArray is an array of the keys in the dictionary
+        let componentArray = Array(self.dict?.keys ?? sample.keys)
+        // if there are keys and elements in the dictionary, this will run
+        if componentArray != []{
+            for row in componentArray{
+                let activeRef = Database.database().reference().child("Active Petitions").child(row)
+                let completedRef = Database.database().reference().child("Completed Petitions")
+                activeRef.observe(.value) { (snapshot) in
+                    var petition = snapshot.value as? [String: AnyObject] ?? [:]
+                    let currentSignatures = petition["Signatures"] as? [String]
+                    let numSignatures = currentSignatures?.count ?? 0
+                    let goal = petition["Goal"] as? Int ?? 0
+                    if numSignatures >= goal {
+                        petition["Creator"] = row as AnyObject
+                        completedRef.childByAutoId().updateChildValues(petition)
+                        activeRef.removeValue()
+                    }
+                    
+                }
+            }
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {

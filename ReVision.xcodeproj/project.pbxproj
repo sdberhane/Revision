@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */; };
 		3E44790522049931007CD62A /* CreatePetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E44790422049931007CD62A /* CreatePetitionViewController.swift */; };
+		3F88077322257B0100415F58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88077222257B0100415F58 /* SearchViewController.swift */; };
 		3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */; };
 		699520102204938D0095AE52 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6995200F2204938C0095AE52 /* LogInViewController.swift */; };
 		69952012220493A20095AE52 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69952011220493A20095AE52 /* SignUpViewController.swift */; };
@@ -47,6 +48,7 @@
 		39E57FF6CE7F7D6FAE4BE639 /* Pods-ReVision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReVision.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReVision/Pods-ReVision.release.xcconfig"; sourceTree = "<group>"; };
 		3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionTableViewCell.swift; sourceTree = "<group>"; };
 		3E44790422049931007CD62A /* CreatePetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePetitionViewController.swift; sourceTree = "<group>"; };
+		3F88077222257B0100415F58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
 		6995200F2204938C0095AE52 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		69952011220493A20095AE52 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */,
 				69952013220493BB0095AE52 /* HomescreenViewController.swift */,
 				3E44790422049931007CD62A /* CreatePetitionViewController.swift */,
+				699D5CC32203490D00077C94 /* FeedViewController.swift */,
 			);
 			path = CreateFeedSign;
 			sourceTree = "<group>";
@@ -121,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				69DB6C8721DE594200B4C917 /* Petition.swift */,
+				3F88077222257B0100415F58 /* SearchViewController.swift */,
 			);
 			path = Functionality;
 			sourceTree = "<group>";
@@ -156,7 +160,6 @@
 				3F32417D22034CB3004AD3DE /* Functionality */,
 				69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
-				699D5CC32203490D00077C94 /* FeedViewController.swift */,
 				69DB6C6021DCF9C300B4C917 /* Assets.xcassets */,
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
@@ -423,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69952012220493A20095AE52 /* SignUpViewController.swift in Sources */,
+				3F88077322257B0100415F58 /* SearchViewController.swift in Sources */,
 				69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */,
 				699D5CC42203490D00077C94 /* FeedViewController.swift in Sources */,
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
@@ -607,7 +611,9 @@
 			baseConfigurationReference = BA30CDB078DAE99B0CF17B2C /* Pods-ReVision.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BPJX2V5936;
 				INFOPLIST_FILE = ReVision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,6 +621,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lmhs.ReVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -625,7 +632,9 @@
 			baseConfigurationReference = 39E57FF6CE7F7D6FAE4BE639 /* Pods-ReVision.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BPJX2V5936;
 				INFOPLIST_FILE = ReVision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -633,6 +642,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lmhs.ReVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
