@@ -9,5 +9,5 @@
 import UIKit
 
 class Fonts: UIFont {
-    let titleFont = UIFont.init(name: "Helvetica Neu", size: 22)
+    let titleFont = UIFont.init(name: "Helvetica Neue", size: 29)
 }
