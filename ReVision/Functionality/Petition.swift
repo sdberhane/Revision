@@ -14,7 +14,9 @@ import FirebaseDatabase
 class Petition {
     var title: String?
     var description: String?
+    var subtitle: String?
     var creator: String?
+    var author: String?
     var goalSignatures: Int = 0
     var signatures: [String]
     let image = UIImageView()

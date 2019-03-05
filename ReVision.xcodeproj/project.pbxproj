@@ -10,13 +10,14 @@
 		3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */; };
 		3E44790522049931007CD62A /* CreatePetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E44790422049931007CD62A /* CreatePetitionViewController.swift */; };
 		3F88077322257B0100415F58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88077222257B0100415F58 /* SearchViewController.swift */; };
+		3F8D84A9222EBA0B0039E7A0 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */; };
+		3F9A6D0C222C3F4E00C4917A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */; };
 		3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */; };
 		699520102204938D0095AE52 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6995200F2204938C0095AE52 /* LogInViewController.swift */; };
 		69952012220493A20095AE52 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69952011220493A20095AE52 /* SignUpViewController.swift */; };
 		69952014220493BB0095AE52 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69952013220493BB0095AE52 /* HomescreenViewController.swift */; };
 		699D5CC42203490D00077C94 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699D5CC32203490D00077C94 /* FeedViewController.swift */; };
 		69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */; };
-		69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */; };
 		69DB6C5F21DCF9BF00B4C917 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */; };
 		69DB6C6121DCF9C300B4C917 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69DB6C6021DCF9C300B4C917 /* Assets.xcassets */; };
 		69DB6C6421DCF9C300B4C917 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */; };
@@ -49,6 +50,8 @@
 		3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionTableViewCell.swift; sourceTree = "<group>"; };
 		3E44790422049931007CD62A /* CreatePetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePetitionViewController.swift; sourceTree = "<group>"; };
 		3F88077222257B0100415F58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
 		6995200F2204938C0095AE52 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		69952011220493A20095AE52 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +59,6 @@
 		699D5CC32203490D00077C94 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		69DB6C5621DCF9BF00B4C917 /* ReVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB6C5921DCF9BF00B4C917 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		69DB6C5E21DCF9BF00B4C917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69DB6C6021DCF9C300B4C917 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69DB6C6321DCF9C300B4C917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		3F32417B22034C12004AD3DE /* Authentication Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				69952013220493BB0095AE52 /* HomescreenViewController.swift */,
 				6995200F2204938C0095AE52 /* LogInViewController.swift */,
 				69952011220493A20095AE52 /* SignUpViewController.swift */,
 			);
@@ -113,7 +116,6 @@
 			children = (
 				3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */,
 				3E257CB821E571640061BA05 /* PetitionTableViewCell.swift */,
-				69952013220493BB0095AE52 /* HomescreenViewController.swift */,
 				3E44790422049931007CD62A /* CreatePetitionViewController.swift */,
 				699D5CC32203490D00077C94 /* FeedViewController.swift */,
 			);
@@ -125,6 +127,7 @@
 			children = (
 				69DB6C8721DE594200B4C917 /* Petition.swift */,
 				3F88077222257B0100415F58 /* SearchViewController.swift */,
+				3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */,
 			);
 			path = Functionality;
 			sourceTree = "<group>";
@@ -158,12 +161,12 @@
 				3F32417C22034C44004AD3DE /* CreateFeedSign */,
 				3F32417B22034C12004AD3DE /* Authentication Controllers */,
 				3F32417D22034CB3004AD3DE /* Functionality */,
-				69DB6C5B21DCF9BF00B4C917 /* ViewController.swift */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
 				69DB6C6021DCF9C300B4C917 /* Assets.xcassets */,
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
 				69DB6C6521DCF9C300B4C917 /* Info.plist */,
+				3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */,
 			);
 			path = ReVision;
 			sourceTree = "<group>";
@@ -427,13 +430,14 @@
 			files = (
 				69952012220493A20095AE52 /* SignUpViewController.swift in Sources */,
 				3F88077322257B0100415F58 /* SearchViewController.swift in Sources */,
-				69DB6C5C21DCF9BF00B4C917 /* ViewController.swift in Sources */,
 				699D5CC42203490D00077C94 /* FeedViewController.swift in Sources */,
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
+				3F8D84A9222EBA0B0039E7A0 /* Fonts.swift in Sources */,
 				3E44790522049931007CD62A /* CreatePetitionViewController.swift in Sources */,
 				69952014220493BB0095AE52 /* HomescreenViewController.swift in Sources */,
 				3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */,
 				69DB6C8821DE594300B4C917 /* Petition.swift in Sources */,
+				3F9A6D0C222C3F4E00C4917A /* SearchTableViewCell.swift in Sources */,
 				699520102204938D0095AE52 /* LogInViewController.swift in Sources */,
 				3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */,
 			);
@@ -613,13 +617,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BPJX2V5936;
+				DEVELOPMENT_TEAM = NU2QDDZ363;
 				INFOPLIST_FILE = ReVision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = lmhs.ReVision;
+				PRODUCT_BUNDLE_IDENTIFIER = lmhs.ReVision1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -634,13 +638,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BPJX2V5936;
+				DEVELOPMENT_TEAM = NU2QDDZ363;
 				INFOPLIST_FILE = ReVision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = lmhs.ReVision;
+				PRODUCT_BUNDLE_IDENTIFIER = lmhs.ReVision1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
