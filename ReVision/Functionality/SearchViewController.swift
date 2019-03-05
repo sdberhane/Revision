@@ -38,8 +38,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 petition.title = petit["Title"] as? String
                 petition.subtitle = petit["Subtitle"] as? String
-                petition.creator = petit["Author"] as? String
+                petition.author = petit["Author"] as? String
                 petition.description = petit["Description"] as? String
+                petition.creator = i
                 self.activePetitions.append(petition)
                 
                 }
@@ -60,20 +61,32 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchedPetition", for: indexPath) as! SearchTableViewCell
         let row = indexPath.row
+        cell.title.font = Fonts().titleFont
         if filteredPetitions.count > 0{
             //cell.textLabel?.text = filteredPetitions[row].title
             cell.title.text = filteredPetitions[row].title
             cell.subtitle.text = filteredPetitions[row].subtitle
-            cell.author.text = filteredPetitions[row].creator
+            cell.author.text = "By: \(filteredPetitions[row].author ?? "ERROR")"
+            cell.creator = filteredPetitions[row].creator
+    
         }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? SearchTableViewCell {
+            if let vc = segue.destination as? PetitionViewController {
+                vc.userId = cell.creator
+            }
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredPetitions = activePetitions.filter({ (petition) -> Bool in
             guard let text = searchBar.text else {return false}
 //            return petition.title?.contains(text) ?? false
-            if petition.title?.contains(text) ?? false || petition.creator?.contains(text) ?? false || petition.subtitle?.contains(text) ?? false || petition.description?.contains(text) ?? false {
+            if petition.title?.lowercased().contains(text.lowercased()) ?? false || petition.creator?.lowercased().contains(text.lowercased()) ?? false || petition.subtitle?.lowercased().contains(text.lowercased()) ?? false || petition.description?.lowercased().contains(text.lowercased()) ?? false {
+                print(petition.description)
                 return true
             }
             return false

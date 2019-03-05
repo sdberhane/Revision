@@ -39,11 +39,11 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             Database.database().reference().child("Users/\(userid)/Name").observeSingleEvent(of: .value) { (snapshot) in
                 let val = snapshot.value as! NSString
                 self.ref?.setValue(val as String)
+                
             }
            // print(userName)
             
-            //Adds the name
-          //  ref?.setValue(userName)
+            
         }
         else if self.signButton.currentTitle == "SEND" {
             let mailComposeViewController = configureMailController()
@@ -56,7 +56,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             }
             
         }
-        
+        dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,8 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
-                self.petitonProgress.progress = Float((self.currentSignatures?.count ?? 0) / (goalSignatures ?? 100))
+                let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures ?? 100))
+                self.petitonProgress.setProgress( percentDone, animated: true)
                 // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
                 if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
                     self.signButton.setTitle("SEND", for: .normal)
