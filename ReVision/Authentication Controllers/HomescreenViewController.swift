@@ -12,7 +12,7 @@ import FirebaseAuth
 class HomescreenViewController: UIViewController {
 
     @IBAction func logInButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "toFeedViewController", sender: nil)
+        performSegue(withIdentifier: "toContainerViewController", sender: nil)
     }
     @IBAction func signUpButton(_ sender: UIButton) {
     }
@@ -24,7 +24,7 @@ class HomescreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil{
-            performSegue(withIdentifier: "toFeedViewController", sender: nil)
+            performSegue(withIdentifier: "toContainerViewController", sender: nil)
         }
     }
     

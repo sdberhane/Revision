@@ -16,9 +16,20 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         try! Auth.auth().signOut()
         self.dismiss(animated: true, completion: nil)
     }
+   
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
+    
+    
+    
+    @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
+        NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
+        print("YES PLEASE YES PLEASE YES PLEASE")
+    }
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     var dict: [String: AnyObject]?
     var ref: DatabaseReference?
@@ -70,6 +81,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showSettings), name: NSNotification.Name("ShowSettings"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showSearch), name: NSNotification.Name("ShowSearch"), object: nil)
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("ShowHomescreen"), object: nil)
+    
     }
 
         
@@ -101,21 +118,25 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {
+            print("11111111111111")
             if let vc = segue.destination as? PetitionViewController {
+                print("22222222222222")
                 vc.userId = cell.creator                
             }
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func showSettings() {
+        performSegue(withIdentifier: "ShowSettings", sender: nil)
     }
-    */
+    
+    @objc func showSearch() {
+        performSegue(withIdentifier: "ShowSearch", sender: nil)
+    }
+    
+//    @objc func showHomescreen() {
+//        performSegue(withIdentifier: "ShowSignIn", sender: nil)
+//    }
+
 
 }

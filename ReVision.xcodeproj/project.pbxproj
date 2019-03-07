@@ -26,6 +26,8 @@
 		69DB6C8821DE594300B4C917 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6C8721DE594200B4C917 /* Petition.swift */; };
 		979D1AB7BC73D54B73098013 /* Pods_ReVision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC56E6EC53F2FAE1C3985735 /* Pods_ReVision.framework */; };
 		EE4E47F421E4E2F90047042B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */; };
+		EE510AF722305D71008BEA90 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE510AF622305D71008BEA90 /* ContainerViewController.swift */; };
+		EE510AF922305DF6008BEA90 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE510AF822305DF6008BEA90 /* SideMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		BA30CDB078DAE99B0CF17B2C /* Pods-ReVision.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReVision.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReVision/Pods-ReVision.debug.xcconfig"; sourceTree = "<group>"; };
 		EC56E6EC53F2FAE1C3985735 /* Pods_ReVision.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReVision.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EE510AF622305D71008BEA90 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		EE510AF822305DF6008BEA90 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,8 @@
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
 				69DB6C6521DCF9C300B4C917 /* Info.plist */,
 				3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */,
+				EE510AF622305D71008BEA90 /* ContainerViewController.swift */,
+				EE510AF822305DF6008BEA90 /* SideMenuViewController.swift */,
 			);
 			path = ReVision;
 			sourceTree = "<group>";
@@ -430,7 +436,9 @@
 			files = (
 				69952012220493A20095AE52 /* SignUpViewController.swift in Sources */,
 				3F88077322257B0100415F58 /* SearchViewController.swift in Sources */,
+				EE510AF722305D71008BEA90 /* ContainerViewController.swift in Sources */,
 				699D5CC42203490D00077C94 /* FeedViewController.swift in Sources */,
+				EE510AF922305DF6008BEA90 /* SideMenuViewController.swift in Sources */,
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
 				3F8D84A9222EBA0B0039E7A0 /* Fonts.swift in Sources */,
 				3E44790522049931007CD62A /* CreatePetitionViewController.swift in Sources */,
