@@ -72,7 +72,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                 
                 //Displays all the values of the petitions
                 self.petitionTitle.text = petition?.value(forKey: "Title") as? String
-                self.petitionAuthor.text = "Written By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
+                self.petitionAuthor.text = "By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
