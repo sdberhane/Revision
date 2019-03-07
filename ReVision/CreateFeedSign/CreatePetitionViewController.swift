@@ -105,8 +105,9 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                     } else {
                         guard let i = url else {return}
                         self.fileUrl = i.absoluteString
-                        print(i)
+                        print("this is the url",i)
                         self.petitionImageView.image = self.videoPreview(videoUrl: url!)
+                        self.reloadInputViews()
                     }
                 })
             })
