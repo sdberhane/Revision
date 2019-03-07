@@ -6,7 +6,7 @@
 //  Copyright © 2019 Eugenia Feng (student LM). All rights reserved.
 //
 
-import UIKit
+import UIKit 
 
 class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionDescription: UILabel!
