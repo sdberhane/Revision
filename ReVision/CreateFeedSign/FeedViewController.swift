@@ -25,7 +25,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
-        print("YES PLEASE YES PLEASE YES PLEASE")
     }
     
     
