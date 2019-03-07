@@ -99,7 +99,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             for row in componentArray{
                 let activeRef = Database.database().reference().child("Active Petitions").child(row)
                 let completedRef = Database.database().reference().child("Completed Petitions")
-                activeRef.observe(.value) { (snapshot) in
+                activeRef.observeSingleEvent(of: .value) { (snapshot) in
                     var petition = snapshot.value as? [String: AnyObject] ?? [:]
                     let currentSignatures = petition["Signatures"] as? [String]
                     let numSignatures = currentSignatures?.count ?? 0
@@ -109,7 +109,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         completedRef.childByAutoId().updateChildValues(petition)
                         activeRef.removeValue()
                     }
-                    
                 }
             }
         }
