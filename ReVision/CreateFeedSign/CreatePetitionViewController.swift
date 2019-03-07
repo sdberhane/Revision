@@ -35,7 +35,8 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "Media File URL" : fileUrl,
-            "Author" : Database.database().reference().child("Users").value(forKey: userID ?? " ")
+            "Author" : userID
+            //ref.child("Users").child(userID!).value(forKey:"Name" ?? " ")
         ]
         fileID.setValue(petitionDict)
         
@@ -49,7 +50,6 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     
     override func viewDidLoad() {
-      //  print("view did load")
         super.viewDidLoad()
         
        petitionImageView.isUserInteractionEnabled = true
@@ -86,19 +86,30 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // The info dictionary may contain multiple representations of the image. You want to use the original.
         
-        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] {
+        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL {
            //selected a video
             let storage = Storage.storage().reference().child("petition media files").child(fileID.key ?? " ")
             
-            storage.putFile(from: videoUrl as! URL, metadata: nil, completion: {(metadata,error) in
-                if error != nil {
-                    print("Failed to upload video:", error)
+            storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
+                if error == nil && metadata != nil{
+                    
+//                    storage.downloadURL{ url, error in guard let downloadURL = url else {return}completion(downloadURL)
+//                    }
                 }
+                
+                storage.downloadURL(completion: { (url, error) in
+                    if error != nil {
+                        print("Failed to download url:", error!)
+                        return
+                    } else {
+                        guard let i = url else {return}
+                        self.fileUrl = i.absoluteString
+                        print(i)
+                        self.petitionImageView.image = self.videoPreview(videoUrl: url!)
+                    }
+                })
             })
-            
-           
             
         } else {
             var selectedImageFromPicker:UIImage?
@@ -137,6 +148,25 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             }else{
                 completion(nil)
             }
+        }
+    }
+    
+    func videoPreview(videoUrl:URL) -> UIImage? {
+        
+        let asset = AVURLAsset(url: videoUrl as URL)
+        let generator = AVAssetImageGenerator(asset: asset)
+        generator.appliesPreferredTrackTransform = true
+        
+        let timestamp = CMTime(seconds: 2, preferredTimescale: 60)
+        
+        do {
+            let imageRef = try generator.copyCGImage(at: timestamp, actualTime: nil)
+            return UIImage(cgImage: imageRef)
+        }
+        catch let error as NSError
+        {
+            print("Image generation failed with error \(error)")
+            return nil
         }
     }
     
