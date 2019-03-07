@@ -13,6 +13,7 @@
 		3F8D84A9222EBA0B0039E7A0 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */; };
 		3F9A6D0C222C3F4E00C4917A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */; };
 		3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */; };
+		696AFCA6222ECD2600453DBA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696AFCA5222ECD2600453DBA /* SettingsViewController.swift */; };
 		699520102204938D0095AE52 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6995200F2204938C0095AE52 /* LogInViewController.swift */; };
 		69952012220493A20095AE52 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69952011220493A20095AE52 /* SignUpViewController.swift */; };
 		69952014220493BB0095AE52 /* HomescreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69952013220493BB0095AE52 /* HomescreenViewController.swift */; };
@@ -53,6 +54,7 @@
 		3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
+		696AFCA5222ECD2600453DBA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ReVision/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		6995200F2204938C0095AE52 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		69952011220493A20095AE52 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		69952013220493BB0095AE52 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				3F32417B22034C12004AD3DE /* Authentication Controllers */,
 				3F32417D22034CB3004AD3DE /* Functionality */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
+				696AFCA5222ECD2600453DBA /* SettingsViewController.swift */,
 				69DB6C6021DCF9C300B4C917 /* Assets.xcassets */,
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
@@ -438,6 +441,7 @@
 				3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */,
 				69DB6C8821DE594300B4C917 /* Petition.swift in Sources */,
 				3F9A6D0C222C3F4E00C4917A /* SearchTableViewCell.swift in Sources */,
+				696AFCA6222ECD2600453DBA /* SettingsViewController.swift in Sources */,
 				699520102204938D0095AE52 /* LogInViewController.swift in Sources */,
 				3E257CB921E571640061BA05 /* PetitionTableViewCell.swift in Sources */,
 			);
