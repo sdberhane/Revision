@@ -71,6 +71,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
       //  guard let user = Auth.auth().currentUser else {return}
