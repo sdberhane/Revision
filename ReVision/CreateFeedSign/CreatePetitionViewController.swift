@@ -58,6 +58,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         petitionImageView.layer.borderColor = UIColor.blue.cgColor
         petitionImageView.clipsToBounds = true
         
+        
         imagePicker = UIImagePickerController()
         imagePicker?.allowsEditing = true
         imagePicker?.sourceType = .photoLibrary
