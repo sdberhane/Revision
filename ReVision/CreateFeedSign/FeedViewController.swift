@@ -59,7 +59,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
                 cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
-                cell.petitionDescription.text = petition?.value(forKey: "Description") as? String
+                cell.petitionDescription.text = petition?.value(forKey: "Subtitle") as? String
                 //cell.petitionImage = ????
                 cell.creator = componentArray[row]
                 
@@ -70,6 +70,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
