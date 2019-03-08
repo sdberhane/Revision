@@ -8,7 +8,20 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "createdPetitions", for: indexPath) as! PetitionTableViewCell
+        if indexPath.row == 1 {
+            
+        }
+        return cell
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
