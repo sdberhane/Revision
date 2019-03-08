@@ -61,8 +61,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // setting the petition titles and description to whatever is in the database
                 cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
                 cell.petitionDescription.text = petition?.value(forKey: "Subtitle") as? String
-                if let petitionImageUrl = ref2.value(forKey: "Media File URL"){
-                    let url = NSURL(string: petitionImageUrl)
+                if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
+                    let url = NSURL(string: petitionImageUrl as! String)
                     URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
                         if (error != nil){
                             print(error)
