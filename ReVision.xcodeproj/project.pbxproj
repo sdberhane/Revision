@@ -56,7 +56,7 @@
 		3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
-		696AFCA5222ECD2600453DBA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ReVision/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
+		696AFCA5222ECD2600453DBA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "ReVision/Settings Controllers/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		6995200F2204938C0095AE52 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		69952011220493A20095AE52 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		69952013220493BB0095AE52 /* HomescreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomescreenViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +138,14 @@
 			path = Functionality;
 			sourceTree = "<group>";
 		};
+		693AB6D9223152240020227B /* Settings Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				696AFCA5222ECD2600453DBA /* SettingsViewController.swift */,
+			);
+			path = "Settings Controllers";
+			sourceTree = "<group>";
+		};
 		69DB6C4D21DCF9BE00B4C917 = {
 			isa = PBXGroup;
 			children = (
@@ -167,8 +175,8 @@
 				3F32417C22034C44004AD3DE /* CreateFeedSign */,
 				3F32417B22034C12004AD3DE /* Authentication Controllers */,
 				3F32417D22034CB3004AD3DE /* Functionality */,
+				693AB6D9223152240020227B /* Settings Controllers */,
 				69DB6C5D21DCF9BF00B4C917 /* Main.storyboard */,
-				696AFCA5222ECD2600453DBA /* SettingsViewController.swift */,
 				69DB6C6021DCF9C300B4C917 /* Assets.xcassets */,
 				69DB6C6221DCF9C300B4C917 /* LaunchScreen.storyboard */,
 				EE4E47F321E4E2F90047042B /* GoogleService-Info.plist */,
