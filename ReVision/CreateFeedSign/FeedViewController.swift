@@ -88,6 +88,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("ShowHomescreen"), object: nil)
     
+     
+        
     }
 
         
