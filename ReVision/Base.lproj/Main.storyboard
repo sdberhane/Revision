@@ -683,6 +683,9 @@
                                 <rect key="frame" x="160" y="780" width="94" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOutButton:" destination="Djr-ML-FQd" eventType="touchUpInside" id="cnB-1s-iCC"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbB-nw-8wQ">
                                 <rect key="frame" x="146.66666666666666" y="106" width="120.99999999999997" height="41"/>
@@ -1040,7 +1043,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ypu-nv-hnS" id="xDC-Hg-Ype"/>
-                        <segue destination="zq9-8S-tT0" kind="show" id="ifU-GG-6ze"/>
+                        <segue destination="zq9-8S-tT0" kind="show" identifier="petitionView" id="ifU-GG-6ze"/>
                         <segue destination="hla-ZC-gNg" kind="show" identifier="ShowSearch" id="3Ln-OD-XX1"/>
                         <segue destination="Djr-ML-FQd" kind="show" identifier="ShowSettings" id="eQj-Gl-Rq1"/>
                     </connections>

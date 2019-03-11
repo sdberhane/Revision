@@ -118,12 +118,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "petitionView", sender: tableView.cellForRow(at: indexPath))
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {
-            print("11111111111111")
             if let vc = segue.destination as? PetitionViewController {
-                print("22222222222222")
-                vc.userId = cell.creator                
+                vc.userId = cell.creator
             }
         }
     }
