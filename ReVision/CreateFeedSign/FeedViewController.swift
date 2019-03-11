@@ -99,7 +99,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("ShowHomescreen"), object: nil)
     
-     
+        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("showSelectedPetitions"), object: nil)
+        
         
     }
 
@@ -147,6 +148,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func showSearch() {
         performSegue(withIdentifier: "ShowSearch", sender: nil)
+    }
+    
+    @objc func showSelectedPetitions() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: nil)
     }
     
 //    @objc func showHomescreen() {
