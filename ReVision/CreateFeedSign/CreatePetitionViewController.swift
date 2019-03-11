@@ -35,8 +35,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "Media File URL" : fileUrl,
-            "Author" : userID
-            //ref.child("Users").child(userID!).value(forKey:"Name" ?? " ")
+            "Author" : ref.child("Users").child(userID!).value(forKey:"Name" ?? " ")
         ]
         fileID.setValue(petitionDict)
         
@@ -94,9 +93,6 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             
             storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
                 if error == nil && metadata != nil{
-                    
-//                    storage.downloadURL{ url, error in guard let downloadURL = url else {return}completion(downloadURL)
-//                    }
                 }
                 
                 storage.downloadURL(completion: { (url, error) in

@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -60,7 +61,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // setting the petition titles and description to whatever is in the database
                 cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
                 cell.petitionDescription.text = petition?.value(forKey: "Subtitle") as? String
-                //cell.petitionImage = ????
+                if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
+                    let url = NSURL(string: petitionImageUrl as! String)
+                    URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+                        if (error != nil){
+                            print(error)
+                            return
+                        }
+                        cell.petitionImage?.image = UIImage(data:data!)
+                    }).resume()
+                }
+              
                 cell.creator = componentArray[row]
                 
             }
