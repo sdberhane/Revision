@@ -680,7 +680,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jW-Ub-OB2">
-                                <rect key="frame" x="160" y="780" width="94" height="45"/>
+                                <rect key="frame" x="160" y="731" width="94" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
@@ -724,7 +724,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTS-he-OmB">
-                                <rect key="frame" x="133" y="599" width="148" height="38"/>
+                                <rect key="frame" x="133" y="550" width="148" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Update Settings"/>
                             </button>
@@ -875,7 +875,7 @@
                                 <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5H-zQ-HFS">
-                                <rect key="frame" x="159.66666666666666" y="749" width="95" height="63"/>
+                                <rect key="frame" x="159.66666666666666" y="700" width="95" height="63"/>
                                 <color key="backgroundColor" red="0.77680837560000005" green="0.77680837560000005" blue="0.77680837560000005" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <state key="normal" title="SIGN"/>
@@ -1028,19 +1028,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q43-Y2-5r5"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Feed" id="HwM-4c-27c">
                         <barButtonItem key="leftBarButtonItem" systemItem="organize" id="tKz-Zg-IZJ">
                             <connections>
                                 <action selector="sideMenuButtonTouchedUp:" destination="9Lh-XR-qN3" id="MnI-Pb-2X3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="viA-je-k4J">
+                        <barButtonItem key="rightBarButtonItem" image="save4later" style="plain" id="viA-je-k4J">
                             <connections>
                                 <action selector="createPetition:" destination="9Lh-XR-qN3" id="oJc-uZ-kH1"/>
                                 <segue destination="KLD-y7-Qzr" kind="show" id="QRH-mr-Lj2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ypu-nv-hnS" id="xDC-Hg-Ype"/>
                         <segue destination="zq9-8S-tT0" kind="show" identifier="petitionView" id="ifU-GG-6ze"/>
@@ -1073,6 +1075,7 @@
     </scenes>
     <resources>
         <image name="gritty" width="800" height="600"/>
+        <image name="save4later" width="25" height="25"/>
         <image name="upload" width="638" height="452"/>
     </resources>
     <inferredMetricsTieBreakers>
