@@ -12,12 +12,8 @@ import FirebaseAuth
 class SettingsViewController: UIViewController {
     
     @IBAction func logOutButton(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-            self.dismiss(animated: true, completion: nil)
-        } catch let err {
-            print(err)
-        }
+        try! Auth.auth().signOut()
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
