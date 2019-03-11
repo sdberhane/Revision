@@ -29,7 +29,7 @@ class ContainerViewController: UIViewController {
         
         if sideMenuOpen{
             sideMenuOpen = false
-            sideMenuConstraint.constant = -250
+            sideMenuConstraint.constant = -240
         }
         else{
             sideMenuOpen = true
