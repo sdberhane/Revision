@@ -897,7 +897,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-Z7-GdB">
-                                <rect key="frame" x="-250" y="0.0" width="240" height="896"/>
+                                <rect key="frame" x="-240" y="0.0" width="240" height="896"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Nh5-or-hWO"/>
                                 </constraints>
@@ -906,7 +906,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGy-6b-tT1">
-                                <rect key="frame" x="-10" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
                                     <segue destination="IxT-0f-Adp" kind="embed" id="3Th-8H-5Ar"/>
                                 </connections>
@@ -914,7 +914,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pNL-Z7-GdB" firstAttribute="leading" secondItem="nj2-kg-BuQ" secondAttribute="leading" constant="-250" id="0Fg-kI-CSa"/>
+                            <constraint firstItem="pNL-Z7-GdB" firstAttribute="leading" secondItem="nj2-kg-BuQ" secondAttribute="leading" constant="-240" id="0Fg-kI-CSa"/>
                             <constraint firstAttribute="bottom" secondItem="zGy-6b-tT1" secondAttribute="bottom" id="8VB-Oo-Y7M"/>
                             <constraint firstItem="zGy-6b-tT1" firstAttribute="leading" secondItem="pNL-Z7-GdB" secondAttribute="trailing" id="BWE-ze-IJG"/>
                             <constraint firstItem="zGy-6b-tT1" firstAttribute="width" secondItem="bJ6-pZ-cnE" secondAttribute="width" id="Jpn-CK-VIw"/>
@@ -1116,6 +1116,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="HwM-4c-27c">
                         <barButtonItem key="leftBarButtonItem" systemItem="organize" id="tKz-Zg-IZJ">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                             <connections>
                                 <action selector="sideMenuButtonTouchedUp:" destination="9Lh-XR-qN3" id="MnI-Pb-2X3"/>
                             </connections>
