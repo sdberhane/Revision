@@ -48,7 +48,6 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         else if self.signButton.currentTitle == "SEND" {
             let mailComposeViewController = configureMailController()
             if MFMailComposeViewController.canSendMail() {
-                print("yo")
                 self.present(mailComposeViewController, animated: true, completion: nil)
                 
             } else {
