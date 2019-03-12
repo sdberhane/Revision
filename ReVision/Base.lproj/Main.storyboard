@@ -990,9 +990,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cC-bP-V4o">
+                                                    <rect key="frame" x="0.0" y="505" width="414" height="44"/>
+                                                    <items>
+                                                        <barButtonItem title="Item" image="save4later" id="N7m-76-YMm">
+                                                            <connections>
+                                                                <action selector="save:" destination="pfi-3v-9M1" id="maK-gM-21e"/>
+                                                            </connections>
+                                                        </barButtonItem>
+                                                    </items>
+                                                </toolbar>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Bcz-So-Agy" secondAttribute="trailing" id="0Mo-8F-QgQ"/>
+                                                <constraint firstItem="2cC-bP-V4o" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leading" id="1O5-II-DzZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="2cC-bP-V4o" secondAttribute="trailing" id="5Kn-An-K0c"/>
                                                 <constraint firstItem="Sxt-a5-vBT" firstAttribute="top" secondItem="0dW-fO-RLc" secondAttribute="topMargin" constant="10" id="G6U-uw-AaE"/>
                                                 <constraint firstItem="Sxt-a5-vBT" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leadingMargin" constant="5" id="NiE-cB-QoV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jOy-Oi-9xX" secondAttribute="trailing" constant="15" id="Nzx-ns-ers"/>
@@ -1000,6 +1012,7 @@
                                                 <constraint firstItem="ESX-sP-KeU" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leadingMargin" constant="15" id="VQr-fs-hdD"/>
                                                 <constraint firstItem="jOy-Oi-9xX" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leadingMargin" constant="15" id="Vx3-cK-1yM"/>
                                                 <constraint firstItem="ESX-sP-KeU" firstAttribute="top" secondItem="Bcz-So-Agy" secondAttribute="bottom" constant="40" id="Zbn-uX-hIU"/>
+                                                <constraint firstAttribute="bottom" secondItem="2cC-bP-V4o" secondAttribute="bottom" constant="0.67000000000000004" id="hb0-Ds-fSr"/>
                                                 <constraint firstItem="Bcz-So-Agy" firstAttribute="top" secondItem="Sxt-a5-vBT" secondAttribute="bottom" constant="8" id="kyg-mv-3Ci"/>
                                                 <constraint firstItem="jOy-Oi-9xX" firstAttribute="top" secondItem="ESX-sP-KeU" secondAttribute="bottom" constant="15" id="oYa-g2-HxV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ESX-sP-KeU" secondAttribute="trailing" constant="15" id="qJt-9d-1vt"/>
@@ -1010,6 +1023,7 @@
                                             <outlet property="petitionDescription" destination="jOy-Oi-9xX" id="bqd-GX-UoU"/>
                                             <outlet property="petitionImage" destination="Bcz-So-Agy" id="bal-zm-Oah"/>
                                             <outlet property="petitionTitle" destination="ESX-sP-KeU" id="Ku0-KK-3oo"/>
+                                            <outlet property="saveForLater" destination="N7m-76-YMm" id="hFR-jV-aeI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1030,13 +1044,13 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Feed" id="HwM-4c-27c">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="tKz-Zg-IZJ">
+                        <barButtonItem key="leftBarButtonItem" image="burgerButton" id="tKz-Zg-IZJ">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                             <connections>
                                 <action selector="sideMenuButtonTouchedUp:" destination="9Lh-XR-qN3" id="MnI-Pb-2X3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="save4later" style="plain" id="viA-je-k4J">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="viA-je-k4J">
                             <connections>
                                 <action selector="createPetition:" destination="9Lh-XR-qN3" id="oJc-uZ-kH1"/>
                                 <segue destination="KLD-y7-Qzr" kind="show" id="QRH-mr-Lj2"/>
@@ -1075,6 +1089,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="burgerButton" width="25" height="25"/>
         <image name="gritty" width="800" height="600"/>
         <image name="save4later" width="25" height="25"/>
         <image name="upload" width="638" height="452"/>

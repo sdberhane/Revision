@@ -12,6 +12,7 @@
 		3F88077322257B0100415F58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88077222257B0100415F58 /* SearchViewController.swift */; };
 		3F8D84A9222EBA0B0039E7A0 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */; };
 		3F9A6D0C222C3F4E00C4917A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */; };
+		3FB399B82238485F0047E8E7 /* SaveForLaterBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB399B72238485F0047E8E7 /* SaveForLaterBarButtonItem.swift */; };
 		3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */; };
 		696AFCA6222ECD2600453DBA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696AFCA5222ECD2600453DBA /* SettingsViewController.swift */; };
 		699520102204938D0095AE52 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6995200F2204938C0095AE52 /* LogInViewController.swift */; };
@@ -55,6 +56,7 @@
 		3F88077222257B0100415F58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3F8D84A8222EBA0B0039E7A0 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		3FB399B72238485F0047E8E7 /* SaveForLaterBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveForLaterBarButtonItem.swift; sourceTree = "<group>"; };
 		3FFF436E21FF50D000DDB20A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
 		696AFCA5222ECD2600453DBA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "ReVision/Settings Controllers/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		6995200F2204938C0095AE52 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				69DB6C8721DE594200B4C917 /* Petition.swift */,
 				3F88077222257B0100415F58 /* SearchViewController.swift */,
+				3FB399B72238485F0047E8E7 /* SaveForLaterBarButtonItem.swift */,
 				3F9A6D0B222C3F4E00C4917A /* SearchTableViewCell.swift */,
 			);
 			path = Functionality;
@@ -453,6 +456,7 @@
 				69DB6C5A21DCF9BF00B4C917 /* AppDelegate.swift in Sources */,
 				3F8D84A9222EBA0B0039E7A0 /* Fonts.swift in Sources */,
 				3E44790522049931007CD62A /* CreatePetitionViewController.swift in Sources */,
+				3FB399B82238485F0047E8E7 /* SaveForLaterBarButtonItem.swift in Sources */,
 				69952014220493BB0095AE52 /* HomescreenViewController.swift in Sources */,
 				3FFF436F21FF50D000DDB20A /* PetitionViewController.swift in Sources */,
 				69DB6C8821DE594300B4C917 /* Petition.swift in Sources */,
