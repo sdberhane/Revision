@@ -9,7 +9,7 @@
 import UIKit 
 
 class PetitionTableViewCell: UITableViewCell {
-    @IBOutlet weak var petitionDescription: UILabel!
+    @IBOutlet weak var petitionSubtitle: UILabel!
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
     var creator: String?

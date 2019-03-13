@@ -60,7 +60,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
                 cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
-                cell.petitionDescription.text = petition?.value(forKey: "Subtitle") as? String
+                cell.petitionSubtitle.text = petition?.value(forKey: "Subtitle") as? String
                 if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
                     let url = NSURL(string: petitionImageUrl as! String)
                     URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
@@ -99,8 +99,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("ShowHomescreen"), object: nil)
     
-        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("showSelectedPetitions"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("ShowSignedPetitions"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("ShowSavedForLater"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
+
         
     }
 

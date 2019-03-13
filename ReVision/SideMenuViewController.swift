@@ -15,7 +15,6 @@ class SideMenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("WHY IDNT THIS WORKING")
         sideMenuView.layer.shadowOpacity = 1
         sideMenuView.layer.shadowRadius = 6
         sideMenuView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
@@ -31,9 +30,9 @@ class SideMenuViewController: UITableViewController {
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowSettings"), object: nil)
         case 1:
             switch indexPath.row {
-//            case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowSignedPetitions"), object: nil)
-//            case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowSavedForLater"), object: nil)
-//            case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
+            case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowSignedPetitions"), object: nil)
+            case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowSavedForLater"), object: nil)
+            case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
             case 3: NotificationCenter.default.post(name: NSNotification.Name("ShowSearch"), object: nil)
             case 4: NotificationCenter.default.post(name: NSNotification.Name("ShowSettings"), object: nil)
             default: break

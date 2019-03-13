@@ -398,7 +398,7 @@
                                 <rect key="frame" x="0.0" y="156" width="414" height="706"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="550" id="RZA-q6-6oy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="secondFeedCell" rowHeight="550" id="RZA-q6-6oy">
                                         <rect key="frame" x="0.0" y="28" width="414" height="550"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RZA-q6-6oy" id="Sfb-FB-6rU">
@@ -461,10 +461,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ggx-Uc-0su"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="wmh-Vo-yWd" id="k19-eZ-ub0"/>
+                        <outlet property="titleLabel" destination="dTv-VR-1Yy" id="AlD-5h-8vN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2D-yt-L6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="797"/>
+            <point key="canvasLocation" x="-1154" y="1535"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="fTM-EB-7rM">
