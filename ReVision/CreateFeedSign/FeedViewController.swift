@@ -22,12 +22,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
     
+
     
     
     @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
     }
     
+    
+    
+
+   
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -59,6 +64,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             ref2.observe(.value) { (snapshot) in
                 let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
+                cell.id = snapshot.key
                 cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
                 cell.petitionSubtitle.text = petition?.value(forKey: "Subtitle") as? String
                 if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{

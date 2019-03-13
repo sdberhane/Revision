@@ -7,12 +7,26 @@
 //
 
 import UIKit 
+import FirebaseAuth
+import FirebaseDatabase
 
 class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionSubtitle: UILabel!
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
     var creator: String?
+    var id: String?
+    
+    @IBOutlet weak var saveForLater: UIBarButtonItem!
+    
+    @IBAction func save(_ sender: Any) {
+        let userid = Auth.auth().currentUser?.uid
+        guard let uid = userid else {return}
+        let ref = Database.database().reference().child("Users/\(uid)/Saved Petitions")
+        guard let id = id else {return}
+        ref.setValue(id)
+        saveForLater.image = #imageLiteral(resourceName: "saved4later.png")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

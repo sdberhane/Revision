@@ -770,7 +770,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jW-Ub-OB2">
-                                <rect key="frame" x="160" y="780" width="94" height="45"/>
+                                <rect key="frame" x="160" y="731" width="94" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
@@ -814,7 +814,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTS-he-OmB">
-                                <rect key="frame" x="133" y="599" width="148" height="38"/>
+                                <rect key="frame" x="133" y="550" width="148" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Update Settings"/>
                             </button>
@@ -965,7 +965,7 @@
                                 <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5H-zQ-HFS">
-                                <rect key="frame" x="159.66666666666666" y="749" width="95" height="63"/>
+                                <rect key="frame" x="159.66666666666666" y="700" width="95" height="63"/>
                                 <color key="backgroundColor" red="0.77680837560000005" green="0.77680837560000005" blue="0.77680837560000005" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <state key="normal" title="SIGN"/>
@@ -1080,9 +1080,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cC-bP-V4o">
+                                                    <rect key="frame" x="0.0" y="505" width="414" height="44"/>
+                                                    <items>
+                                                        <barButtonItem title="Item" image="save4later" id="N7m-76-YMm">
+                                                            <connections>
+                                                                <action selector="save:" destination="pfi-3v-9M1" id="maK-gM-21e"/>
+                                                            </connections>
+                                                        </barButtonItem>
+                                                    </items>
+                                                </toolbar>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Bcz-So-Agy" secondAttribute="trailing" id="0Mo-8F-QgQ"/>
+                                                <constraint firstItem="2cC-bP-V4o" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leading" id="1O5-II-DzZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="2cC-bP-V4o" secondAttribute="trailing" id="5Kn-An-K0c"/>
                                                 <constraint firstItem="Sxt-a5-vBT" firstAttribute="top" secondItem="0dW-fO-RLc" secondAttribute="topMargin" constant="10" id="G6U-uw-AaE"/>
                                                 <constraint firstItem="Sxt-a5-vBT" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leadingMargin" constant="5" id="NiE-cB-QoV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jOy-Oi-9xX" secondAttribute="trailing" constant="15" id="Nzx-ns-ers"/>
@@ -1090,6 +1102,7 @@
                                                 <constraint firstItem="ESX-sP-KeU" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leadingMargin" constant="15" id="VQr-fs-hdD"/>
                                                 <constraint firstItem="jOy-Oi-9xX" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leadingMargin" constant="15" id="Vx3-cK-1yM"/>
                                                 <constraint firstItem="ESX-sP-KeU" firstAttribute="top" secondItem="Bcz-So-Agy" secondAttribute="bottom" constant="40" id="Zbn-uX-hIU"/>
+                                                <constraint firstAttribute="bottom" secondItem="2cC-bP-V4o" secondAttribute="bottom" constant="0.67000000000000004" id="hb0-Ds-fSr"/>
                                                 <constraint firstItem="Bcz-So-Agy" firstAttribute="top" secondItem="Sxt-a5-vBT" secondAttribute="bottom" constant="8" id="kyg-mv-3Ci"/>
                                                 <constraint firstItem="jOy-Oi-9xX" firstAttribute="top" secondItem="ESX-sP-KeU" secondAttribute="bottom" constant="15" id="oYa-g2-HxV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ESX-sP-KeU" secondAttribute="trailing" constant="15" id="qJt-9d-1vt"/>
@@ -1100,6 +1113,7 @@
                                             <outlet property="petitionDescription" destination="jOy-Oi-9xX" id="bqd-GX-UoU"/>
                                             <outlet property="petitionImage" destination="Bcz-So-Agy" id="bal-zm-Oah"/>
                                             <outlet property="petitionTitle" destination="ESX-sP-KeU" id="Ku0-KK-3oo"/>
+                                            <outlet property="saveForLater" destination="N7m-76-YMm" id="hFR-jV-aeI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1118,8 +1132,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q43-Y2-5r5"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Feed" id="HwM-4c-27c">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="tKz-Zg-IZJ">
+                        <barButtonItem key="leftBarButtonItem" image="burgerButton" id="tKz-Zg-IZJ">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                             <connections>
                                 <action selector="sideMenuButtonTouchedUp:" destination="9Lh-XR-qN3" id="MnI-Pb-2X3"/>
@@ -1132,6 +1147,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ypu-nv-hnS" id="xDC-Hg-Ype"/>
                         <segue destination="zq9-8S-tT0" kind="show" identifier="petitionView" id="ifU-GG-6ze"/>
@@ -1164,7 +1180,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="burgerButton" width="25" height="25"/>
         <image name="gritty" width="800" height="600"/>
+        <image name="save4later" width="25" height="25"/>
         <image name="upload" width="638" height="452"/>
     </resources>
     <inferredMetricsTieBreakers>
