@@ -13,7 +13,9 @@ import FirebaseStorage
 import AVFoundation
 import MobileCoreServices
 
-class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+
+    
     var ref = Database.database().reference()
     var petition:Petition?
     let fileID = Database.database().reference().child("Active Petitions").childByAutoId()
@@ -21,11 +23,14 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     var petitionDict: [String:Any]?
     var imagePicker: UIImagePickerController?
     var fileUrl = String()
+    var tagOptions = [String?]()
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextView: UITextView!
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var petitionImageView: UIImageView!
+    @IBOutlet weak var tagPicker: UIPickerView!
     
     @IBAction func createPetitionButton(_ sender: UIButton) {
         petitionDict = [
@@ -47,11 +52,13 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         self.present(imagePicker!,animated:true, completion:nil)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       petitionImageView.isUserInteractionEnabled = true
+        
+        tagPicker.delegate = self
+        tagPicker.dataSource = self
+        petitionImageView.isUserInteractionEnabled = true
         petitionImageView.layer.borderWidth = 1
         petitionImageView.layer.masksToBounds = false
         petitionImageView.layer.borderColor = UIColor.blue.cgColor
@@ -181,5 +188,54 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         }
     }
 
-
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 7
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
+        var grade : String?
+        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
+            var x = (snapshot.value)
+            grade = snapshot.value as? String
+        }
+        if let grd = grade {
+            tagOptions.append(grd)
+        }else{
+            tagOptions.append("Freshmen")
+        }
+        tagOptions.append("Sports")
+        tagOptions.append("Clubs")
+        tagOptions.append("Academics")
+        tagOptions.append("Graduation")
+        tagOptions.append("Facilities")
+        tagOptions.append("Schedule")
+        return tagOptions[row]
+        
+    }
+    
+    func fillTagOptions(){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        var grade : String?
+        Database.database().reference().child("Users/\(uid)/Grade").observeSingleEvent(of: .value) { (snapshot) in
+            grade = snapshot.value as? String
+            self.tagPicker.reloadAllComponents()
+        }
+        if let grd = grade {
+            tagOptions.append(grd)
+        }else{
+            tagOptions.append("Freshmen")
+        }
+        tagOptions.append("Sports")
+        tagOptions.append("Clubs")
+        tagOptions.append("Academics")
+        tagOptions.append("Graduation")
+        tagOptions.append("Facilities")
+        tagOptions.append("Schedule")
+    }
 }
