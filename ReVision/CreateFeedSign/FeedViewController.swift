@@ -105,11 +105,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("ShowHomescreen"), object: nil)
     
-        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("ShowSignedPetitions"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSignedPetitions), name: NSNotification.Name("ShowSignedPetitions"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("ShowSavedForLater"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSavedPetitions), name: NSNotification.Name("ShowSavedForLater"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showSelectedPetitions), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
 
         
     }
@@ -150,7 +150,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 vc.userId = cell.creator
             }
         }
+        
     }
+    
     
     @objc func showSettings() {
         performSegue(withIdentifier: "ShowSettings", sender: nil)
@@ -160,7 +162,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "ShowSearch", sender: nil)
     }
     
-    @objc func showSelectedPetitions() {
+    @objc func showSignedPetitions() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: nil)
+    }
+    
+    @objc func showSavedPetitions() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: nil)
+    }
+    
+    @objc func showCreatedPetitions() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: nil)
     }
     
