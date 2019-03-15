@@ -12,11 +12,6 @@ import FirebaseAuth
 import FirebaseStorage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBAction func signOut(_ sender: Any) {
-        try! Auth.auth().signOut()
-        self.dismiss(animated: true, completion: nil)
-    }
    
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
@@ -29,10 +24,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
     }
     
-    
-    
-
-   
+    @IBOutlet weak var navigationBar: UINavigationItem!
     
     
     @IBOutlet weak var tableView: UITableView!

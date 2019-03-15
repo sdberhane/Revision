@@ -1053,7 +1053,7 @@
                                                         <constraint firstAttribute="width" secondItem="Bcz-So-Agy" secondAttribute="height" multiplier="3:2" id="DtP-jU-Tu9"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOy-Oi-9xX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOy-Oi-9xX">
                                                     <rect key="frame" x="35" y="422" width="344" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
@@ -1089,8 +1089,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="petitionDescription" destination="jOy-Oi-9xX" id="bqd-GX-UoU"/>
                                             <outlet property="petitionImage" destination="Bcz-So-Agy" id="bal-zm-Oah"/>
+                                            <outlet property="petitionSubtitle" destination="jOy-Oi-9xX" id="9Ig-zi-S2f"/>
                                             <outlet property="petitionTitle" destination="ESX-sP-KeU" id="Ku0-KK-3oo"/>
                                             <outlet property="saveForLater" destination="N7m-76-YMm" id="hFR-jV-aeI"/>
                                         </connections>
@@ -1128,6 +1128,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navigationBar" destination="HwM-4c-27c" id="7MD-CR-RTB"/>
                         <outlet property="tableView" destination="ypu-nv-hnS" id="xDC-Hg-Ype"/>
                         <segue destination="zq9-8S-tT0" kind="show" identifier="petitionView" id="ifU-GG-6ze"/>
                         <segue destination="hla-ZC-gNg" kind="show" identifier="ShowSearch" id="3Ln-OD-XX1"/>
@@ -1158,16 +1159,16 @@
             </objects>
             <point key="canvasLocation" x="-1151" y="-633"/>
         </scene>
-        <!--View Controller-->
+        <!--Second Feed View Controller-->
         <scene sceneID="roB-Uy-s4b">
             <objects>
-                <viewController id="qtc-rl-lNv" sceneMemberID="viewController">
+                <viewController id="qtc-rl-lNv" customClass="SecondFeedViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3om-7H-11r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="550" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kAN-JY-kgR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="488" id="xe1-ld-jDh"/>
@@ -1198,7 +1199,7 @@
                                                         <constraint firstAttribute="width" secondItem="H8D-ef-yTv" secondAttribute="height" multiplier="3:2" id="cJv-7D-gSk"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xf-dE-wvL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xf-dE-wvL">
                                                     <rect key="frame" x="35" y="422" width="344" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
@@ -1234,8 +1235,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="petitionDescription" destination="2xf-dE-wvL" id="Dez-Lp-rdf"/>
                                             <outlet property="petitionImage" destination="H8D-ef-yTv" id="GAl-d2-pm6"/>
+                                            <outlet property="petitionSubtitle" destination="2xf-dE-wvL" id="G4T-0n-taP"/>
                                             <outlet property="petitionTitle" destination="Kd0-AD-FBb" id="DTW-PU-wKv"/>
                                             <outlet property="saveForLater" destination="d3j-Fc-kAi" id="8ta-MT-1K4"/>
                                         </connections>
@@ -1246,16 +1247,29 @@
                                     <outlet property="delegate" destination="9Lh-XR-qN3" id="kbt-er-bFn"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Petition Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2Y-Sh-MQG">
+                                <rect key="frame" x="151" y="103" width="112" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="kAN-JY-kgR" firstAttribute="top" secondItem="e2Y-Sh-MQG" secondAttribute="bottom" constant="11" id="0E6-JN-FpY"/>
                             <constraint firstAttribute="bottom" secondItem="kAN-JY-kgR" secondAttribute="bottom" id="QTP-jU-CCx"/>
-                            <constraint firstItem="kAN-JY-kgR" firstAttribute="top" secondItem="JVv-Cp-DuN" secondAttribute="top" id="S9d-f0-WXk"/>
+                            <constraint firstItem="kAN-JY-kgR" firstAttribute="top" secondItem="JVv-Cp-DuN" secondAttribute="top" constant="50" id="S9d-f0-WXk"/>
                             <constraint firstItem="kAN-JY-kgR" firstAttribute="leading" secondItem="3om-7H-11r" secondAttribute="leading" id="euu-xr-ZGY"/>
                             <constraint firstItem="JVv-Cp-DuN" firstAttribute="trailing" secondItem="kAN-JY-kgR" secondAttribute="trailing" id="j7H-0g-Gu7"/>
+                            <constraint firstItem="e2Y-Sh-MQG" firstAttribute="centerX" secondItem="3om-7H-11r" secondAttribute="centerX" id="nKw-wQ-YY3"/>
+                            <constraint firstItem="e2Y-Sh-MQG" firstAttribute="top" secondItem="JVv-Cp-DuN" secondAttribute="top" constant="15" id="o0N-IJ-zXT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JVv-Cp-DuN"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="kAN-JY-kgR" id="Rjy-rb-XTZ"/>
+                        <outlet property="titleLabel" destination="e2Y-Sh-MQG" id="SCx-y5-CfO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="son-Yz-cP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
