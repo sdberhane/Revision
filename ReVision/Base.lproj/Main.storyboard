@@ -1269,7 +1269,7 @@
                     <connections>
                         <outlet property="tableView" destination="kAN-JY-kgR" id="Rjy-rb-XTZ"/>
                         <outlet property="titleLabel" destination="e2Y-Sh-MQG" id="SCx-y5-CfO"/>
-                        <segue destination="zq9-8S-tT0" kind="show" id="sFx-HF-xhn"/>
+                        <segue destination="zq9-8S-tT0" kind="show" identifier="petitionView2" id="sFx-HF-xhn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="son-Yz-cP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
