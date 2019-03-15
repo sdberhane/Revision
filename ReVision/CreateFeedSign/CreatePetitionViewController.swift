@@ -198,17 +198,17 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
-        var grade : String?
-        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
-            var x = (snapshot.value)
-            grade = snapshot.value as? String
-        }
-        if let grd = grade {
-            tagOptions.append(grd)
-        }else{
-            tagOptions.append("Freshmen")
-        }
+//        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
+//        var grade : String?
+//        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
+//            var x = (snapshot.value)
+//            grade = snapshot.value as? String
+//        }
+//        if let grd = grade {
+//            tagOptions.append(grd)
+//        }else{
+//            tagOptions.append("Freshmen")
+//        }
         tagOptions.append("Sports")
         tagOptions.append("Clubs")
         tagOptions.append("Academics")
@@ -219,23 +219,5 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         
     }
     
-    func fillTagOptions(){
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        var grade : String?
-        Database.database().reference().child("Users/\(uid)/Grade").observeSingleEvent(of: .value) { (snapshot) in
-            grade = snapshot.value as? String
-            self.tagPicker.reloadAllComponents()
-        }
-        if let grd = grade {
-            tagOptions.append(grd)
-        }else{
-            tagOptions.append("Freshmen")
-        }
-        tagOptions.append("Sports")
-        tagOptions.append("Clubs")
-        tagOptions.append("Academics")
-        tagOptions.append("Graduation")
-        tagOptions.append("Facilities")
-        tagOptions.append("Schedule")
-    }
+
 }
