@@ -41,34 +41,34 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        ref = Database.database().reference().child("Active Petitions")
-//
-//        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
-//            let dict = snapshot.value as? [String : AnyObject] ?? [:]
-//            for d in dict.keys {
-//                let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
-//                let petition = Petition()
-//
-//                petition.title = petitionKey["Title"] as? String
-//                petition.subtitle = petitionKey["Subtitle"] as? String
-//                petition.author = petitionKey["Author"] as? String
-//                petition.description = petitionKey["Description"] as? String
-//                petition.creator = d
-//                self.activePetitions.append(petition)
-//
+        ref = Database.database().reference().child("Active Petitions")
+
+        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
+            let dict = snapshot.value as? [String : AnyObject] ?? [:]
+            for d in dict.keys {
+                let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
+                let petition = Petition()
+
+                petition.title = petitionKey["Title"] as? String
+                petition.subtitle = petitionKey["Subtitle"] as? String
+                petition.author = petitionKey["Author"] as? String
+                petition.description = petitionKey["Description"] as? String
+                petition.creator = d
+                self.activePetitions.append(petition)
+
+            }
+
+            self.tableView.reloadData()
+        })
+        //need to figure out how to pass what type of feed they want
+//        filteredPetitions = activePetitions.filter({ (petition) -> Bool in
+//            if  {
+//                return true
 //            }
-//
-//            self.tableView.reloadData()
+//            return false
 //        })
-//        //need to figure out how to pass what type of feed they want
-////        filteredPetitions = activePetitions.filter({ (petition) -> Bool in
-////            if  {
-////                return true
-////            }
-////            return false
-////        })
-//
-//        self.tableView.reloadData()
+
+        self.tableView.reloadData()
         
     }
     
