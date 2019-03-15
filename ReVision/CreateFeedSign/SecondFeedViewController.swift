@@ -19,20 +19,20 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     var filteredPetitions = [Petition]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredPetitions.count
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondFeedCell", for: indexPath) as! PetitionTableViewCell
-//        let row = indexPath.row
-//        cell.petitionTitle.font = Fonts().titleFont
-//        if filteredPetitions.count > 0{
-//            cell.petitionTitle.text = filteredPetitions[row].title
-//            cell.petitionSubtitle.text = filteredPetitions[row].subtitle
-//            //cell.author.text = "By: \(filteredPetitions[row].author ?? "ERROR")"
-//            cell.creator = filteredPetitions[row].creator
-//
-//        }
+        let row = indexPath.row
+        cell.petitionTitle.font = Fonts().titleFont
+        if filteredPetitions.count > 0{
+            cell.petitionTitle.text = filteredPetitions[row].title
+            cell.petitionSubtitle.text = filteredPetitions[row].subtitle
+            //cell.author.text = "By: \(filteredPetitions[row].author ?? "ERROR")"
+            cell.creator = filteredPetitions[row].creator
+
+        }
         return cell
     }
     
