@@ -81,6 +81,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         schoolNameTextField.delegate = self
         gradeRoleChooser.delegate = self
         
+        
 
         // Do any additional setup after loading the view.
     }
