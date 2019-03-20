@@ -22,7 +22,8 @@ class PetitionTableViewCell: UITableViewCell {
     @IBAction func save(_ sender: Any) {
         let userid = Auth.auth().currentUser?.uid
         guard let uid = userid else {return}
-        let ref = Database.database().reference().child("Users/\(uid)/Saved Petitions")
+        let time = Date().description
+        let ref = Database.database().reference().child("Users/\(uid)/Saved Petitions/\(time)")
         guard let id = id else {return}
         ref.setValue(id)
         saveForLater.image = #imageLiteral(resourceName: "saved4later.png")

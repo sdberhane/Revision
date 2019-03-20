@@ -323,9 +323,10 @@
                                     <action selector="createPetitionButton:" destination="KLD-y7-Qzr" eventType="touchUpInside" id="p2I-uF-wa4"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="Z0E-jC-PJI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0E-jC-PJI">
                                 <rect key="frame" x="67" y="520" width="66" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="8WL-Pc-LSd" appends="YES" id="ALc-cc-exZ"/>
@@ -1281,7 +1282,6 @@
         <image name="burgerButton" width="25" height="25"/>
         <image name="gritty" width="800" height="600"/>
         <image name="save4later" width="25" height="25"/>
-        <image name="upload" width="638" height="452"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sFx-HF-xhn"/>
