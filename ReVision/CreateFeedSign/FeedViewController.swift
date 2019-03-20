@@ -137,9 +137,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? PetitionTableViewCell {
-            if let vc = segue.destination as? PetitionViewController {
-                vc.userId = cell.creator
+        if segue.identifier == "petitionView" {
+            if let cell = sender as? PetitionTableViewCell {
+                if let vc = segue.destination as? PetitionViewController {
+                    vc.userId = cell.creator
+                }
+            }
+        }
+        else if segue.identifier == "showSelectedPetitions" {
+            if let vc = segue.destination as? SecondFeedViewController {
+                vc.petitionCategory = sender as? Int
             }
         }
         
@@ -155,15 +162,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func showSignedPetitions() {
-        performSegue(withIdentifier: "showSelectedPetitions", sender: nil)
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 0)
     }
     
     @objc func showSavedPetitions() {
-        performSegue(withIdentifier: "showSelectedPetitions", sender: nil)
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 1)
     }
     
     @objc func showCreatedPetitions() {
-        performSegue(withIdentifier: "showSelectedPetitions", sender: nil)
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 2)
     }
     
 //    @objc func showHomescreen() {
