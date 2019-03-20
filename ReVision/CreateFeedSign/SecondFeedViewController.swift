@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class SecondFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -17,16 +18,18 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     var handle: DatabaseHandle?
     var activePetitions = [Petition]()
     var filteredPetitions = [Petition]()
+    var petitionCategory: Int?
+    var name: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return filteredPetitions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondFeedCell", for: indexPath) as! PetitionTableViewCell
         let row = indexPath.row
         cell.petitionTitle.font = Fonts().titleFont
-        if filteredPetitions.count > 0{
+        if filteredPetitions.count > 0 {
             cell.petitionTitle.text = filteredPetitions[row].title
             cell.petitionSubtitle.text = filteredPetitions[row].subtitle
             //cell.author.text = "By: \(filteredPetitions[row].author ?? "ERROR")"
@@ -43,33 +46,56 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
         ref = Database.database().reference().child("Active Petitions")
 
-        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? [String : AnyObject] ?? [:]
             for d in dict.keys {
                 let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
                 let petition = Petition()
-
+                
                 petition.title = petitionKey["Title"] as? String
                 petition.subtitle = petitionKey["Subtitle"] as? String
                 petition.author = petitionKey["Author"] as? String
                 petition.description = petitionKey["Description"] as? String
                 petition.creator = d
+                petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 self.activePetitions.append(petition)
-
+                
             }
-
+            
             self.tableView.reloadData()
         })
-        //need to figure out how to pass what type of feed they want
-//        filteredPetitions = activePetitions.filter({ (petition) -> Bool in
-//            if  {
-//                return true
-//            }
-//            return false
-//        })
-
-        self.tableView.reloadData()
         
+    Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
+            self.name = snapshot.value as? String
+        }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //need to figure out how to pass what type of feed they want
+        filteredPetitions = activePetitions.filter({ (petition) -> Bool in
+            switch petitionCategory {
+            case 0: //show signed petitions
+                titleLabel.text = "Signed Petitions"
+                if petition.signatures.contains(name ?? ""){
+                    return true
+                }
+                return false
+                //            case 1: //show saved petitions
+                //                break
+                //            case 2: //show created petitions
+            //            break
+            default:
+                return false
+            }
+            //            if  {
+            //                return true
+            //            }
+            //            return false
+        })
+        
+        self.tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
