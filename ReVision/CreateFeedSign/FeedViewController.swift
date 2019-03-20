@@ -12,11 +12,6 @@ import FirebaseAuth
 import FirebaseStorage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBAction func signOut(_ sender: Any) {
-        try! Auth.auth().signOut()
-        self.dismiss(animated: true, completion: nil)
-    }
    
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
@@ -29,10 +24,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
     }
     
-    
-    
-
-   
+    @IBOutlet weak var navigationBar: UINavigationItem!
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -66,7 +58,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // setting the petition titles and description to whatever is in the database
                 cell.id = snapshot.key
                 cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
-                cell.petitionDescription.text = petition?.value(forKey: "Subtitle") as? String
+                cell.petitionSubtitle.text = petition?.value(forKey: "Subtitle") as? String
                 if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
                     let url = NSURL(string: petitionImageUrl as! String)
                     URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
@@ -105,7 +97,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("ShowHomescreen"), object: nil)
     
-     
+        NotificationCenter.default.addObserver(self, selector: #selector(showSignedPetitions), name: NSNotification.Name("ShowSignedPetitions"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showSavedPetitions), name: NSNotification.Name("ShowSavedForLater"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
+
         
     }
 
@@ -140,12 +137,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? PetitionTableViewCell {
-            if let vc = segue.destination as? PetitionViewController {
-                vc.userId = cell.creator
+        if segue.identifier == "petitionView" {
+            if let cell = sender as? PetitionTableViewCell {
+                if let vc = segue.destination as? PetitionViewController {
+                    vc.userId = cell.creator
+                }
             }
         }
+        else if segue.identifier == "showSelectedPetitions" {
+            if let vc = segue.destination as? SecondFeedViewController {
+                vc.petitionCategory = sender as? Int
+            }
+        }
+        
     }
+    
     
     @objc func showSettings() {
         performSegue(withIdentifier: "ShowSettings", sender: nil)
@@ -153,6 +159,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func showSearch() {
         performSegue(withIdentifier: "ShowSearch", sender: nil)
+    }
+    
+    @objc func showSignedPetitions() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 0)
+    }
+    
+    @objc func showSavedPetitions() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 1)
+    }
+    
+    @objc func showCreatedPetitions() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 2)
     }
     
 //    @objc func showHomescreen() {
