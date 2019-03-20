@@ -19,6 +19,7 @@ class Petition {
     var author: String?
     var goalSignatures: Int = 0
     var signatures: [String]
+    var tag: String?
     let image = UIImageView()
 //    let anonymous: Bool?
 //    let dateCreated: Date?

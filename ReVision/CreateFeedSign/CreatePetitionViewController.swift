@@ -223,11 +223,15 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         tagOptions.append("Juniors")
         tagOptions.append("Seniors")
         tagOptions.append("Sports")
+        tagOptions.append("Parents")
+        tagOptions.append("Teachers")
+        tagOptions.append("Sports")
         tagOptions.append("Clubs")
         tagOptions.append("Academics")
         tagOptions.append("Graduation")
         tagOptions.append("Facilities")
         tagOptions.append("Schedule")
+        tagOptions.append("Other")
         return tagOptions[row]
         
     }

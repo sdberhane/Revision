@@ -114,14 +114,23 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showFreshmenTag), name: NSNotification.Name("ShowFreshmenTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showFreshmenTag), name: NSNotification.Name("ShowFreshmen"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showSophomoreTag), name: NSNotification.Name("ShowSophomoreTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showSophomoreTag), name: NSNotification.Name("ShowSophomore"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showJuniorTag), name: NSNotification.Name("ShowJuniorTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showJuniorTag), name: NSNotification.Name("ShowJunior"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowSeniorTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showSeniorTag), name: NSNotification.Name("ShowSenior"), object: nil)
 
+//        NotificationCenter.default.addObserver(self, selector: #selector(showParentsTag), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showTeachersTag), name: NSNotification.Name("ShowTeachersTag"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showSportsTag), name: NSNotification.Name("ShowSportsTag"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showClubsTag), name: NSNotification.Name("ShowClubsTag"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showAcademicsTag), name: NSNotification.Name("ShowAcademics"), object: nil)
     }
 
         
