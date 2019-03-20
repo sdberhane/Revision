@@ -35,13 +35,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var userid: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return dict?.count ?? 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // creating a table view cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PetitionTableViewCell
-        let row = indexPath.row
+        let section = indexPath.section
         // sample is an empty placeholder dictionary
         let sample: [String: AnyObject] = [:]
         // componentArray is an array of the keys in the dictionary
@@ -52,7 +60,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             // key is the title/description/whatever
             // value is whatever the value it is
             guard let user = Auth.auth().currentUser else {return UITableViewCell()}
-            let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[row])
+            let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[section])
             ref2.observe(.value) { (snapshot) in
                 let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
@@ -69,8 +77,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         cell.petitionImage?.image = UIImage(data:data!)
                     }).resume()
                 }
-              
-                cell.creator = componentArray[row]
+                cell.layer.borderColor = UIColor.gray.cgColor
+                cell.layer.borderWidth = 1
+                cell.layer.cornerRadius = 8
+                cell.clipsToBounds = true
+                cell.creator = componentArray[section]
                 
             }
         }
