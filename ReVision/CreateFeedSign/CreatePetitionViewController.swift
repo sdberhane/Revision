@@ -205,19 +205,23 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 6
+        return 10
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
-        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
-            self.grade = snapshot.value as? String
-        }
-        if let grd = grade {
-            tagOptions.append(grd)
-        }else{
-            tagOptions.append("Freshmen")
-        }
+//        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
+//        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
+//            self.grade = snapshot.value as? String
+//        }
+//        if let grd = grade {
+//            tagOptions.append(grd)
+//        }else{
+//            tagOptions.append("Freshmen")
+//        }
+        tagOptions.append("Freshmen")
+        tagOptions.append("Sophmore")
+        tagOptions.append("Juniors")
+        tagOptions.append("Seniors")
         tagOptions.append("Sports")
         tagOptions.append("Clubs")
         tagOptions.append("Academics")
