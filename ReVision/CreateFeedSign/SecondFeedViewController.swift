@@ -65,6 +65,26 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.reloadData()
         })
         
+        ref = Database.database().reference().child("Completed Petitions")
+        
+        ref?.observe(.value, with: { (snapshot) in
+            let dict = snapshot.value as? [String : AnyObject] ?? [:]
+            for d in dict.keys {
+                let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
+                let petition = Petition()
+                
+                petition.title = petitionKey["Title"] as? String
+                petition.subtitle = petitionKey["Subtitle"] as? String
+                petition.author = petitionKey["Author"] as? String
+                petition.description = petitionKey["Description"] as? String
+                petition.creator = petitionKey["Creator"] as? String
+                petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                self.activePetitions.append(petition)
+                
+            }
+            
+            self.tableView.reloadData()
+        })
     Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
             self.name = snapshot.value as? String
         }
@@ -76,16 +96,20 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         //need to figure out how to pass what type of feed they want
         filteredPetitions = activePetitions.filter({ (petition) -> Bool in
             switch petitionCategory {
-            case 0: //show signed petitions
+            case 0: // show signed petitions
                 titleLabel.text = "Signed Petitions"
                 if petition.signatures.contains(name ?? ""){
                     return true
                 }
                 return false
-                //            case 1: //show saved petitions
-                //                break
-                //            case 2: //show created petitions
-            //            break
+//            case 1: //show saved petitions
+            case 2: // show created petitions
+                titleLabel.text = "My Created Petitions"
+                if petition.creator == Auth.auth().currentUser?.uid {
+                    return true
+                }
+                return false
+            //case 3: titleLabel.text = "Athletics"
             default:
                 return false
             }
