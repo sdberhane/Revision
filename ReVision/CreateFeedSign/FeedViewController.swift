@@ -103,7 +103,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
 
-        
+         NotificationCenter.default.addObserver(self, selector: #selector(showFreshmenTag), name: NSNotification.Name("ShowFreshmenTag"), object: nil)
+
+         NotificationCenter.default.addObserver(self, selector: #selector(showSophomoreTag), name: NSNotification.Name("ShowSophomoreTag"), object: nil)
+
+         NotificationCenter.default.addObserver(self, selector: #selector(showJuniorTag), name: NSNotification.Name("ShowJuniorTag"), object: nil)
+
+         NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowSeniorTag"), object: nil)
+
     }
 
         
@@ -173,6 +180,23 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 2)
     }
     
+    @objc func showFreshmenTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 3)
+    }
+
+    @objc func showSophomoreTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 4)
+    }
+
+    @objc func showJuniorTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 5)
+    }
+
+    @objc func showSeniorTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 6)
+    }
+
+
 //    @objc func showHomescreen() {
 //        performSegue(withIdentifier: "ShowSignIn", sender: nil)
 //    }
