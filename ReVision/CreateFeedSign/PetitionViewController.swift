@@ -83,6 +83,17 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
 
                 }
                 
+                if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
+                    let url = NSURL(string: petitionImageUrl as! String)
+                    URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+                        if (error != nil){
+                            print(error)
+                            return
+                        }
+                        self.petitionImage?.image = UIImage(data:data!)
+                    }).resume()
+                }
+                
             })
             
             

@@ -84,6 +84,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.creator = componentArray[section]
                 
                 cell.petitionProgressView.transform = cell.petitionProgressView.transform.scaledBy(x: 1, y: 30)
+                let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
+                let currentSignatures = petition?.value(forKey: "Signatures") as? [String]
+                let percentDone = Float(Double(currentSignatures?.count ?? 0) / Double(goalSignatures ?? 100))
+                cell.petitionProgressView.setProgress(percentDone, animated: true)
+                
+                cell.petitionUserName.text = (petition?.value(forKey: "Author") as? String ?? "ERROR")
                 
             }
         }
