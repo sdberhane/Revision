@@ -18,12 +18,15 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     var ref = Database.database().reference()
     var petition:Petition?
-    let fileID = Database.database().reference().child("Active Petitions").childByAutoId()
-    let userID = Auth.auth().currentUser?.uid
+    let userID = Auth.auth().currentUser?.uid ?? ""
+    let fileID = Database.database().reference().child("Active Petitions/\(Auth.auth().currentUser?.uid ?? "")")
     var petitionDict: [String:Any]?
     var imagePicker: UIImagePickerController?
     var fileUrl = String()
     var tagOptions = [String?]()
+    var tag : String?
+    var author : String?
+    var grade : String?
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextView: UITextView!
@@ -36,12 +39,14 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         petitionDict = [
             "Title" : titleTextField?.text ?? " ",
             "Subtitle" : subtitleTextView.text ?? " ",
+            "Tag" : tag ?? " ",
             "Signatures" : [" "],
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "Media File URL" : fileUrl,
-            "Author" : ref.child("Users").child(userID!).value(forKey:"Name" ?? " ")
+            "Author" : author ?? " "
         ]
+        guard let uid = Auth.auth().currentUser?.uid else {return}
         fileID.setValue(petitionDict)
         
         self.dismiss(animated: true, completion: nil)
@@ -51,10 +56,16 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBAction func imageTapped(_ sender: Any) {
         self.present(imagePicker!,animated:true, completion:nil)
     }
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let refere = Database.database().reference().child("Users/\(uid)/Name")
+        refere.observeSingleEvent(of: .value) { (snapshot) in
+            self.author = snapshot.value as? String
+        }
         
         tagPicker.delegate = self
         tagPicker.dataSource = self
@@ -194,48 +205,39 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 7
+        return 10
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
-        var grade : String?
-        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
-            var x = (snapshot.value)
-            grade = snapshot.value as? String
-        }
-        if let grd = grade {
-            tagOptions.append(grd)
-        }else{
-            tagOptions.append("Freshmen")
-        }
+//        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
+//        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
+//            self.grade = snapshot.value as? String
+//        }
+//        if let grd = grade {
+//            tagOptions.append(grd)
+//        }else{
+//            tagOptions.append("Freshmen")
+//        }
+        tagOptions.append("Freshmen")
+        tagOptions.append("Sophmore")
+        tagOptions.append("Juniors")
+        tagOptions.append("Seniors")
+        tagOptions.append("Sports")
+        tagOptions.append("Parents")
+        tagOptions.append("Teachers")
         tagOptions.append("Sports")
         tagOptions.append("Clubs")
         tagOptions.append("Academics")
         tagOptions.append("Graduation")
         tagOptions.append("Facilities")
         tagOptions.append("Schedule")
+        tagOptions.append("Other")
         return tagOptions[row]
         
     }
     
-    func fillTagOptions(){
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        var grade : String?
-        Database.database().reference().child("Users/\(uid)/Grade").observeSingleEvent(of: .value) { (snapshot) in
-            grade = snapshot.value as? String
-            self.tagPicker.reloadAllComponents()
-        }
-        if let grd = grade {
-            tagOptions.append(grd)
-        }else{
-            tagOptions.append("Freshmen")
-        }
-        tagOptions.append("Sports")
-        tagOptions.append("Clubs")
-        tagOptions.append("Academics")
-        tagOptions.append("Graduation")
-        tagOptions.append("Facilities")
-        tagOptions.append("Schedule")
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        tag = tagOptions[row]
     }
+
 }

@@ -57,6 +57,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.author = petitionKey["Author"] as? String
                 petition.description = petitionKey["Description"] as? String
                 petition.creator = d
+                petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 self.activePetitions.append(petition)
                 
@@ -65,6 +66,27 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.reloadData()
         })
         
+        ref = Database.database().reference().child("Completed Petitions")
+        
+        ref?.observe(.value, with: { (snapshot) in
+            let dict = snapshot.value as? [String : AnyObject] ?? [:]
+            for d in dict.keys {
+                let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
+                let petition = Petition()
+                
+                petition.title = petitionKey["Title"] as? String
+                petition.subtitle = petitionKey["Subtitle"] as? String
+                petition.author = petitionKey["Author"] as? String
+                petition.description = petitionKey["Description"] as? String
+                petition.creator = petitionKey["Creator"] as? String
+                petition.tag = petitionKey["Tag"] as? String
+                petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                self.activePetitions.append(petition)
+                
+            }
+            
+            self.tableView.reloadData()
+        })
     Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
             self.name = snapshot.value as? String
         }
@@ -76,28 +98,55 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         //need to figure out how to pass what type of feed they want
         filteredPetitions = activePetitions.filter({ (petition) -> Bool in
             switch petitionCategory {
-            case 0: //show signed petitions
+            case 0: // show signed petitions
                 titleLabel.text = "Signed Petitions"
                 if petition.signatures.contains(name ?? ""){
                     return true
                 }
                 return false
-                //            case 1: //show saved petitions
-                //                break
-                //            case 2: //show created petitions
-            //            break
+//            case 1: //show saved petitions
+            case 2: // show created petitions
+                titleLabel.text = "My Created Petitions"
+                if petition.creator == Auth.auth().currentUser?.uid {
+                    return true
+                }
+                return false
+            case 3: // show petitions with freshmen tag
+                titleLabel.text = "Freshmen Petitions"
+                if petition.tag == "Freshmen"{
+                    return true
+                }
+                return false
+            case 4: // show petitions with sophomore tag
+                titleLabel.text = "Sophomore Petitions"
+                if petition.tag == "Sophomore"{
+                    return true
+                }
+                return false
+            case 5: // show petitions with junior tag
+                titleLabel.text = "Junior Petitions"
+                if petition.tag == "Junior"{
+                    return true
+                }
+                return false
+            case 6: // show petitions with senior tag
+                titleLabel.text = "Senior Petitions"
+                if petition.tag == "Senior"{
+                    return true
+                }
+                return false
             default:
                 return false
             }
-            //            if  {
-            //                return true
-            //            }
-            //            return false
         })
         
         self.tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "petitionView2", sender: tableView.cellForRow(at: indexPath))
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {
             if let vc = segue.destination as? PetitionViewController {
