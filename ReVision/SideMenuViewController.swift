@@ -39,7 +39,7 @@ class SideMenuViewController: UITableViewController {
         }
         case 2:
             switch indexPath.row {
-            case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowFreshman"), object: nil)
+            case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowFreshmen"), object: nil)
             case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowSophomore"), object: nil)
             case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowJunior"), object: nil)
             case 3: NotificationCenter.default.post(name: NSNotification.Name("ShowSenior"), object: nil)

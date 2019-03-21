@@ -57,6 +57,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.author = petitionKey["Author"] as? String
                 petition.description = petitionKey["Description"] as? String
                 petition.creator = d
+                petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 self.activePetitions.append(petition)
                 
@@ -78,6 +79,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.author = petitionKey["Author"] as? String
                 petition.description = petitionKey["Description"] as? String
                 petition.creator = petitionKey["Creator"] as? String
+                petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 self.activePetitions.append(petition)
                 
@@ -109,19 +111,42 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                     return true
                 }
                 return false
-            //case 3: titleLabel.text = "Athletics"
+            case 3: // show petitions with freshmen tag
+                titleLabel.text = "Freshmen Petitions"
+                if petition.tag == "Freshmen"{
+                    return true
+                }
+                return false
+            case 4: // show petitions with sophomore tag
+                titleLabel.text = "Sophomore Petitions"
+                if petition.tag == "Sophomore"{
+                    return true
+                }
+                return false
+            case 5: // show petitions with junior tag
+                titleLabel.text = "Junior Petitions"
+                if petition.tag == "Junior"{
+                    return true
+                }
+                return false
+            case 6: // show petitions with senior tag
+                titleLabel.text = "Senior Petitions"
+                if petition.tag == "Senior"{
+                    return true
+                }
+                return false
             default:
                 return false
             }
-            //            if  {
-            //                return true
-            //            }
-            //            return false
         })
         
         self.tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "petitionView2", sender: tableView.cellForRow(at: indexPath))
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {
             if let vc = segue.destination as? PetitionViewController {

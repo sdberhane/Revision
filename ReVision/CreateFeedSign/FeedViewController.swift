@@ -35,13 +35,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var userid: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return dict?.count ?? 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // creating a table view cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PetitionTableViewCell
-        let row = indexPath.row
+        let section = indexPath.section
         // sample is an empty placeholder dictionary
         let sample: [String: AnyObject] = [:]
         // componentArray is an array of the keys in the dictionary
@@ -52,7 +60,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             // key is the title/description/whatever
             // value is whatever the value it is
             guard let user = Auth.auth().currentUser else {return UITableViewCell()}
-            let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[row])
+            let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[section])
             ref2.observe(.value) { (snapshot) in
                 let petition = snapshot.value as? NSDictionary
                 // setting the petition titles and description to whatever is in the database
@@ -69,8 +77,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         cell.petitionImage?.image = UIImage(data:data!)
                     }).resume()
                 }
-              
-                cell.creator = componentArray[row]
+                cell.layer.borderColor = UIColor.gray.cgColor
+                cell.layer.borderWidth = 1
+                cell.layer.cornerRadius = 8
+                cell.clipsToBounds = true
+                cell.creator = componentArray[section]
+                
+                cell.petitionProgressView.transform = cell.petitionProgressView.transform.scaledBy(x: 1, y: 30)
                 
             }
         }
@@ -79,8 +92,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
@@ -103,14 +114,23 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showFreshmenTag), name: NSNotification.Name("ShowFreshmenTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showFreshmenTag), name: NSNotification.Name("ShowFreshmen"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showSophomoreTag), name: NSNotification.Name("ShowSophomoreTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showSophomoreTag), name: NSNotification.Name("ShowSophomore"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showJuniorTag), name: NSNotification.Name("ShowJuniorTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showJuniorTag), name: NSNotification.Name("ShowJunior"), object: nil)
 
-         NotificationCenter.default.addObserver(self, selector: #selector(showCreatedPetitions), name: NSNotification.Name("ShowSeniorTag"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showSeniorTag), name: NSNotification.Name("ShowSenior"), object: nil)
 
+//        NotificationCenter.default.addObserver(self, selector: #selector(showParentsTag), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showTeachersTag), name: NSNotification.Name("ShowTeachersTag"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showSportsTag), name: NSNotification.Name("ShowSportsTag"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showClubsTag), name: NSNotification.Name("ShowClubsTag"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(showAcademicsTag), name: NSNotification.Name("ShowAcademics"), object: nil)
     }
 
         
