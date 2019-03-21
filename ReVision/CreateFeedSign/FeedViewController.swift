@@ -83,6 +83,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.clipsToBounds = true
                 cell.creator = componentArray[section]
                 
+                cell.petitionProgressView.transform = cell.petitionProgressView.transform.scaledBy(x: 1, y: 30)
+                
             }
         }
         return cell
@@ -90,8 +92,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition

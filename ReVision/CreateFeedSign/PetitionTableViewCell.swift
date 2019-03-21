@@ -28,6 +28,8 @@ class PetitionTableViewCell: UITableViewCell {
         ref.setValue(id)
         saveForLater.image = #imageLiteral(resourceName: "saved4later.png")
     }
+    @IBOutlet weak var petitionProgressView: UIProgressView!
+    @IBOutlet weak var petitionUserName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
