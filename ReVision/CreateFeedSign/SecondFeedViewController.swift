@@ -44,7 +44,16 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             cell.petitionSubtitle.text = filteredPetitions[section].subtitle
             //cell.author.text = "By: \(filteredPetitions[section].author ?? "ERROR")"
             cell.creator = filteredPetitions[section].creator
-            
+            if let petitionImageUrl = filteredPetitions[section].imageURL{
+                let url = NSURL(string: petitionImageUrl as! String)
+                URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+                    if (error != nil){
+                        print(error)
+                        return
+                    }
+                    cell.petitionImage.image = UIImage(data:data!)
+                }).resume()
+            }
             cell.layer.borderColor = UIColor.gray.cgColor
             cell.layer.borderWidth = 1
             cell.layer.cornerRadius = 8
@@ -74,6 +83,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.creator = d
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                petition.imageURL = petitionKey["Media File URL"] as? String
                 
                 self.activePetitions.append(petition)
                 
@@ -97,6 +107,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.creator = petitionKey["Creator"] as? String
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                petition.imageURL = petitionKey["Media File URL"] as? String
 
                 self.activePetitions.append(petition)
                 
