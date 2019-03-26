@@ -43,6 +43,15 @@ class SideMenuViewController: UITableViewController {
             case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowSophomore"), object: nil)
             case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowJunior"), object: nil)
             case 3: NotificationCenter.default.post(name: NSNotification.Name("ShowSenior"), object: nil)
+            case 4: NotificationCenter.default.post(name: NSNotification.Name("ShowParents"), object: nil)
+            case 5: NotificationCenter.default.post(name: NSNotification.Name("ShowTeachers"), object: nil)
+            case 6: NotificationCenter.default.post(name: NSNotification.Name("ShowAcademics"), object: nil)
+            case 7: NotificationCenter.default.post(name: NSNotification.Name("ShowClubs"), object: nil)
+            case 8: NotificationCenter.default.post(name: NSNotification.Name("ShowFacilities"), object: nil)
+            case 9: NotificationCenter.default.post(name: NSNotification.Name("ShowGraduation"), object: nil)
+            case 10: NotificationCenter.default.post(name: NSNotification.Name("ShowSchedule"), object: nil)
+            case 11: NotificationCenter.default.post(name: NSNotification.Name("ShowSports"), object: nil)
+            case 12: NotificationCenter.default.post(name: NSNotification.Name("ShowOther"), object: nil)
             default: break
         }
         default:
