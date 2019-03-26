@@ -97,8 +97,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.creator = petitionKey["Creator"] as? String
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
-            
-                }
+
                 self.activePetitions.append(petition)
                 
                 
