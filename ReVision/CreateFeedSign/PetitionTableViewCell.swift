@@ -15,6 +15,7 @@ class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionSubtitle: UILabel!
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
+    @IBOutlet weak var petitionTag: UILabel!
     var creator: String?
     var id: String?
 

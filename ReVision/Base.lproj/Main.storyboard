@@ -1112,7 +1112,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxt-a5-vBT">
-                                                    <rect key="frame" x="25" y="21" width="65.666666666666671" height="20"/>
+                                                    <rect key="frame" x="25" y="21" width="27" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1191,6 +1191,7 @@
                                             <outlet property="petitionImage" destination="Bcz-So-Agy" id="bal-zm-Oah"/>
                                             <outlet property="petitionProgressView" destination="14l-ne-602" id="G0P-s7-evs"/>
                                             <outlet property="petitionSubtitle" destination="jOy-Oi-9xX" id="9Ig-zi-S2f"/>
+                                            <outlet property="petitionTag" destination="Sxt-a5-vBT" id="s49-YV-vSW"/>
                                             <outlet property="petitionTitle" destination="ESX-sP-KeU" id="Ku0-KK-3oo"/>
                                             <outlet property="petitionUserName" destination="WHN-c2-aNC" id="K6t-hM-yvc"/>
                                             <outlet property="saveForLater" destination="N7m-76-YMm" id="hFR-jV-aeI"/>
