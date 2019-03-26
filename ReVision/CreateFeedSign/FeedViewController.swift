@@ -84,6 +84,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.creator = componentArray[section]
                 
                 cell.petitionProgressView.transform = cell.petitionProgressView.transform.scaledBy(x: 1, y: 30)
+                let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
+                let currentSignatures = petition?.value(forKey: "Signatures") as? [String]
+                let percentDone = Float(Double(currentSignatures?.count ?? 0) / Double(goalSignatures ?? 100))
+                cell.petitionProgressView.setProgress(percentDone, animated: true)
+                
+                cell.petitionUserName.text = (petition?.value(forKey: "Author") as? String ?? "ERROR")
                 
             }
         }
@@ -122,15 +128,24 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
          NotificationCenter.default.addObserver(self, selector: #selector(showSeniorTag), name: NSNotification.Name("ShowSenior"), object: nil)
 
-//        NotificationCenter.default.addObserver(self, selector: #selector(showParentsTag), name: NSNotification.Name("ShowCreatedPetitions"), object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(showTeachersTag), name: NSNotification.Name("ShowTeachersTag"), object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(showSportsTag), name: NSNotification.Name("ShowSportsTag"), object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(showClubsTag), name: NSNotification.Name("ShowClubsTag"), object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(showAcademicsTag), name: NSNotification.Name("ShowAcademics"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showParentsTag), name: NSNotification.Name("ShowParents"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showTeachersTag), name: NSNotification.Name("ShowTeachers"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showSportsTag), name: NSNotification.Name("ShowSports"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showClubsTag), name: NSNotification.Name("ShowClubs"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showAcademicsTag), name: NSNotification.Name("ShowAcademics"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showGraduationTag), name: NSNotification.Name("ShowGraduation"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showFacilitiesTag), name: NSNotification.Name("ShowFacilities"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showScheduleTag), name: NSNotification.Name("ShowSchedule"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showOtherTag), name: NSNotification.Name("ShowOther"), object: nil)
+
     }
 
         
@@ -216,7 +231,42 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 6)
     }
 
+    @objc func showParentsTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 7)
+    }
+    
+    @objc func showTeachersTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 8)
+    }
+    
+    @objc func showSportsTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 9)
+    }
+    
+    @objc func showClubsTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 10)
+    }
 
+    @objc func showAcademicsTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 11)
+    }
+    
+    @objc func showGraduationTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 12)
+    }
+    
+    @objc func showFacilitiesTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 13)
+    }
+    
+    @objc func showScheduleTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 14)
+    }
+    
+    @objc func showOtherTag() {
+        performSegue(withIdentifier: "showSelectedPetitions", sender: 15)
+    }
+    
 //    @objc func showHomescreen() {
 //        performSegue(withIdentifier: "ShowSignIn", sender: nil)
 //    }
