@@ -17,9 +17,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
     
-
-    
-    
     @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
     }
@@ -59,7 +56,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             // creating another dictionary based on the user ID
             // key is the title/description/whatever
             // value is whatever the value it is
-            guard let user = Auth.auth().currentUser else {return UITableViewCell()}
+            guard Auth.auth().currentUser != nil else {return UITableViewCell()}
             let ref2 = Database.database().reference().child("Active Petitions").child(componentArray[section])
             ref2.observe(.value) { (snapshot) in
                 let petition = snapshot.value as? NSDictionary
@@ -67,6 +64,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.id = snapshot.key
                 cell.petitionTitle.text = petition?.value(forKey: "Title") as? String
                 cell.petitionSubtitle.text = petition?.value(forKey: "Subtitle") as? String
+                cell.petitionTag.text = petition?.value(forKey: "Tag") as? String
                 if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
                     let url = NSURL(string: petitionImageUrl as! String)
                     URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
@@ -86,7 +84,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.petitionProgressView.transform = cell.petitionProgressView.transform.scaledBy(x: 1, y: 30)
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
                 let currentSignatures = petition?.value(forKey: "Signatures") as? [String]
-                let percentDone = Float(Double(currentSignatures?.count ?? 0) / Double(goalSignatures ?? 100))
+                let percentDone = Float(Double(currentSignatures?.count ?? 0) / Double(goalSignatures))
                 cell.petitionProgressView.setProgress(percentDone, animated: true)
                 
                 cell.petitionUserName.text = (petition?.value(forKey: "Author") as? String ?? "ERROR")

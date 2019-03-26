@@ -1191,6 +1191,7 @@
                                             <outlet property="petitionImage" destination="Bcz-So-Agy" id="bal-zm-Oah"/>
                                             <outlet property="petitionProgressView" destination="14l-ne-602" id="G0P-s7-evs"/>
                                             <outlet property="petitionSubtitle" destination="jOy-Oi-9xX" id="9Ig-zi-S2f"/>
+                                            <outlet property="petitionTag" destination="Sxt-a5-vBT" id="s49-YV-vSW"/>
                                             <outlet property="petitionTitle" destination="ESX-sP-KeU" id="Ku0-KK-3oo"/>
                                             <outlet property="petitionUserName" destination="WHN-c2-aNC" id="K6t-hM-yvc"/>
                                             <outlet property="saveForLater" destination="N7m-76-YMm" id="hFR-jV-aeI"/>
