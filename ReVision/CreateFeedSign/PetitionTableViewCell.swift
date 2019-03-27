@@ -9,14 +9,16 @@
 import UIKit 
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionSubtitle: UILabel!
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
+    @IBOutlet weak var petitionTag: UILabel!
     var creator: String?
     var id: String?
-    
+
     @IBOutlet weak var saveForLater: UIBarButtonItem!
     
     @IBAction func save(_ sender: Any) {

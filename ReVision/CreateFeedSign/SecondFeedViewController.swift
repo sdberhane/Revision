@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class SecondFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -18,22 +19,45 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     var handle: DatabaseHandle?
     var activePetitions = [Petition]()
     var filteredPetitions = [Petition]()
+    var savedPetitions = [String]()
     var petitionCategory: Int?
-    var name: String?
+    var name: String? 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredPetitions.count
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return filteredPetitions.count ?? 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondFeedCell", for: indexPath) as! PetitionTableViewCell
-        let row = indexPath.row
+        let section = indexPath.section
         cell.petitionTitle.font = Fonts().titleFont
         if filteredPetitions.count > 0 {
-            cell.petitionTitle.text = filteredPetitions[row].title
-            cell.petitionSubtitle.text = filteredPetitions[row].subtitle
-            //cell.author.text = "By: \(filteredPetitions[row].author ?? "ERROR")"
-            cell.creator = filteredPetitions[row].creator
+            cell.petitionTitle.text = filteredPetitions[section].title
+            cell.petitionSubtitle.text = filteredPetitions[section].subtitle
+            //cell.author.text = "By: \(filteredPetitions[section].author ?? "ERROR")"
+            cell.creator = filteredPetitions[section].creator
+            if let petitionImageUrl = filteredPetitions[section].imageURL{
+                let url = NSURL(string: petitionImageUrl as! String)
+                URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+                    if (error != nil){
+                        print(error)
+                        return
+                    }
+                    cell.petitionImage.image = UIImage(data:data!)
+                }).resume()
+            }
+            cell.layer.borderColor = UIColor.gray.cgColor
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 8
+            cell.clipsToBounds = true
 
         }
         return cell
@@ -59,6 +83,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.creator = d
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                petition.imageURL = petitionKey["Media File URL"] as? String
+                
                 self.activePetitions.append(petition)
                 
             }
@@ -81,7 +107,10 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.creator = petitionKey["Creator"] as? String
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                petition.imageURL = petitionKey["Media File URL"] as? String
+
                 self.activePetitions.append(petition)
+                
                 
             }
             
@@ -91,6 +120,14 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             self.name = snapshot.value as? String
         }
         
+        if petitionCategory == 1 {
+            Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Saved Petitions").observeSingleEvent(of: .value) { (snapshot) in
+                let dict = snapshot.value as? [String : String] ?? [:]
+                for d in dict.values {
+                    self.savedPetitions.append(d)
+                }
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,7 +141,12 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                     return true
                 }
                 return false
-//            case 1: //show saved petitions
+            case 1: // show saved petitions
+                titleLabel.text = "Saved Petitions"
+                if savedPetitions.contains(petition.creator ?? "") {
+                    return true
+                }
+                return false
             case 2: // show created petitions
                 titleLabel.text = "My Created Petitions"
                 if petition.creator == Auth.auth().currentUser?.uid {
@@ -135,10 +177,68 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                     return true
                 }
                 return false
+            case 7: // show petitions with parents tag
+                titleLabel.text = "Parent Petitions"
+                if petition.tag == "Parents"{
+                    return true
+                }
+                return false
+            case 8: // show petitions with teachers tag
+                titleLabel.text = "Teacher Petitions"
+                if petition.tag == "Teachers"{
+                    return true
+                }
+                return false
+            case 9: // show petitions with academics tag
+                titleLabel.text = "Academics Petitions"
+                if petition.tag == "Academics"{
+                    return true
+                }
+                return false
+            case 10: // show petitions with clubs tag
+                titleLabel.text = "Clubs Petitions"
+                if petition.tag == "Clubs"{
+                    return true
+                }
+                return false
+            case 11: // show petitions with facilities tag
+                titleLabel.text = "Facilities Petitions"
+                if petition.tag == "Facilities"{
+                    return true
+                }
+                return false
+            case 12: // show petitions with graduation tag
+                titleLabel.text = "Graduation Petitions"
+                if petition.tag == "Graduation"{
+                    return true
+                }
+                return false
+            case 13: // show petitions with schedule tag
+                titleLabel.text = "Schedule Petitions"
+                if petition.tag == "Schedule"{
+                    return true
+                }
+                return false
+            case 14: // show petitions with sports tag
+                titleLabel.text = "Sports Petitions"
+                if petition.tag == "Sports"{
+                    return true
+                }
+                return false
+            case 15: // show petitions with other tag
+                titleLabel.text = "Other Petitions"
+                if petition.tag == "Other"{
+                    return true
+                }
+                return false
             default:
                 return false
             }
         })
+        
+        if petitionCategory == 1 {
+            
+        }
         
         self.tableView.reloadData()
     }
