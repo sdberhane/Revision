@@ -72,7 +72,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // creating a table view cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PetitionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PetitionTableViewCell 
         let section = indexPath.section
         // sample is an empty placeholder dictionary
         let sample: [String: AnyObject] = [:]
@@ -197,6 +197,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+        
+        // idk someone change the colors here later
+        let nav = self.navigationController?.navigationBar
+//        nav?.barStyle = UIBarStyle.blackTranslucent
+        nav?.tintColor = UIColor.cyan
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -212,7 +217,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         else if segue.identifier == "showSelectedPetitions" {
+            
             if let vc = segue.destination as? SecondFeedViewController {
+                vc.navigationItem.title = "Second Feed"
                 vc.petitionCategory = sender as? Int
             }
         }
