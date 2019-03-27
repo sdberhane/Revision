@@ -55,9 +55,8 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             }
             
         }
-        
-        
-        
+        self.navigationController?.popViewController(animated: true)
+        //dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +76,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                 self.petitionDescription.text = petition?.value(forKey: "Description") as? String
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
-                let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures ?? 100))
+                let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures))
                 self.petitonProgress.setProgress( percentDone, animated: true)
                 // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
                 if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
@@ -111,9 +110,9 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
-        mailComposerVC.setToRecipients(["revision429@gmail.com"])
-        mailComposerVC.setSubject(self.petitionTitle.text ?? "title")
-        mailComposerVC.setMessageBody("hey here's a petition", isHTML: false)
+        //mailComposerVC.setToRecipients(["revision429@gmail.com"])
+        mailComposerVC.setSubject(self.petitionTitle.text ?? "Title")
+        mailComposerVC.setMessageBody(self.petitionDescription.text ?? "Description", isHTML: false)
         
         return mailComposerVC
     }

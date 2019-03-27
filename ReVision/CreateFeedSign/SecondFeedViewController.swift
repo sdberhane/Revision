@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class SecondFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -20,21 +21,43 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     var filteredPetitions = [Petition]()
     var savedPetitions = [String]()
     var petitionCategory: Int?
-    var name: String?
+    var name: String? 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredPetitions.count
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return filteredPetitions.count ?? 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondFeedCell", for: indexPath) as! PetitionTableViewCell
-        let row = indexPath.row
+        let section = indexPath.section
         cell.petitionTitle.font = Fonts().titleFont
         if filteredPetitions.count > 0 {
-            cell.petitionTitle.text = filteredPetitions[row].title
-            cell.petitionSubtitle.text = filteredPetitions[row].subtitle
-            //cell.author.text = "By: \(filteredPetitions[row].author ?? "ERROR")"
-            cell.creator = filteredPetitions[row].creator
+            cell.petitionTitle.text = filteredPetitions[section].title
+            cell.petitionSubtitle.text = filteredPetitions[section].subtitle
+            //cell.author.text = "By: \(filteredPetitions[section].author ?? "ERROR")"
+            cell.creator = filteredPetitions[section].creator
+            if let petitionImageUrl = filteredPetitions[section].imageURL{
+                let url = NSURL(string: petitionImageUrl as! String)
+                URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+                    if (error != nil){
+                        print(error)
+                        return
+                    }
+                    cell.petitionImage.image = UIImage(data:data!)
+                }).resume()
+            }
+            cell.layer.borderColor = UIColor.gray.cgColor
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 8
+            cell.clipsToBounds = true
 
         }
         return cell
@@ -60,6 +83,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.creator = d
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                petition.imageURL = petitionKey["Media File URL"] as? String
+                
                 self.activePetitions.append(petition)
                 
             }
@@ -82,7 +107,10 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.creator = petitionKey["Creator"] as? String
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
+                petition.imageURL = petitionKey["Media File URL"] as? String
+
                 self.activePetitions.append(petition)
+                
                 
             }
             
