@@ -170,6 +170,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+        
+        // idk someone change the colors here later
+        let nav = self.navigationController?.navigationBar
+//        nav?.barStyle = UIBarStyle.blackTranslucent
+        nav?.tintColor = UIColor.cyan
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -185,7 +190,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         else if segue.identifier == "showSelectedPetitions" {
+            
             if let vc = segue.destination as? SecondFeedViewController {
+                vc.navigationItem.title = "Second Feed"
                 vc.petitionCategory = sender as? Int
             }
         }

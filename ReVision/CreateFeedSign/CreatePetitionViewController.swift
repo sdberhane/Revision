@@ -40,7 +40,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Title" : titleTextField?.text ?? " ",
             "Subtitle" : subtitleTextView.text ?? " ",
             "Tag" : tag ?? " ",
-            "Signatures" : [" "],
+            "Signatures" : [],
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "Media File URL" : fileUrl,
@@ -205,7 +205,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
+        return 14
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

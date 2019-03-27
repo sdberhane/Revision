@@ -1339,6 +1339,7 @@
                                         <connections>
                                             <outlet property="petitionImage" destination="H8D-ef-yTv" id="GAl-d2-pm6"/>
                                             <outlet property="petitionSubtitle" destination="2xf-dE-wvL" id="G4T-0n-taP"/>
+                                            <outlet property="petitionTag" destination="byO-r8-u96" id="RiO-BZ-hO5"/>
                                             <outlet property="petitionTitle" destination="Kd0-AD-FBb" id="DTW-PU-wKv"/>
                                             <outlet property="saveForLater" destination="d3j-Fc-kAi" id="8ta-MT-1K4"/>
                                         </connections>
