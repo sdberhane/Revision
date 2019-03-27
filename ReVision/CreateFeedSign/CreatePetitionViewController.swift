@@ -41,7 +41,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Title" : titleTextField?.text ?? " ",
             "Subtitle" : subtitleTextView.text ?? " ",
             "Tag" : tag ?? " ",
-            "Signatures" : [" "],
+            "Signatures" : [],
             "Goal": Int(goalTextField.text ?? "0"),
             "Description": descriptionTextView?.text,
             "Media File URL" : fileUrl,

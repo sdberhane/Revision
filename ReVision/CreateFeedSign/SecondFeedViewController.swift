@@ -17,8 +17,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableView: UITableView!
     var ref: DatabaseReference?
     var handle: DatabaseHandle?
-    var activePetitions = [Petition]()
-    var filteredPetitions = [Petition]()
+    var activePetitions: [Petition]?
+    var filteredPetitions: [Petition]?
     var savedPetitions = [String]()
     var petitionCategory: Int?
     var name: String? 
@@ -28,7 +28,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return filteredPetitions.count ?? 1
+        return filteredPetitions?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -39,12 +39,13 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondFeedCell", for: indexPath) as! PetitionTableViewCell
         let section = indexPath.section
         cell.petitionTitle.font = Fonts().titleFont
-        if filteredPetitions.count > 0 {
-            cell.petitionTitle.text = filteredPetitions[section].title
-            cell.petitionSubtitle.text = filteredPetitions[section].subtitle
+        if filteredPetitions?.count ?? 0 > 0 {
+            cell.petitionTitle.text = filteredPetitions?[section].title
+            cell.petitionSubtitle.text = filteredPetitions?[section].subtitle
+            cell.petitionTag.text = filteredPetitions?[section].tag
             //cell.author.text = "By: \(filteredPetitions[section].author ?? "ERROR")"
-            cell.creator = filteredPetitions[section].creator
-            if let petitionImageUrl = filteredPetitions[section].imageURL{
+            cell.creator = filteredPetitions?[section].creator
+            if let petitionImageUrl = filteredPetitions?[section].imageURL{
                 let url = NSURL(string: petitionImageUrl as! String)
                 URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
                     if (error != nil){
@@ -68,6 +69,9 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        activePetitions = [Petition]()
+        filteredPetitions = [Petition]()
+        
         ref = Database.database().reference().child("Active Petitions")
 
         ref?.observe(.value, with: { (snapshot) in
@@ -85,7 +89,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 petition.imageURL = petitionKey["Media File URL"] as? String
                 
-                self.activePetitions.append(petition)
+                self.activePetitions?.append(petition)
                 
             }
             
@@ -109,12 +113,13 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 petition.imageURL = petitionKey["Media File URL"] as? String
 
-                self.activePetitions.append(petition)
+                self.activePetitions?.append(petition)
                 
                 
             }
             
             self.tableView.reloadData()
+            
         })
     Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
             self.name = snapshot.value as? String
@@ -133,7 +138,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidAppear(_ animated: Bool) {
         
         //need to figure out how to pass what type of feed they want
-        filteredPetitions = activePetitions.filter({ (petition) -> Bool in
+        filteredPetitions = activePetitions?.filter({ (petition) -> Bool in
             switch petitionCategory {
             case 0: // show signed petitions
                 titleLabel.text = "Signed Petitions"
@@ -190,6 +195,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 return false
             case 9: // show petitions with academics tag
+                self.navigationItem.title = "Academics Petitions"
                 titleLabel.text = "Academics Petitions"
                 if petition.tag == "Academics"{
                     return true
@@ -235,10 +241,6 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 return false
             }
         })
-        
-        if petitionCategory == 1 {
-            
-        }
         
         self.tableView.reloadData()
     }
