@@ -48,6 +48,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(self.activePetitions[0].creator)
             self.tableView.reloadData()
         })
+        
+        self.navigationItem.title = "Search"
 
     }
 

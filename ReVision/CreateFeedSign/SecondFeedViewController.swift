@@ -141,98 +141,97 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         filteredPetitions = activePetitions?.filter({ (petition) -> Bool in
             switch petitionCategory {
             case 0: // show signed petitions
-                titleLabel.text = "Signed Petitions"
+                self.navigationItem.title = "Signed Petitions"
                 if petition.signatures.contains(name ?? ""){
                     return true
                 }
                 return false
             case 1: // show saved petitions
-                titleLabel.text = "Saved Petitions"
+                self.navigationItem.title = "Saved Petitions"
                 if savedPetitions.contains(petition.creator ?? "") {
                     return true
                 }
                 return false
             case 2: // show created petitions
-                titleLabel.text = "My Created Petitions"
+                self.navigationItem.title = "My Created Petitions"
                 if petition.creator == Auth.auth().currentUser?.uid {
                     return true
                 }
                 return false
             case 3: // show petitions with freshmen tag
-                titleLabel.text = "Freshmen Petitions"
+                self.navigationItem.title = "Freshmen Petitions"
                 if petition.tag == "Freshmen"{
                     return true
                 }
                 return false
             case 4: // show petitions with sophomore tag
-                titleLabel.text = "Sophomore Petitions"
+                self.navigationItem.title = "Sophomore Petitions"
                 if petition.tag == "Sophomore"{
                     return true
                 }
                 return false
             case 5: // show petitions with junior tag
-                titleLabel.text = "Junior Petitions"
+                self.navigationItem.title = "Junior Petitions"
                 if petition.tag == "Junior"{
                     return true
                 }
                 return false
             case 6: // show petitions with senior tag
-                titleLabel.text = "Senior Petitions"
+                self.navigationItem.title = "Senior Petitions"
                 if petition.tag == "Senior"{
                     return true
                 }
                 return false
             case 7: // show petitions with parents tag
-                titleLabel.text = "Parent Petitions"
+                self.navigationItem.title = "Parent Petitions"
                 if petition.tag == "Parents"{
                     return true
                 }
                 return false
             case 8: // show petitions with teachers tag
-                titleLabel.text = "Teacher Petitions"
+                self.navigationItem.title = "Teacher Petitions"
                 if petition.tag == "Teachers"{
                     return true
                 }
                 return false
             case 9: // show petitions with academics tag
                 self.navigationItem.title = "Academics Petitions"
-                titleLabel.text = "Academics Petitions"
                 if petition.tag == "Academics"{
                     return true
                 }
                 return false
             case 10: // show petitions with clubs tag
-                titleLabel.text = "Clubs Petitions"
+               self.navigationItem.title = "Clubs Petitions"
                 if petition.tag == "Clubs"{
                     return true
                 }
                 return false
             case 11: // show petitions with facilities tag
-                titleLabel.text = "Facilities Petitions"
+                self.navigationItem.title = "Facilities Petitions"
                 if petition.tag == "Facilities"{
                     return true
                 }
                 return false
             case 12: // show petitions with graduation tag
-                titleLabel.text = "Graduation Petitions"
+                self.navigationItem.title = "Graduation Petitions"
                 if petition.tag == "Graduation"{
                     return true
                 }
                 return false
             case 13: // show petitions with schedule tag
-                titleLabel.text = "Schedule Petitions"
+                self.navigationItem.title = "Schedule Petitions"
                 if petition.tag == "Schedule"{
                     return true
                 }
                 return false
             case 14: // show petitions with sports tag
-                titleLabel.text = "Sports Petitions"
+                self.navigationItem.title = "Sports Petitions"
                 if petition.tag == "Sports"{
                     return true
                 }
                 return false
             case 15: // show petitions with other tag
-                titleLabel.text = "Other Petitions"
+                self.navigationItem.title = "Other Petitions"
                 if petition.tag == "Other"{
                     return true
                 }

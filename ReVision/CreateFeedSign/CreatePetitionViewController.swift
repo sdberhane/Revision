@@ -98,6 +98,8 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                 }
             }
         }
+        
+        self.navigationItem.title = "Create A Petition"
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
