@@ -87,6 +87,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             }
             
             self.tableView.reloadData()
+            
         })
     Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
             self.name = snapshot.value as? String
@@ -207,10 +208,6 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 return false
             }
         })
-        
-        if petitionCategory == 1 {
-            
-        }
         
         self.tableView.reloadData()
     }
