@@ -22,7 +22,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var petitionAuthor: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
     @IBOutlet weak var petitonProgress: UIProgressView!
-    @IBOutlet weak var petitionDescription: UILabel!
+    @IBOutlet weak var petitionDescription: UITextView!
     @IBOutlet weak var signButton: UIButton!
     
     //Action that Signs the petition or Sends the Petitoin if the proper requirements have been met

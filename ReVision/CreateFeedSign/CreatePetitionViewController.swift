@@ -36,6 +36,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var tagPicker: UIPickerView!
     
     @IBAction func createPetitionButton(_ sender: UIButton) {
+        var x = fileUrl
         petitionDict = [
             "Title" : titleTextField?.text ?? " ",
             "Subtitle" : subtitleTextView.text ?? " ",
@@ -111,6 +112,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             
             storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
                 if error == nil && metadata != nil{
+                    
                 }
                 
                 storage.downloadURL(completion: { (url, error) in
@@ -130,16 +132,18 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         } else {
             var selectedImageFromPicker:UIImage?
             
-            print("uploaded image")
+            
             
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
                 
-                    uploadPetitionImage(originalImage){ url in
-                        guard let i = url else {return}
-                        self.fileUrl = i.absoluteString
+                uploadPetitionImage(originalImage){ url in
+                    guard let i = url else {return}
+                    self.fileUrl = i.absoluteString
+                    print("uploaded image")
 
                 }
+                
             }
             petitionImageView.image = selectedImageFromPicker
         }
