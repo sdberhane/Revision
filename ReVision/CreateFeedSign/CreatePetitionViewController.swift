@@ -142,6 +142,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                 uploadPetitionImage(originalImage){ url in
                     guard let i = url else {return}
                     self.fileUrl = i.absoluteString
+                    print(i.absoluteString)
                     print("uploaded image")
 
                 }
