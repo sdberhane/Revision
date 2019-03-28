@@ -17,7 +17,34 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
     
+    let blackview = UIView()
+    
     @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
+        NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
+       
+        if let window = UIApplication.shared.keyWindow{
+            blackview.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            
+            window.addSubview(blackview)
+            blackview.frame = CGRect(x: 240, y: 0, width: Int(window.frame.width) - 240, height: Int(window.frame.height))
+            blackview.alpha = 0
+            
+            blackview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissBlackview)))
+            
+            UIView.animate(withDuration: 0.3) {
+                self.blackview.alpha = 1
+            }
+        }
+        
+        
+    }
+    
+    @objc func dismissBlackview(){
+        UIView.animate(withDuration: 0.3) {
+            self.blackview.alpha = 0
+        }
+        UIView.setAnimationDelay(0.3)
+        
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
     }
     
@@ -45,7 +72,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // creating a table view cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PetitionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "petitionCell", for: indexPath) as! PetitionTableViewCell 
         let section = indexPath.section
         // sample is an empty placeholder dictionary
         let sample: [String: AnyObject] = [:]
@@ -170,6 +197,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+        
+        // idk someone change the colors here later
+        let nav = self.navigationController?.navigationBar
+//        nav?.barStyle = UIBarStyle.blackTranslucent
+        nav?.tintColor = UIColor.cyan
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -185,7 +217,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         else if segue.identifier == "showSelectedPetitions" {
+            
             if let vc = segue.destination as? SecondFeedViewController {
+                vc.navigationItem.title = "Second Feed"
                 vc.petitionCategory = sender as? Int
             }
         }
@@ -237,7 +271,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 8)
     }
     
-    @objc func showSportsTag() {
+    @objc func showAcademicsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 9)
     }
     
@@ -245,7 +279,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 10)
     }
 
-    @objc func showAcademicsTag() {
+    @objc func showFacilitiesTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 11)
     }
     
@@ -253,11 +287,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 12)
     }
     
-    @objc func showFacilitiesTag() {
+    @objc func showScheduleTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 13)
     }
     
-    @objc func showScheduleTag() {
+    @objc func showSportsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 14)
     }
     
