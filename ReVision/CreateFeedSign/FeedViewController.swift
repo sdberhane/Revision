@@ -271,7 +271,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 8)
     }
     
-    @objc func showSportsTag() {
+    @objc func showAcademicsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 9)
     }
     
@@ -279,7 +279,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 10)
     }
 
-    @objc func showAcademicsTag() {
+    @objc func showFacilitiesTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 11)
     }
     
@@ -287,11 +287,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "showSelectedPetitions", sender: 12)
     }
     
-    @objc func showFacilitiesTag() {
+    @objc func showScheduleTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 13)
     }
     
-    @objc func showScheduleTag() {
+    @objc func showSportsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 14)
     }
     
