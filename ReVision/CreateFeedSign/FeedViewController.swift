@@ -125,12 +125,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = "Feed"
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // creates a dictionary of each petition under "Active Petitions"
         // key is user ID, value is everything about the petition
-      //  guard let user = Auth.auth().currentUser else {return}
+        //  guard let user = Auth.auth().currentUser else {return}
         ref = Database.database().reference().child("Active Petitions")
         self.ref!.observe(.value) { (snapshot) in
             self.dict = snapshot.value as? [String : AnyObject] ?? [:]
@@ -203,7 +208,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // idk someone change the colors here later
-        let nav = self.navigationController?.navigationBar
+//        let nav = self.navigationController?.navigationBar
 //        nav?.barStyle = UIBarStyle.blackTranslucent
    //     nav?.tintColor = UIColor.cyan
     }
@@ -217,6 +222,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let cell = sender as? PetitionTableViewCell {
                 if let vc = segue.destination as? PetitionViewController {
                     vc.userId = cell.creator
+                    self.navigationItem.title = ""
                 }
             }
         }
