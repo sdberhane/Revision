@@ -208,7 +208,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // idk someone change the colors here later
-        let nav = self.navigationController?.navigationBar
+//        let nav = self.navigationController?.navigationBar
 //        nav?.barStyle = UIBarStyle.blackTranslucent
    //     nav?.tintColor = UIColor.cyan
     }

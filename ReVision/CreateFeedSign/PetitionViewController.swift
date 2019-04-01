@@ -113,9 +113,12 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         //mailComposerVC.setToRecipients(["revision429@gmail.com"])
         mailComposerVC.setSubject(self.petitionTitle.text ?? "Title")
         
-        var message = self.petitionDescription.text
-        
-       // mailComposerVC.setMessageBody(message, isHTML: false)
+        var message = self.petitionDescription.text + "\n\n Signatures: \n"
+        for c in currentSignatures ?? [] {
+            message += c+"\n"
+        }
+        print(message)
+        mailComposerVC.setMessageBody(message, isHTML: false)
         
         return mailComposerVC
     }

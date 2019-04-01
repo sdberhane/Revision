@@ -31,10 +31,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let dicts = snapshot.value as? [String : AnyObject] ?? [:]
             for i in dicts.keys{
                 let petit = dicts[i] as? [String : AnyObject] ?? [:]
-               // print(petit)
                 //Getting the data
                 let petition = Petition()
-                
                 
                 petition.title = petit["Title"] as? String
                 petition.subtitle = petit["Subtitle"] as? String
@@ -44,8 +42,27 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.activePetitions.append(petition)
                 
                 }
-            print("    HERE                 ")
-            print(self.activePetitions[0].creator)
+            self.tableView.reloadData()
+        })
+        
+        ref = Database.database().reference().child("Completed Petitions")
+
+        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
+            //Creating a dictionary of the Petitions
+            let dict = snapshot.value as? [String : AnyObject] ?? [:]
+            for i in dict.keys{
+                let petit = dict[i] as? [String : AnyObject] ?? [:]
+                //Getting the data
+                let petition = Petition()
+                
+                petition.title = petit["Title"] as? String
+                petition.subtitle = petit["Subtitle"] as? String
+                petition.author = petit["Author"] as? String
+                petition.description = petit["Description"] as? String
+                petition.creator = petit["Creator"] as? String
+                self.activePetitions.append(petition)
+                
+            }
             self.tableView.reloadData()
         })
         
@@ -88,7 +105,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             guard let text = searchBar.text else {return false}
 //            return petition.title?.contains(text) ?? false
             if petition.title?.lowercased().contains(text.lowercased()) ?? false || petition.creator?.lowercased().contains(text.lowercased()) ?? false || petition.subtitle?.lowercased().contains(text.lowercased()) ?? false || petition.description?.lowercased().contains(text.lowercased()) ?? false {
-                print(petition.description)
                 return true
             }
             return false
