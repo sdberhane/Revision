@@ -112,7 +112,10 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         
         //mailComposerVC.setToRecipients(["revision429@gmail.com"])
         mailComposerVC.setSubject(self.petitionTitle.text ?? "Title")
-        mailComposerVC.setMessageBody(self.petitionDescription.text ?? "Description", isHTML: false)
+        
+        var message = self.petitionDescription.text
+        
+       // mailComposerVC.setMessageBody(message, isHTML: false)
         
         return mailComposerVC
     }

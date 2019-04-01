@@ -70,11 +70,11 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
 
         // Do any additional setup after loading the view.
         activePetitions = [Petition]()
-        filteredPetitions = [Petition]()
-        
+        savedPetitions = [String]()
+        activePetitions?.removeAll()
         ref = Database.database().reference().child("Active Petitions")
 
-        ref?.observe(.value, with: { (snapshot) in
+        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             let dict = snapshot.value as? [String : AnyObject] ?? [:]
             for d in dict.keys {
                 let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
@@ -98,7 +98,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         
         ref = Database.database().reference().child("Completed Petitions")
         
-        ref?.observe(.value, with: { (snapshot) in
+        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             let dict = snapshot.value as? [String : AnyObject] ?? [:]
             for d in dict.keys {
                 let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
@@ -133,9 +133,11 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 }
             }
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        filteredPetitions = [Petition]()
         
         //need to figure out how to pass what type of feed they want
         filteredPetitions = activePetitions?.filter({ (petition) -> Bool in
@@ -252,6 +254,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         if let cell = sender as? PetitionTableViewCell {
             if let vc = segue.destination as? PetitionViewController {
                 vc.userId = cell.creator
+                self.navigationItem.title = ""
+
             }
         }
     }
