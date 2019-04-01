@@ -99,11 +99,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                             print(error)
                             return
                         }
-                        cell.petitionImage?.image = UIImage(data:data!)
+                        DispatchQueue.main.async {
+                            cell.petitionImage?.image = UIImage(data:data!)
+                        }
+                        
+                        
                     }).resume()
                 }
                 cell.layer.borderColor = UIColor.gray.cgColor
-                cell.layer.borderWidth = 1
+                cell.layer.borderWidth = 2
                 cell.layer.cornerRadius = 8
                 cell.clipsToBounds = true
                 cell.creator = componentArray[section]
@@ -205,8 +209,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // idk someone change the colors here later
         let nav = self.navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.blackTranslucent
-        nav?.tintColor = UIColor.cyan
+//        nav?.barStyle = UIBarStyle.blackTranslucent
+   //     nav?.tintColor = UIColor.cyan
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
