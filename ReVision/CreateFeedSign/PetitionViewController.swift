@@ -65,7 +65,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         petitionDescription.layer.borderColor = UIColor.darkGray.cgColor
         petitionDescription.layer.borderWidth = 1
         petitionDescription.layer.cornerRadius = 5
-        petitonProgress.layer.cornerRadius = 100
+        petitionProgress.layer.cornerRadius = 100
         //If the node is properly chosen
         if let uid = userId{
             
