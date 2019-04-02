@@ -35,6 +35,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var petitionImageView: UIImageView!
     @IBOutlet weak var tagPicker: UIPickerView!
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBAction func createPetitionButton(_ sender: UIButton) {
         var x = fileUrl
         petitionDict = [
@@ -61,7 +62,13 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // view.safeAreaLayoutGuide
+        //view.addConstraint(view.sa) view.safeAreaLayoutGuide.widthAnchor
         
+        view.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
+        //view.widthAnchor.constraint(equalToConstant: width).isActive = true
+      //  scrollView.widthAnchor.constraint(equalToConstant: width).isActive = true
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let refere = Database.database().reference().child("Users/\(uid)/Name")
         refere.observeSingleEvent(of: .value) { (snapshot) in

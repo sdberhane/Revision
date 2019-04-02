@@ -305,10 +305,10 @@
             </objects>
             <point key="canvasLocation" x="-3833" y="69"/>
         </scene>
-        <!--Create Petition View Controller-->
+        <!--View Controller-->
         <scene sceneID="JpG-Pl-NGI">
             <objects>
-                <viewController id="KLD-y7-Qzr" customClass="CreatePetitionViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KLD-y7-Qzr" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xSW-KG-cYS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,10 +386,10 @@
             </objects>
             <point key="canvasLocation" x="-149.27536231884059" y="799.55357142857144"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Petition View Controller-->
         <scene sceneID="B1i-ey-JZH">
             <objects>
-                <viewController id="UB8-dj-Hru" sceneMemberID="viewController">
+                <viewController id="UB8-dj-Hru" customClass="CreatePetitionViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mcc-o6-rgl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -444,6 +444,9 @@
                         <viewLayoutGuide key="safeArea" id="8Fr-hp-eHi"/>
                     </view>
                     <size key="freeformSize" width="414" height="1380"/>
+                    <connections>
+                        <outlet property="scrollView" destination="uTh-Dk-7L9" id="GiD-Eq-VOk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TpI-gQ-61s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
