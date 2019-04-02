@@ -16,7 +16,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
-    
+     
     let blackview = UIView()
     
     @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
