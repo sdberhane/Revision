@@ -22,6 +22,7 @@ class Petition {
     var tag: String?
     let image = UIImageView()
     var imageURL: String?
+    var active: Bool = false
 //    let anonymous: Bool?
 //    let dateCreated: Date?
 //    let dateFinished: Date?

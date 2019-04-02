@@ -39,6 +39,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 petition.author = petit["Author"] as? String
                 petition.description = petit["Description"] as? String
                 petition.creator = i
+                petition.active = true
                 self.activePetitions.append(petition)
                 
                 }
@@ -87,6 +88,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.subtitle.text = filteredPetitions[row].subtitle
             cell.author.text = "By: \(filteredPetitions[row].author ?? "ERROR")"
             cell.creator = filteredPetitions[row].creator
+            cell.active = filteredPetitions[row].active
     
         }
         return cell
@@ -96,6 +98,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = sender as? SearchTableViewCell {
             if let vc = segue.destination as? PetitionViewController {
                 vc.userId = cell.creator
+                vc.active = cell.active
             }
         }
     }

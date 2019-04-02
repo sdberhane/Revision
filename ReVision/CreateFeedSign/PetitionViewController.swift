@@ -16,18 +16,19 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     var userId: String?
     var ref : DatabaseReference?
     var currentSignatures : [String]?
+    var active: Bool = false
     
     //Outlets
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionAuthor: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
-    @IBOutlet weak var petitonProgress: UIProgressView!
+    @IBOutlet weak var petitionProgress: UIProgressView!
     @IBOutlet weak var petitionDescription: UITextView!
     @IBOutlet weak var signButton: UIButton!
     
     //Action that Signs the petition or Sends the Petitoin if the proper requirements have been met
     @IBAction func sign(_ sender: Any) {
-        if self.signButton.currentTitle == "SIGN" {
+        if active {
             
             //Chooses the proper node of this petition
             guard let uid = userId else {return}
@@ -45,7 +46,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             
             
         }
-        else if self.signButton.currentTitle == "SEND" {
+        else {
             let mailComposeViewController = configureMailController()
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: nil)
@@ -64,7 +65,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         petitionDescription.layer.borderColor = UIColor.darkGray.cgColor
         petitionDescription.layer.borderWidth = 1
         petitionDescription.layer.cornerRadius = 5
-        petitonProgress.layer.cornerRadius = 100
+        petitionProgress.layer.cornerRadius = 100
         //If the node is properly chosen
         if let uid = userId{
             
@@ -81,7 +82,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                 self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
                 let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
                 let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures))
-                self.petitonProgress.setProgress( percentDone, animated: true)
+                self.petitionProgress.setProgress( percentDone, animated: true)
                 // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
                 if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
                     self.signButton.setTitle("SEND", for: .normal)

@@ -18,6 +18,7 @@ class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionTag: UILabel!
     var creator: String?
     var id: String?
+    var active: Bool = false
 
     @IBOutlet weak var saveForLater: UIBarButtonItem!
     
