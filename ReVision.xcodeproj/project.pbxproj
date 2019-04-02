@@ -637,7 +637,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BPJX2V5936;
+				DEVELOPMENT_TEAM = 6G73X28FY2;
 				INFOPLIST_FILE = ReVision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -658,7 +658,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BPJX2V5936;
+				DEVELOPMENT_TEAM = 6G73X28FY2;
 				INFOPLIST_FILE = ReVision/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
