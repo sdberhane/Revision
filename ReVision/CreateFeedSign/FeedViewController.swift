@@ -13,6 +13,15 @@ import FirebaseStorage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
+    @IBOutlet weak var tableView: UITableView!
+    var dict: [String: AnyObject]?
+    var ref: DatabaseReference?
+    //create an array of Petition objects
+    var petitions = [Petition]()
+    var userid: String?
+    
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
@@ -35,8 +44,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseIn, animations: {self.blackview.alpha = 1}, completion: nil)
             
         }
-        
-        
     }
     
     @objc func dismissBlackviewBack(){
@@ -189,6 +196,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     
     override func viewDidAppear(_ animated: Bool) {
+        // moving completed petitions to the new branch
         let sample: [String: AnyObject] = [:]
         // componentArray is an array of the keys in the dictionary
         let componentArray = Array(self.dict?.keys ?? sample.keys)
@@ -212,7 +220,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // idk someone change the colors here later
-        let nav = self.navigationController?.navigationBar
+//        let nav = self.navigationController?.navigationBar
 //        nav?.barStyle = UIBarStyle.blackTranslucent
    //     nav?.tintColor = UIColor.cyan
     }
@@ -226,6 +234,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let cell = sender as? PetitionTableViewCell {
                 if let vc = segue.destination as? PetitionViewController {
                     vc.userId = cell.creator
+                    vc.active = true
                     self.navigationItem.title = ""
                 }
             }

@@ -13,7 +13,6 @@ import FirebaseStorage
 
 class SecondFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var ref: DatabaseReference?
     var handle: DatabaseHandle?
@@ -49,7 +48,6 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 let url = NSURL(string: petitionImageUrl as! String)
                 URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
                     if (error != nil){
-                        print(error)
                         return
                     }
                     cell.petitionImage.image = UIImage(data:data!)
