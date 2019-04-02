@@ -13,6 +13,15 @@ import FirebaseStorage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
+    @IBOutlet weak var tableView: UITableView!
+    var dict: [String: AnyObject]?
+    var ref: DatabaseReference?
+    //create an array of Petition objects
+    var petitions = [Petition]()
+    var userid: String?
+    
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
@@ -35,8 +44,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.blackview.alpha = 1
             }
         }
-        
-        
     }
     
     @objc func dismissBlackview(){
@@ -47,17 +54,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
     }
-    
-    @IBOutlet weak var navigationBar: UINavigationItem!
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-    var dict: [String: AnyObject]?
-    var ref: DatabaseReference?
-    //create an array of Petition objects
-    var petitions = [Petition]()
-    var userid: String?
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -185,6 +182,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     
     override func viewDidAppear(_ animated: Bool) {
+        // moving completed petitions to the new branch
         let sample: [String: AnyObject] = [:]
         // componentArray is an array of the keys in the dictionary
         let componentArray = Array(self.dict?.keys ?? sample.keys)
@@ -222,6 +220,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let cell = sender as? PetitionTableViewCell {
                 if let vc = segue.destination as? PetitionViewController {
                     vc.userId = cell.creator
+                    vc.active = true
                     self.navigationItem.title = ""
                 }
             }
