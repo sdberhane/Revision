@@ -1069,8 +1069,8 @@
                         <outlet property="petitionAuthor" destination="bu7-QB-Hka" id="y4J-Id-9w0"/>
                         <outlet property="petitionDescription" destination="Vy6-5j-YjE" id="0yt-3I-1Tg"/>
                         <outlet property="petitionImage" destination="T2J-rQ-thm" id="cqw-wF-74k"/>
+                        <outlet property="petitionProgress" destination="wal-SW-qZp" id="muf-EU-OCu"/>
                         <outlet property="petitionTitle" destination="O2O-ls-Hfe" id="nnt-i4-g5V"/>
-                        <outlet property="petitonProgress" destination="wal-SW-qZp" id="Cwm-rT-Fqu"/>
                         <outlet property="signButton" destination="h5H-zQ-HFS" id="ZKi-dr-arj"/>
                     </connections>
                 </viewController>
@@ -1372,6 +1372,6 @@
         <image name="userIcon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ifU-GG-6ze"/>
+        <segue reference="sFx-HF-xhn"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -221,6 +221,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let vc = segue.destination as? PetitionViewController {
                     vc.userId = cell.creator
                     vc.active = true
+                    vc.petitionID = cell.creator
                     self.navigationItem.title = ""
                 }
             }

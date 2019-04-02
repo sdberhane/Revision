@@ -14,9 +14,10 @@ import MessageUI
 class PetitionViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     var userId: String?
+    var petitionID: String?
     var ref : DatabaseReference?
     var currentSignatures : [String]?
-    var active: Bool = false
+    var active: Bool?
     
     //Outlets
     @IBOutlet weak var petitionTitle: UILabel!
@@ -28,14 +29,14 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     //Action that Signs the petition or Sends the Petitoin if the proper requirements have been met
     @IBAction func sign(_ sender: Any) {
-        if active {
+        if signButton.titleLabel?.text == "SIGN" {
             
             //Chooses the proper node of this petition
             guard let uid = userId else {return}
             ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
+            
             //Will replace with users name later
             guard let userid = Auth.auth().currentUser?.uid else {return}
-            print(userid)
             
             Database.database().reference().child("Users/\(userid)/Name").observeSingleEvent(of: .value) { (snapshot) in
                 let val = snapshot.value as! NSString
@@ -59,6 +60,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         
         self.navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,40 +70,78 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
         petitionProgress.layer.cornerRadius = 100
         //If the node is properly chosen
         if let uid = userId{
+            if active ?? false {
+                //Proper reference and then listening to that reference
+                ref = Database.database().reference().child("Active Petitions/\(uid)")
+                ref?.observe(.value, with: { (snapshot) in
+                    //Dictionary from the petition
+                    let petition = snapshot.value as? NSDictionary
+                    
+                    //Displays all the values of the petitions
+                    self.petitionTitle.text = petition?.value(forKey: "Title") as? String
+                    self.petitionAuthor.text = "By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
+                    self.petitionDescription.text = petition?.value(forKey: "Description") as? String
+                    self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
+                    let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
+                    let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures))
+                    self.petitionProgress.setProgress( percentDone, animated: true)
+                    // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
+                    if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
+                        self.signButton.setTitle("SEND", for: .normal)
+                    }
+                    else{
+                        self.signButton.setTitle("SIGN", for: .normal)
+                    }
+                    
+                    if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
+                        let url = NSURL(string: petitionImageUrl)
+                        URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+                            if (error != nil){
+                                print(error)
+                                return
+                            }
+                            self.petitionImage?.image = UIImage(data:data!)
+                        }).resume()
+                    }
+                    
+                })
+            }
             
-            //Proper reference and then listening to that reference
-            ref = Database.database().reference().child("Active Petitions/\(uid)")
-            ref?.observe(.value, with: { (snapshot) in
-                //Dictionary from the petition
-                let petition = snapshot.value as? NSDictionary
-                
-                //Displays all the values of the petitions
-                self.petitionTitle.text = petition?.value(forKey: "Title") as? String
-                self.petitionAuthor.text = "By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
-                self.petitionDescription.text = petition?.value(forKey: "Description") as? String
-                self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
-                let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
-                let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures))
-                self.petitionProgress.setProgress( percentDone, animated: true)
-                // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
-                if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
-                    self.signButton.setTitle("SEND", for: .normal)
-
-                }
-                
-                if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
-                    let url = NSURL(string: petitionImageUrl as! String)
-                    URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
-                        if (error != nil){
-                            print(error)
-                            return
-                        }
-                        self.petitionImage?.image = UIImage(data:data!)
-                    }).resume()
-                }
-                
-            })
-            
+            else {
+                ref = Database.database().reference().child("Completed Petitions/\(petitionID ?? "")")
+                ref?.observe(.value, with: { (snapshot) in
+                    //Dictionary from the petition
+                    let petition = snapshot.value as? NSDictionary
+                    
+                    //Displays all the values of the petitions
+                    self.petitionTitle.text = petition?.value(forKey: "Title") as? String
+                    self.petitionAuthor.text = "By: " + (petition?.value(forKey: "Author") as? String ?? "ERROR")
+                    self.petitionDescription.text = petition?.value(forKey: "Description") as? String
+                    self.currentSignatures = petition?.value(forKey: "Signatures") as? [String]
+                    let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
+                    let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures))
+                    self.petitionProgress.setProgress( percentDone, animated: true)
+                    // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
+                    if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
+                        self.signButton.setTitle("SEND", for: .normal)
+                    }
+                    else{
+                        self.signButton.setTitle("SIGN", for: .normal)
+                    }
+                    
+                    if let petitionImageUrl = petition?.value(forKey: "Media File URL") as? String{
+                        let url = NSURL(string: petitionImageUrl)
+                        URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+                            if (error != nil){
+                                print(error)
+                                return
+                            }
+                            self.petitionImage?.image = UIImage(data:data!)
+                        }).resume()
+                    }
+                    
+                })
+            }
             
         }else{
             print("user id is nil!!")

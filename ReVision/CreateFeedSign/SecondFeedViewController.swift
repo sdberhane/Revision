@@ -44,6 +44,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             cell.petitionTag.text = filteredPetitions?[section].tag
             //cell.author.text = "By: \(filteredPetitions[section].author ?? "ERROR")"
             cell.creator = filteredPetitions?[section].creator
+            cell.active = filteredPetitions?[section].active ?? false
+            cell.id = filteredPetitions?[section].ID
             if let petitionImageUrl = filteredPetitions?[section].imageURL{
                 let url = NSURL(string: petitionImageUrl as! String)
                 URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
@@ -83,9 +85,11 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.author = petitionKey["Author"] as? String
                 petition.description = petitionKey["Description"] as? String
                 petition.creator = d
+                petition.ID = d
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 petition.imageURL = petitionKey["Media File URL"] as? String
+                petition.active = true
                 
                 self.activePetitions?.append(petition)
                 
@@ -110,6 +114,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 petition.imageURL = petitionKey["Media File URL"] as? String
+                petition.active = false
+                petition.ID = d
 
                 self.activePetitions?.append(petition)
                 
@@ -252,6 +258,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
         if let cell = sender as? PetitionTableViewCell {
             if let vc = segue.destination as? PetitionViewController {
                 vc.userId = cell.creator
+                vc.active = cell.active
+                vc.petitionID = cell.id
                 self.navigationItem.title = ""
 
             }

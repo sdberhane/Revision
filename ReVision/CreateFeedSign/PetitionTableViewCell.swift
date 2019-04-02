@@ -16,12 +16,13 @@ class PetitionTableViewCell: UITableViewCell {
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
     @IBOutlet weak var petitionTag: UILabel!
+    @IBOutlet weak var saveForLater: UIBarButtonItem!
+    @IBOutlet weak var petitionProgressView: UIProgressView!
+    @IBOutlet weak var petitionUserName: UILabel!
     var creator: String?
     var id: String?
     var active: Bool = false
 
-    @IBOutlet weak var saveForLater: UIBarButtonItem!
-    
     @IBAction func save(_ sender: Any) {
         let userid = Auth.auth().currentUser?.uid
         guard let uid = userid else {return}
@@ -31,8 +32,7 @@ class PetitionTableViewCell: UITableViewCell {
         ref.setValue(id)
         saveForLater.image = #imageLiteral(resourceName: "saved4later.png")
     }
-    @IBOutlet weak var petitionProgressView: UIProgressView!
-    @IBOutlet weak var petitionUserName: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
