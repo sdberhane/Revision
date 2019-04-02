@@ -25,7 +25,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
-    
+     
     let blackview = UIView()
     
     @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
@@ -38,15 +38,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             blackview.frame = CGRect(x: 240, y: 0, width: Int(window.frame.width) - 240, height: Int(window.frame.height))
             blackview.alpha = 0
             
-            blackview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissBlackview)))
+            blackview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissBlackviewBack)))
             
-            UIView.animate(withDuration: 0.3) {
-                self.blackview.alpha = 1
-            }
+            
+            UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseIn, animations: {self.blackview.alpha = 1}, completion: nil)
+            
         }
     }
     
-    @objc func dismissBlackview(){
+    @objc func dismissBlackviewBack(){
         UIView.animate(withDuration: 0.3) {
             self.blackview.alpha = 0
         }
@@ -54,7 +54,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
     }
-
+    @objc func dismissBlackview(){
+        UIView.animate(withDuration: 0.3) {
+            self.blackview.alpha = 0}
+    }
+    
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    var dict: [String: AnyObject]?
+    var ref: DatabaseReference?
+    //create an array of Petition objects
+    var petitions = [Petition]()
+    var userid: String?
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -239,74 +253,92 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func showSettings() {
         performSegue(withIdentifier: "ShowSettings", sender: nil)
+        dismissBlackview()
     }
     
     @objc func showSearch() {
         performSegue(withIdentifier: "ShowSearch", sender: nil)
+        dismissBlackview()
     }
     
     @objc func showSignedPetitions() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 0)
+        dismissBlackview()
     }
     
     @objc func showSavedPetitions() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 1)
+        dismissBlackview()
     }
     
     @objc func showCreatedPetitions() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 2)
+        dismissBlackview()
     }
     
     @objc func showFreshmenTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 3)
+        dismissBlackview()
     }
 
     @objc func showSophomoreTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 4)
+        dismissBlackview()
     }
 
     @objc func showJuniorTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 5)
+        dismissBlackview()
     }
 
     @objc func showSeniorTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 6)
+        dismissBlackview()
     }
 
     @objc func showParentsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 7)
+        dismissBlackview()
     }
     
     @objc func showTeachersTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 8)
+        dismissBlackview()
     }
     
     @objc func showAcademicsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 9)
+        dismissBlackview()
     }
     
     @objc func showClubsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 10)
+        dismissBlackview()
     }
 
     @objc func showFacilitiesTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 11)
+        dismissBlackview()
     }
     
     @objc func showGraduationTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 12)
+        dismissBlackview()
     }
     
     @objc func showScheduleTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 13)
+        dismissBlackview()
     }
     
     @objc func showSportsTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 14)
+        dismissBlackview()
     }
     
     @objc func showOtherTag() {
         performSegue(withIdentifier: "showSelectedPetitions", sender: 15)
+        dismissBlackview()
     }
     
 //    @objc func showHomescreen() {

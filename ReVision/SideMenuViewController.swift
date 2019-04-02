@@ -24,7 +24,7 @@ class SideMenuViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        
+                
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
         switch indexPath.section{
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowSettings"), object: nil)

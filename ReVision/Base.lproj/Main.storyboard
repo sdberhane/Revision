@@ -306,90 +306,9 @@
             <point key="canvasLocation" x="-3833" y="69"/>
         </scene>
         <!--Create Petition View Controller-->
-        <scene sceneID="JpG-Pl-NGI">
-            <objects>
-                <viewController id="KLD-y7-Qzr" customClass="CreatePetitionViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xSW-KG-cYS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRv-6j-iRQ">
-                                <rect key="frame" x="155" y="733" width="75" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.96006503809999999" blue="0.942090977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="createPetitionButton:" destination="KLD-y7-Qzr" eventType="touchUpInside" id="p2I-uF-wa4"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0E-jC-PJI">
-                                <rect key="frame" x="67" y="520" width="66" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="8WL-Pc-LSd" appends="YES" id="ALc-cc-exZ"/>
-                                </connections>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AtU-sZ-9fZ">
-                                <rect key="frame" x="28" y="643" width="105" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.98668574939999998" blue="0.82870266780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-PF-xPN">
-                                <rect key="frame" x="32" y="202" width="320" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.98125403499999997" green="1" blue="0.99919517719999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
-                            </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnE-el-CRu">
-                                <rect key="frame" x="32" y="132" width="320" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue"/>
-                            </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u87-aj-8ta">
-                                <rect key="frame" x="0.0" y="273" width="414" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Goal Number of Signs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1b3-TO-E2F">
-                                <rect key="frame" x="228" y="580" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Y3q-pK-swU"/>
-                    </view>
-                    <connections>
-                        <outlet property="descriptionTextView" destination="AtU-sZ-9fZ" id="SyO-mH-3xs"/>
-                        <outlet property="goalTextField" destination="1b3-TO-E2F" id="ChL-ep-2jZ"/>
-                        <outlet property="petitionImageView" destination="Z0E-jC-PJI" id="Pe7-kz-Agl"/>
-                        <outlet property="subtitleTextView" destination="LNN-PF-xPN" id="V7U-8V-LXd"/>
-                        <outlet property="tagPicker" destination="u87-aj-8ta" id="wJq-42-Blv"/>
-                        <outlet property="titleTextField" destination="vnE-el-CRu" id="tEn-Yz-UaT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Igu-lN-Ar8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="8WL-Pc-LSd">
-                    <connections>
-                        <action selector="imageTapped:" destination="KLD-y7-Qzr" id="qND-9T-aCL"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-149.27536231884059" y="799.55357142857144"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="B1i-ey-JZH">
             <objects>
-                <viewController id="UB8-dj-Hru" sceneMemberID="viewController">
+                <viewController id="UB8-dj-Hru" customClass="CreatePetitionViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mcc-o6-rgl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,13 +319,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N51-Ib-QGN">
                                         <rect key="frame" x="0.0" y="0.0" width="406" height="1201"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCA-Tp-Lmn">
-                                                <rect key="frame" x="182" y="1091" width="42" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-lE-rMv">
                                                 <rect key="frame" x="43" y="45" width="320" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -418,6 +330,43 @@
                                                 <rect key="frame" x="0.0" y="120" width="406" height="162"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRo-mK-wTX">
+                                                <rect key="frame" x="170" y="359" width="66" height="59"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <gestureRecognizers/>
+                                            </imageView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lAX-FP-ReV">
+                                                <rect key="frame" x="131" y="514" width="105" height="68"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="0.98668574939999998" blue="0.82870266780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9H5-wI-wfr">
+                                                <rect key="frame" x="146" y="665" width="75" height="42"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.96006503809999999" blue="0.942090977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                                <state key="normal" title="Create"/>
+                                                <connections>
+                                                    <action selector="createPetitionButton:" destination="UB8-dj-Hru" eventType="touchUpInside" id="gXa-3c-s2V"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWY-At-5kA">
+                                                <rect key="frame" x="43" y="815" width="320" height="63"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.98125403499999997" green="1" blue="0.99919517719999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                            </textView>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Goal Number of Signs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOO-af-WRq">
+                                                <rect key="frame" x="155" y="901" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -444,10 +393,19 @@
                         <viewLayoutGuide key="safeArea" id="8Fr-hp-eHi"/>
                     </view>
                     <size key="freeformSize" width="414" height="1380"/>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="lAX-FP-ReV" id="Xff-2F-3Rl"/>
+                        <outlet property="goalTextField" destination="DOO-af-WRq" id="AeF-e5-A7v"/>
+                        <outlet property="petitionImageView" destination="QRo-mK-wTX" id="eoe-s1-wYF"/>
+                        <outlet property="scrollView" destination="uTh-Dk-7L9" id="GiD-Eq-VOk"/>
+                        <outlet property="subtitleTextView" destination="UWY-At-5kA" id="MK4-hD-3RI"/>
+                        <outlet property="tagPicker" destination="PWm-NA-T3L" id="LRh-YK-QF5"/>
+                        <outlet property="titleTextField" destination="Y1y-lE-rMv" id="JbH-sO-Gqa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TpI-gQ-61s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866" y="1120"/>
+            <point key="canvasLocation" x="138" y="928"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="fTM-EB-7rM">
@@ -1219,7 +1177,6 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="viA-je-k4J">
                             <connections>
                                 <action selector="createPetition:" destination="9Lh-XR-qN3" id="oJc-uZ-kH1"/>
-                                <segue destination="KLD-y7-Qzr" kind="show" id="QRH-mr-Lj2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1230,7 +1187,7 @@
                         <segue destination="zq9-8S-tT0" kind="show" identifier="petitionView" id="ifU-GG-6ze"/>
                         <segue destination="hla-ZC-gNg" kind="show" identifier="ShowSearch" id="3Ln-OD-XX1"/>
                         <segue destination="Djr-ML-FQd" kind="show" identifier="ShowSettings" id="eQj-Gl-Rq1"/>
-                        <segue destination="UB8-dj-Hru" kind="show" id="NR7-vg-S9l"/>
+                        <segue destination="UB8-dj-Hru" kind="show" identifier="toCreateController" id="NR7-vg-S9l"/>
                         <segue destination="qtc-rl-lNv" kind="show" identifier="showSelectedPetitions" id="cxn-MB-Zrz"/>
                     </connections>
                 </viewController>

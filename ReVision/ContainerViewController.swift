@@ -26,7 +26,6 @@ class ContainerViewController: UIViewController {
     
     
     @objc func showSideMenu(){
-        
         if sideMenuOpen{
             sideMenuOpen = false
             sideMenuConstraint.constant = -240
