@@ -107,6 +107,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                     }).resume()
                 }
+                
                 cell.layer.borderColor = UIColor.gray.cgColor
                 cell.layer.borderWidth = 2
                 cell.layer.cornerRadius = 8
