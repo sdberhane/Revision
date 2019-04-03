@@ -59,16 +59,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.blackview.alpha = 0}
     }
     
-    @IBOutlet weak var navigationBar: UINavigationItem!
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-    var dict: [String: AnyObject]?
-    var ref: DatabaseReference?
-    //create an array of Petition objects
-    var petitions = [Petition]()
-    var userid: String?
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
