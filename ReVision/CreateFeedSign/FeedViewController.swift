@@ -25,7 +25,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func createPetition(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCreateController", sender: nil)
     }
-    
+     
     let blackview = UIView()
     
     @IBAction func sideMenuButtonTouchedUp(_ sender: UIBarButtonItem) {
@@ -225,6 +225,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let vc = segue.destination as? PetitionViewController {
                     vc.userId = cell.creator
                     vc.active = true
+                    vc.petitionID = cell.creator
                     self.navigationItem.title = ""
                 }
             }

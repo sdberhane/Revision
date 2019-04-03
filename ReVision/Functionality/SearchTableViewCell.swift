@@ -15,6 +15,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var author: UILabel!
     var creator: String? = ""
     var active: Bool = false
+    var id: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
