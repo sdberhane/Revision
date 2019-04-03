@@ -18,6 +18,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     var ref : DatabaseReference?
     var currentSignatures : [String]?
     var active: Bool?
+    var name: String?
     
     //Outlets
     @IBOutlet weak var petitionTitle: UILabel!
@@ -33,18 +34,20 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             
             //Chooses the proper node of this petition
             guard let uid = userId else {return}
-            ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? -1)")
             
-            //Will replace with users name later
-            guard let userid = Auth.auth().currentUser?.uid else {return}
-            
-            Database.database().reference().child("Users/\(userid)/Name").observeSingleEvent(of: .value) { (snapshot) in
-                let val = snapshot.value as! NSString
-                self.ref?.setValue(val as String)
-                
+            guard (Auth.auth().currentUser?.uid) != nil else {return}
+
+             if !(currentSignatures?.contains(name ?? "") ?? false) {
+                ref = Database.database().reference().child("Active Petitions/\(uid)/Signatures/\(currentSignatures?.count ?? 0)")
+                self.ref?.setValue(name)
             }
-           // print(userName)
-            
+            else {
+                let alreadySignedAlert = UIAlertController(title: "Already Signed", message: "You have already signed this petition.", preferredStyle: .alert)
+                let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alreadySignedAlert.addAction(dismiss)
+                self.present(alreadySignedAlert, animated: true, completion: nil)
+            }
+            //Will replace with users name later
             
         }
         else {
@@ -141,6 +144,11 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                     }
                     
                 })
+            }
+            
+            guard (Auth.auth().currentUser?.uid) != nil else {return}
+            Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
+                self.name = snapshot.value as? String
             }
             
         }else{
