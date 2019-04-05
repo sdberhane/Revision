@@ -38,6 +38,14 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet var scrollView: UIScrollView!
     @IBAction func createPetitionButton(_ sender: UIButton) {
         var x = fileUrl
+        
+        if titleTextField?.text?.count ?? 10 > 15{
+            let alreadySignedAlert = UIAlertController(title: "Too Many Characters", message: "Please Make Title Shorter", preferredStyle: .alert)
+            let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alreadySignedAlert.addAction(dismiss)
+            self.present(alreadySignedAlert, animated: true, completion: nil)
+            titleTextField.text = ""
+        }
         petitionDict = [
             "Title" : titleTextField?.text ?? " ",
             "Subtitle" : subtitleTextView.text ?? " ",
@@ -64,11 +72,18 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
        // view.safeAreaLayoutGuide
         //view.addConstraint(view.sa) view.safeAreaLayoutGuide.widthAnchor
-        
+        tagPicker.selectRow(5, inComponent: 1, animated: true)
         view.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         //view.widthAnchor.constraint(equalToConstant: width).isActive = true
       //  scrollView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        descriptionTextView.layer.cornerRadius = 5
+        descriptionTextView.layer.borderColor = UIColor.gray.cgColor
+        descriptionTextView.layer.borderWidth = 1.5
+        
+        subtitleTextView.layer.cornerRadius = 5
+        subtitleTextView.layer.borderColor = UIColor.gray.cgColor
+        subtitleTextView.layer.borderWidth = 1.5
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let refere = Database.database().reference().child("Users/\(uid)/Name")
         refere.observeSingleEvent(of: .value) { (snapshot) in
@@ -221,6 +236,8 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 14
     }
+    
+  
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 //        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
