@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReVision/CreateFeedSign/PetitionViewController.swift"
-            timestampString = "576163182.148186"
+            timestampString = "576175369.986061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "sign(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReVision/CreateFeedSign/PetitionViewController.swift"
-            timestampString = "576163182.148779"
+            timestampString = "576175369.98739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,107 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReVision/CreateFeedSign/PetitionViewController.swift"
-            timestampString = "576163182.149268"
+            timestampString = "576175369.9879889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "sign(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ReVision/CreateFeedSign/CreatePetitionViewController.swift"
-            timestampString = "576163182.149648"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "createPetitionButton(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ReVision/CreateFeedSign/CreatePetitionViewController.swift"
-            timestampString = "576163182.150046"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "CreatePetitionViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ReVision.CreatePetitionViewController.scrollView.getter : Swift.Optional&lt;__C.UIScrollView&gt;"
-                  moduleName = "ReVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/s013687/Desktop/ReVision/ReVision/CreateFeedSign/CreatePetitionViewController.swift"
-                  timestampString = "575903302.772266"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "114">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ReVision.CreatePetitionViewController.scrollView.setter : Swift.Optional&lt;__C.UIScrollView&gt;"
-                  moduleName = "ReVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/s013687/Desktop/ReVision/ReVision/CreateFeedSign/CreatePetitionViewController.swift"
-                  timestampString = "575903302.775594"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "128">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ReVision.CreatePetitionViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; ReVision.CreatePetitionViewController"
-                  moduleName = "ReVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/s013687/Desktop/ReVision/ReVision/CreateFeedSign/CreatePetitionViewController.swift"
-                  timestampString = "575903302.7781399"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "3150">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ReVision.CreatePetitionViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ReVision.CreatePetitionViewController&gt;"
-                  moduleName = "ReVision"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/s013687/Desktop/ReVision/ReVision/CreateFeedSign/CreatePetitionViewController.swift"
-                  timestampString = "575903302.781178"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "3107">
-               </Location>
-            </Locations>
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -81,6 +81,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor
         descriptionTextView.layer.borderWidth = 1.5
         
+        
         subtitleTextView.layer.cornerRadius = 5
         subtitleTextView.layer.borderColor = UIColor.gray.cgColor
         subtitleTextView.layer.borderWidth = 1.5
