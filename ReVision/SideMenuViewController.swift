@@ -27,8 +27,7 @@ class SideMenuViewController: UITableViewController {
                 
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
         switch indexPath.section{
-        case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowSettings"), object: nil)
-        case 1:
+        case 0:
             switch indexPath.row {
             case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowSignedPetitions"), object: nil)
             case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowSavedForLater"), object: nil)
@@ -37,7 +36,7 @@ class SideMenuViewController: UITableViewController {
             case 4: NotificationCenter.default.post(name: NSNotification.Name("ShowSettings"), object: nil)
             default: break
         }
-        case 2:
+        case 1:
             switch indexPath.row {
             case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowFreshmen"), object: nil)
             case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowSophomore"), object: nil)
