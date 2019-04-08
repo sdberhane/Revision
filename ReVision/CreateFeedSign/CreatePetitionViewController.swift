@@ -72,7 +72,19 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
        // view.safeAreaLayoutGuide
         //view.addConstraint(view.sa) view.safeAreaLayoutGuide.widthAnchor
-        tagPicker.selectRow(5, inComponent: 1, animated: true)
+        petitionImageView.layer.cornerRadius = 3
+        petitionImageView.layer.borderWidth = 10
+        petitionImageView.layer.borderColor = UIColor.gray.cgColor
+        
+        titleTextField.layer.cornerRadius = 3
+        titleTextField.layer.borderWidth = 1.5
+        titleTextField.layer.borderColor = UIColor.gray.cgColor
+        
+        goalTextField.layer.cornerRadius = 3
+        goalTextField.layer.borderWidth = 1.5
+        goalTextField.layer.borderColor = UIColor.gray.cgColor
+        
+        
         view.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         //view.widthAnchor.constraint(equalToConstant: width).isActive = true
