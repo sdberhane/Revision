@@ -1134,6 +1134,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHN-c2-aNC">
+                                                    <rect key="frame" x="329" y="21" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cC-bP-V4o">
                                                     <rect key="frame" x="0.0" y="478" width="394" height="44"/>
                                                     <items>
@@ -1166,18 +1172,11 @@
                                                         <constraint firstAttribute="height" constant="27" id="rBw-tN-Cs2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHN-c2-aNC">
-                                                    <rect key="frame" x="329" y="21" width="45" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Bcz-So-Agy" secondAttribute="trailing" id="0Mo-8F-QgQ"/>
                                                 <constraint firstItem="2cC-bP-V4o" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leading" id="1O5-II-DzZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="2cC-bP-V4o" secondAttribute="trailing" id="5Kn-An-K0c"/>
-                                                <constraint firstItem="Sxt-a5-vBT" firstAttribute="top" secondItem="0dW-fO-RLc" secondAttribute="topMargin" constant="10" id="G6U-uw-AaE"/>
                                                 <constraint firstItem="WHN-c2-aNC" firstAttribute="leading" secondItem="kQb-qq-EaB" secondAttribute="trailing" constant="8" id="MVq-Ra-Nro"/>
                                                 <constraint firstItem="Sxt-a5-vBT" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leadingMargin" constant="5" id="NiE-cB-QoV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jOy-Oi-9xX" secondAttribute="trailing" constant="15" id="Nzx-ns-ers"/>
@@ -1189,8 +1188,10 @@
                                                 <constraint firstItem="ESX-sP-KeU" firstAttribute="top" secondItem="kQb-qq-EaB" secondAttribute="bottom" constant="5" id="dXd-jl-hJ4"/>
                                                 <constraint firstAttribute="bottom" secondItem="2cC-bP-V4o" secondAttribute="bottom" constant="0.67000000000000004" id="hb0-Ds-fSr"/>
                                                 <constraint firstItem="ESX-sP-KeU" firstAttribute="top" secondItem="Sxt-a5-vBT" secondAttribute="bottom" constant="9" id="iqE-eu-sdF"/>
+                                                <constraint firstItem="2cC-bP-V4o" firstAttribute="top" secondItem="Bcz-So-Agy" secondAttribute="bottom" constant="116.33" id="lXo-hT-NXB"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ESX-sP-KeU" secondAttribute="trailing" constant="15" id="qJt-9d-1vt"/>
                                                 <constraint firstItem="WHN-c2-aNC" firstAttribute="trailing" secondItem="0dW-fO-RLc" secondAttribute="trailingMargin" id="x89-xn-fqH"/>
+                                                <constraint firstItem="WHN-c2-aNC" firstAttribute="top" secondItem="0dW-fO-RLc" secondAttribute="topMargin" constant="10" id="xuu-dv-ryM"/>
                                                 <constraint firstItem="jOy-Oi-9xX" firstAttribute="top" secondItem="ESX-sP-KeU" secondAttribute="bottom" constant="291" id="yYU-bw-W1Q"/>
                                                 <constraint firstItem="Bcz-So-Agy" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leading" id="yeZ-hm-6ca"/>
                                             </constraints>
@@ -1276,7 +1277,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="523" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kAN-JY-kgR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kAN-JY-kgR">
                                 <rect key="frame" x="10" y="0.0" width="394" height="896"/>
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1311,16 +1312,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWI-eZ-rVM">
+                                                    <rect key="frame" x="329" y="21" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgi-QC-7c6">
                                                     <rect key="frame" x="0.0" y="478" width="394" height="44"/>
                                                     <items>
-                                                        <barButtonItem style="plain" id="L1A-aN-cuh">
-                                                            <progressView key="customView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="f0Q-go-CSd">
+                                                        <barButtonItem style="plain" id="m84-5O-B7S">
+                                                            <progressView key="customView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="ATf-Tj-0g1">
                                                                 <rect key="frame" x="20" y="20.666666666666668" width="271" height="2.6666666666666679"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="progressTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="trackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </progressView>
                                                         </barButtonItem>
                                                         <barButtonItem title="Item" image="save4later" width="77" id="iAI-pt-Lwv">
@@ -1343,15 +1350,11 @@
                                                         <constraint firstAttribute="height" constant="27" id="xIJ-TD-K4W"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWI-eZ-rVM">
-                                                    <rect key="frame" x="329" y="21" width="45" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="DAk-KD-7xI" secondAttribute="trailing" constant="15" id="3N9-dW-94F"/>
+                                                <constraint firstItem="Qgi-QC-7c6" firstAttribute="top" secondItem="R4O-kP-K0O" secondAttribute="bottom" constant="116.33" id="3NW-4N-b0Q"/>
+                                                <constraint firstItem="CWI-eZ-rVM" firstAttribute="top" secondItem="JDC-8k-PWm" secondAttribute="topMargin" constant="10" id="5pb-VF-GUd"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lap-LJ-auN" secondAttribute="trailing" constant="15" id="64b-3a-nsU"/>
                                                 <constraint firstItem="CWI-eZ-rVM" firstAttribute="leading" secondItem="TId-IZ-83Y" secondAttribute="trailing" constant="8" id="AQx-34-r9T"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qgi-QC-7c6" secondAttribute="trailing" id="EZZ-mk-7VP"/>
@@ -1361,7 +1364,6 @@
                                                 <constraint firstItem="DAk-KD-7xI" firstAttribute="leading" secondItem="JDC-8k-PWm" secondAttribute="leadingMargin" constant="15" id="Mg4-Lt-6N3"/>
                                                 <constraint firstAttribute="trailing" secondItem="R4O-kP-K0O" secondAttribute="trailing" id="Ovi-KN-PSR"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qgi-QC-7c6" secondAttribute="bottom" constant="0.67000000000000004" id="QGO-89-K1B"/>
-                                                <constraint firstItem="q1Q-bo-3ZX" firstAttribute="top" secondItem="JDC-8k-PWm" secondAttribute="topMargin" constant="10" id="aKJ-32-Ppv"/>
                                                 <constraint firstItem="R4O-kP-K0O" firstAttribute="leading" secondItem="JDC-8k-PWm" secondAttribute="leading" id="hEL-tp-reD"/>
                                                 <constraint firstItem="DAk-KD-7xI" firstAttribute="top" secondItem="TId-IZ-83Y" secondAttribute="bottom" constant="5" id="jvg-pt-t2H"/>
                                                 <constraint firstItem="lap-LJ-auN" firstAttribute="top" secondItem="DAk-KD-7xI" secondAttribute="bottom" constant="291" id="lyW-1a-29M"/>
@@ -1374,7 +1376,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="petitionImage" destination="R4O-kP-K0O" id="wB2-if-2Uo"/>
-                                            <outlet property="petitionProgressView" destination="f0Q-go-CSd" id="RUS-nN-slE"/>
+                                            <outlet property="petitionProgressView" destination="ATf-Tj-0g1" id="ufO-CX-GLE"/>
                                             <outlet property="petitionSubtitle" destination="lap-LJ-auN" id="30K-25-duh"/>
                                             <outlet property="petitionTag" destination="q1Q-bo-3ZX" id="ZUN-y9-nXT"/>
                                             <outlet property="petitionTitle" destination="DAk-KD-7xI" id="38w-Zr-HQI"/>
