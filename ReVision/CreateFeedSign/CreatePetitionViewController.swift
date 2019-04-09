@@ -132,7 +132,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         
         if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL {
            //selected a video
-            let storage = Storage.storage().reference().child("petition media files").child(fileID.key ?? " ")
+            let storage = Storage.storage().reference().child("petition media files").child(fileUrl)
             
             storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
                 if error == nil && metadata != nil{
@@ -156,8 +156,6 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         } else {
             var selectedImageFromPicker:UIImage?
             
-            
-            
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
                 
@@ -178,7 +176,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
-        let storage = Storage.storage().reference().child("petition media files").child(fileID.key ?? " ")
+        let storage = Storage.storage().reference().child("petition media files").child(fileUrl)
         
         //images must be saved as data objects so convert and compress the image
         guard let image = petitionImageView?.image,let imageData = image.jpegData(compressionQuality: 0.75) else {return}
