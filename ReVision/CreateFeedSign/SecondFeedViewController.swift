@@ -20,7 +20,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     var filteredPetitions: [Petition]?
     var savedPetitions = [String]()
     var petitionCategory: Int?
-    var name: String? 
+    var name: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
