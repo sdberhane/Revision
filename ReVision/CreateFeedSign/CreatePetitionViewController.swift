@@ -39,7 +39,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBAction func createPetitionButton(_ sender: UIButton) {
         var x = fileUrl
         
-        if titleTextField?.text?.count ?? 10 > 15{
+        if titleTextField?.text?.count ?? 10 > 20{
             let alreadySignedAlert = UIAlertController(title: "Too Many Characters", message: "Please Make Title Shorter", preferredStyle: .alert)
             let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alreadySignedAlert.addAction(dismiss)
@@ -59,7 +59,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         guard let uid = Auth.auth().currentUser?.uid else {return}
         fileID.setValue(petitionDict)
         
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
 
     }
   

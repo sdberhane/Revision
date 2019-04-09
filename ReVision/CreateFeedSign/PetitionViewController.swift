@@ -67,6 +67,8 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Sign Petition!"
+        
         petitionDescription.layer.borderColor = UIColor.darkGray.cgColor
         petitionDescription.layer.borderWidth = 1
         petitionDescription.layer.cornerRadius = 5
