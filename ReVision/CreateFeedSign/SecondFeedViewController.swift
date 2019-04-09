@@ -60,7 +60,6 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             cell.layer.cornerRadius = 8
             cell.clipsToBounds = true
             
-            cell.petitionProgressView.transform = cell.petitionProgressView.transform.scaledBy(x: 1, y: 30)
             let percentDone = Float(Double(filteredPetitions?[section].signatures.count ?? 0) / Double(filteredPetitions?[section].goalSignatures ?? 100))
             cell.petitionProgressView.setProgress(percentDone, animated: true)
 
