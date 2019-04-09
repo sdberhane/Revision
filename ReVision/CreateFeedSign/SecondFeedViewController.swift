@@ -20,7 +20,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     var filteredPetitions: [Petition]?
     var savedPetitions = [String]()
     var petitionCategory: Int?
-    var name: String? 
+    var name: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -60,7 +60,6 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
             cell.layer.cornerRadius = 8
             cell.clipsToBounds = true
             
-            cell.petitionProgressView.transform = cell.petitionProgressView.transform.scaledBy(x: 1, y: 30)
             let percentDone = Float(Double(filteredPetitions?[section].signatures.count ?? 0) / Double(filteredPetitions?[section].goalSignatures ?? 100))
             cell.petitionProgressView.setProgress(percentDone, animated: true)
 
