@@ -364,6 +364,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="QRo-mK-wTX" secondAttribute="height" multiplier="3:2" id="th8-dB-Bak"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="pEP-cM-aXu" appends="YES" id="snS-3t-sER"/>
+                                                </connections>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Write Your Petition" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lAX-FP-ReV">
                                                 <rect key="frame" x="20" y="250" width="366" height="249"/>
@@ -470,6 +473,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TpI-gQ-61s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pEP-cM-aXu">
+                    <connections>
+                        <action selector="petitionImageViewTapped:" destination="UB8-dj-Hru" id="D6e-1b-KhF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="927.45535714285711"/>
         </scene>

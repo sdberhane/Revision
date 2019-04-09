@@ -67,6 +67,9 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         self.present(imagePicker!,animated:true, completion:nil)
     }
  
+    @IBAction func petitionImageViewTapped(_ sender: UITapGestureRecognizer) {
+        self.present(imagePicker!,animated:true, completion:nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +108,9 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         
         tagPicker.delegate = self
         tagPicker.dataSource = self
+        
         petitionImageView.isUserInteractionEnabled = true
+        
         petitionImageView.layer.borderWidth = 1
         petitionImageView.layer.masksToBounds = false
         petitionImageView.layer.borderColor = UIColor.blue.cgColor
@@ -160,7 +165,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                         guard let i = url else {return}
                         self.fileUrl = i.absoluteString
                         print("this is the url",i)
-                        self.petitionImageView.image = self.videoPreview(videoUrl: url!)
+                      //  self.petitionImageView.image = self.videoPreview(videoUrl: url!)
                         self.reloadInputViews()
                     }
                 })
@@ -207,27 +212,27 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
-    func videoPreview(videoUrl:URL) -> UIImage? {
-        
-        let asset = AVURLAsset(url: videoUrl as URL)
-        let generator = AVAssetImageGenerator(asset: asset)
-        generator.appliesPreferredTrackTransform = true
-        
-        let timestamp = CMTime(seconds: 2, preferredTimescale: 60)
-        
-        do {
-            let imageRef = try generator.copyCGImage(at: timestamp, actualTime: nil)
-            return UIImage(cgImage: imageRef)
-        }
-        catch let error as NSError
-        {
-            print("Image generation failed with error \(error)")
-            return nil
-        }
-    }
+//    func videoPreview(videoUrl:URL) -> UIImage? {
+//
+//        let asset = AVURLAsset(url: videoUrl as URL)
+//        let generator = AVAssetImageGenerator(asset: asset)
+//        generator.appliesPreferredTrackTransform = true
+//
+//        let timestamp = CMTime(seconds: 2, preferredTimescale: 60)
+//
+//        do {
+//            let imageRef = try generator.copyCGImage(at: timestamp, actualTime: nil)
+//            return UIImage(cgImage: imageRef)
+//        }
+//        catch let error as NSError
+//        {
+//            print("Image generation failed with error \(error)")
+//            return nil
+//        }
+//    }
     
     func getfileUrl(_ completion: @escaping((_ url:String?)->())){
-        let databaseRef = self.ref.child("Active Petitions").child(fileID.key ?? " ")
+        let databaseRef = self.ref.child("Active Petitions").child(userID)
         
         databaseRef.observeSingleEvent(of: .value, with: {snapshot in
             let postDict = snapshot.value as? [String:AnyObject] ?? [:]
