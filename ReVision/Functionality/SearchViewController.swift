@@ -17,6 +17,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var ref : DatabaseReference?
     var handle : DatabaseHandle?
     var activePetitions = [Petition]()
+    var completedPetitoins = [Petition]()
     var filteredPetitions = [Petition]()
     
     override func viewDidLoad() {
@@ -63,7 +64,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 petition.description = petit["Description"] as? String
                 petition.creator = petit["Creator"] as? String
                 petition.ID = i
-                self.activePetitions.append(petition)
+                self.completedPetitoins.append(petition)
                 
             }
             self.tableView.reloadData()
@@ -108,15 +109,32 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredPetitions = activePetitions.filter({ (petition) -> Bool in
-            guard let text = searchBar.text else {return false}
-//            return petition.title?.contains(text) ?? false
-            if petition.title?.lowercased().contains(text.lowercased()) ?? false || petition.creator?.lowercased().contains(text.lowercased()) ?? false || petition.subtitle?.lowercased().contains(text.lowercased()) ?? false || petition.description?.lowercased().contains(text.lowercased()) ?? false {
-                return true
-            }
-            return false
-        })
+        if searchBar.selectedScopeButtonIndex == 0 {
+            filteredPetitions = activePetitions.filter({ (petition) -> Bool in
+                guard let text = searchBar.text else {return false}
+    //            return petition.title?.contains(text) ?? false
+                if petition.title?.lowercased().contains(text.lowercased()) ?? false || petition.creator?.lowercased().contains(text.lowercased()) ?? false || petition.subtitle?.lowercased().contains(text.lowercased()) ?? false || petition.description?.lowercased().contains(text.lowercased()) ?? false {
+                    return true
+                }
+                return false
+            })
+        }else{
+            filteredPetitions = completedPetitoins.filter({ (petition) -> Bool in
+                guard let text = searchBar.text else {return false}
+                //            return petition.title?.contains(text) ?? false
+                if petition.title?.lowercased().contains(text.lowercased()) ?? false || petition.creator?.lowercased().contains(text.lowercased()) ?? false || petition.subtitle?.lowercased().contains(text.lowercased()) ?? false || petition.description?.lowercased().contains(text.lowercased()) ?? false {
+                    return true
+                }
+                return false
+            })
+        }
         tableView.reloadData()
         //searchBar.text
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        searchBar.text = ""
+        filteredPetitions.removeAll()
+        tableView.reloadData()
     }
 }
