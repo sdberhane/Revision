@@ -27,6 +27,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var petitionProgress: UIProgressView!
     @IBOutlet weak var petitionDescription: UITextView!
     @IBOutlet weak var signButton: UIButton!
+    @IBOutlet weak var signaturesLabel: UILabel!
     
     //Action that Signs the petition or Sends the Petitoin if the proper requirements have been met
     @IBAction func sign(_ sender: Any) {
@@ -67,7 +68,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Sign Petition!"
+        self.navigationItem.title = "Sign Petition"
         
         petitionDescription.layer.borderColor = UIColor.darkGray.cgColor
         petitionDescription.layer.borderWidth = 1
@@ -126,6 +127,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                     let goalSignatures = petition?.value(forKey: "Goal") as? Int ?? 0
                     let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures))
                     self.petitionProgress.setProgress( percentDone, animated: true)
+                    self.signaturesLabel.text = "\(self.currentSignatures?.count ?? 0)/\(goalSignatures) Signatures"
                     // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
                     if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
                         self.signButton.setTitle("SEND", for: .normal)
@@ -157,8 +159,10 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
             print("user id is nil!!")
         
         }
-        // Do any additional setup after loading the view.
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        petitionTitle.adjustsFontSizeToFitWidth = true
     }
 
     func configureMailController() -> MFMailComposeViewController {

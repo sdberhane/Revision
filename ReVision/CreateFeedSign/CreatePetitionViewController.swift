@@ -39,7 +39,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBAction func createPetitionButton(_ sender: UIButton) {
         var x = fileUrl
         
-        if titleTextField?.text?.count ?? 10 > 20{
+        if titleTextField?.text?.count ?? 10 > 30{
             let alreadySignedAlert = UIAlertController(title: "Too Many Characters", message: "Please Make Title Shorter", preferredStyle: .alert)
             let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alreadySignedAlert.addAction(dismiss)
