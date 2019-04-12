@@ -92,6 +92,8 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
                     let percentDone = Float(Double(self.currentSignatures?.count ?? 0) / Double(goalSignatures))
                     self.petitionProgress.setProgress( percentDone, animated: true)
                     // replace SIGN with SEND if it is the user's petition and it has reached the goal signatures
+                    self.signaturesLabel.text = "\(self.currentSignatures?.count ?? 0)/\(goalSignatures) Signatures"
+
                     if uid == Auth.auth().currentUser?.uid && self.currentSignatures?.count ?? 0 >= goalSignatures {
                         self.signButton.setTitle("SEND", for: .normal)
                     }
