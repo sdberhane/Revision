@@ -91,6 +91,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.description = petitionKey["Description"] as? String
                 petition.creator = d
                 petition.ID = d
+                petition.goalSignatures = petitionKey["Goal"] as? Int ?? 0
                 petition.tag = petitionKey["Tag"] as? String
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 petition.imageURL = petitionKey["Media File URL"] as? String
@@ -117,6 +118,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.description = petitionKey["Description"] as? String
                 petition.creator = petitionKey["Creator"] as? String
                 petition.tag = petitionKey["Tag"] as? String
+                petition.goalSignatures = petitionKey["Goal"] as? Int ?? 0
                 petition.signatures = petitionKey["Signatures"] as? Array ?? []
                 petition.imageURL = petitionKey["Media File URL"] as? String
                 petition.active = false

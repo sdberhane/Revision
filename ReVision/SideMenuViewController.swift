@@ -20,7 +20,9 @@ class SideMenuViewController: UITableViewController {
         sideMenuView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
         sideMenuView.layer.cornerRadius = 3
         sideMenuView.layer.shadowOffset = CGSize(width: 1.75, height: 1.75)
+        
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
@@ -57,7 +59,10 @@ class SideMenuViewController: UITableViewController {
             break
         }
         
-    
+        if let index = self.sideMenuView.indexPathForSelectedRow{
+            self.sideMenuView.deselectRow(at: index, animated: true)
+        }
+
         
     }
 

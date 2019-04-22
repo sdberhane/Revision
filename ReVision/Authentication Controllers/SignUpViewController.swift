@@ -50,7 +50,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 
                 //Checks to see if they are not a freshmen, if they aren't it adds an s so that
                 //it will be Sophmores and not Sophmore in the database
-                guard var role = self.role else {return}
+                guard let role = self.role else {return}
                 
                 //Creates the user
                 let ref = Database.database().reference().child("Users/\(uid)")
@@ -59,9 +59,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 ref.child("Name").setValue(name)
                 ref.child("School").setValue(school)
                 ref.child("Grade").setValue(role)
-                ref.child("Signed Petitions").setValue(nil)
-                ref.child("Created Petitions").setValue(nil)
-                
+
                 //Dismisses to Home Screen View Controller
                 self.dismiss(animated: true, completion: nil)
             }
@@ -165,6 +163,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         choices.append("Senior")
         choices.append("Teacher")
         choices.append("Parent")
+        role = choices[row]
         return choices[row]
     }
     
