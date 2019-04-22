@@ -18,14 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="1y7-lh-bCo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="projectIcon" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1y7-lh-bCo">
                                 <rect key="frame" x="123.5" y="280" width="128" height="127"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="Og1-tx-aG9"/>
+                                    <constraint firstAttribute="height" constant="127" id="dEz-9s-2RC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <constraints>
                             <constraint firstItem="1y7-lh-bCo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="260" id="2eH-ed-F0c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1y7-lh-bCo" secondAttribute="bottom" constant="260" id="4AB-Tb-Zoe"/>
@@ -45,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="appicon" width="16" height="16"/>
+        <image name="projectIcon" width="1024" height="1024"/>
     </resources>
 </document>
