@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var schoolNameTextField: UITextField!
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -38,8 +37,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let name = usernameTextField.text else {return}
-        guard let school = schoolNameTextField.text else {return}
-        
 
         //Creates the user and then adds information about them into the database
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -57,7 +54,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 
                 //Sets particular values
                 ref.child("Name").setValue(name)
-                ref.child("School").setValue(school)
                 ref.child("Grade").setValue(role)
 
                 //Dismisses to Home Screen View Controller
@@ -79,7 +75,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         emailTextField.delegate = self
         passwordTextField.delegate = self
         usernameTextField.delegate = self
-        schoolNameTextField.delegate = self
         gradeRoleChooser.delegate = self
         
         emailTextField.becomeFirstResponder()
@@ -126,22 +121,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 self.present(alreadySignedAlert, animated: true, completion: nil)
                 emailTextField.text = ""
             }else{
-                schoolNameTextField.becomeFirstResponder()
+                 passwordTextField.resignFirstResponder()
+                signupButton.isEnabled = true
             }
-            
-        }
-        else if schoolNameTextField.isFirstResponder {
-            if schoolNameTextField?.text?.count ?? 0 == 0{
-                let alreadySignedAlert = UIAlertController(title: "NO School", message: "Please Insert The High School", preferredStyle: .alert)
-                let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alreadySignedAlert.addAction(dismiss)
-                self.present(alreadySignedAlert, animated: true, completion: nil)
-            }
-
-        }   
-        else {
-            passwordTextField.resignFirstResponder()
-            signupButton.isEnabled = true
         }
         return true
     }
