@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
 import AVFoundation
-import MobileCoreServices
+//import MobileCoreServices
 
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -27,6 +27,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     var tag : String?
     var author : String?
     var grade : String?
+    var imageName: String?
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextView: UITextView!
@@ -37,7 +38,6 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     @IBOutlet var scrollView: UIScrollView!
     @IBAction func createPetitionButton(_ sender: UIButton) {
-        var x = fileUrl
         
         if titleTextField?.text?.count ?? 10 > 50{
             let alreadySignedAlert = UIAlertController(title: "Too Many Characters", message: "Please Make Title Shorter", preferredStyle: .alert)
@@ -62,11 +62,11 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         self.navigationController?.popViewController(animated: true)
 
     }
-  
-    @IBAction func imageTapped(_ sender: Any) {
-        self.present(imagePicker!,animated:true, completion:nil)
+
+    @IBAction func petitionImageViewTapped(_ sender: UITapGestureRecognizer) {
+        self.present(imagePicker!, animated: true, completion: nil)
+        
     }
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,18 +105,23 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         
         tagPicker.delegate = self
         tagPicker.dataSource = self
+        
         petitionImageView.isUserInteractionEnabled = true
+        
         petitionImageView.layer.borderWidth = 1
         petitionImageView.layer.masksToBounds = false
         petitionImageView.layer.borderColor = UIColor.blue.cgColor
         petitionImageView.clipsToBounds = true
         
+//        imagePicker?.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
         
-        imagePicker = UIImagePickerController()
-        imagePicker?.allowsEditing = true
-        imagePicker?.sourceType = .photoLibrary
-        imagePicker?.delegate = self
-        imagePicker?.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            imagePicker = UIImagePickerController()
+            imagePicker?.allowsEditing = true
+            imagePicker?.delegate = self
+            imagePicker?.sourceType = .photoLibrary
+            print("another one")
+        }
         
         getfileUrl(){url in
             let storage = Storage.storage()
@@ -142,60 +147,64 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL {
-           //selected a video
-            let storage = Storage.storage().reference().child("petition media files").child(fileID.key ?? " ")
-            
-            storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
-                if error == nil && metadata != nil{
-                    
-                }
-                
-                storage.downloadURL(completion: { (url, error) in
-                    if error != nil {
-                        print("Failed to download url:", error!)
-                        return
-                    } else {
-                        guard let i = url else {return}
-                        self.fileUrl = i.absoluteString
-                        print("this is the url",i)
-                        self.petitionImageView.image = self.videoPreview(videoUrl: url!)
-                        self.reloadInputViews()
-                    }
-                })
-            })
-            
-        } else {
+//
+//        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL {
+//           //selected a video
+//            let storage = Storage.storage().reference().child("petition media files").child("123")
+//
+//            storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
+//                if error == nil && metadata != nil{
+//
+//                }
+//
+//                storage.downloadURL(completion: { (url, error) in
+//                    if error != nil {
+//                        print("Failed to download url:", error!)
+//                        return
+//                    } else {
+//                        guard let i = url else {return}
+//                        self.fileUrl = i.absoluteString
+//                        print("this is the url",i)
+//                      //  self.petitionImageView.image = self.videoPreview(videoUrl: url!)
+//                        self.reloadInputViews()
+//                    }
+//                })
+//            })
+//
+//        } else {
             var selectedImageFromPicker:UIImage?
-            
-            
-            
+  
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
-                
+                print("inside if")
                 uploadPetitionImage(originalImage){ url in
+                    print("inside the method")
                     guard let i = url else {return}
                     self.fileUrl = i.absoluteString
-                    print(i.absoluteString)
+                    print("this is the url",i.absoluteString)
                     print("uploaded image")
-
                 }
-                
             }
+            
             petitionImageView.image = selectedImageFromPicker
-        }
+            print("what are u doing")
+//        }
         
         imagePicker?.dismiss(animated: true, completion: nil)
+        print("dimissed please")
     }
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
-        let storage = Storage.storage().reference().child("petition media files").child(fileID.key ?? " ")
+        print("hello this is me")
+        imageName = randomString(20) as String
+        let storage = Storage.storage().reference().child("petition media files").child(imageName ?? " ")
+        print("media files")
         
-        //images must be saved as data objects so convert and compress the image
-        guard let image = petitionImageView?.image,let imageData = image.jpegData(compressionQuality: 0.75) else {return}
+        //images must be saved as data objects to convert and compress the image
+        guard let image = petitionImageView?.image, let imageData = image.jpegData(compressionQuality: 0.75) else {return}
         
+        print("this is me again")
         //store image
         storage.putData(imageData,metadata: StorageMetadata()){
             (metaData, error) in
@@ -207,29 +216,17 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                 completion(nil)
             }
         }
+        print("hows it going")
     }
     
-    func videoPreview(videoUrl:URL) -> UIImage? {
-        
-        let asset = AVURLAsset(url: videoUrl as URL)
-        let generator = AVAssetImageGenerator(asset: asset)
-        generator.appliesPreferredTrackTransform = true
-        
-        let timestamp = CMTime(seconds: 2, preferredTimescale: 60)
-        
-        do {
-            let imageRef = try generator.copyCGImage(at: timestamp, actualTime: nil)
-            return UIImage(cgImage: imageRef)
-        }
-        catch let error as NSError
-        {
-            print("Image generation failed with error \(error)")
-            return nil
-        }
+    
+    func randomString(_ length: Int)-> String{
+        let letters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
     func getfileUrl(_ completion: @escaping((_ url:String?)->())){
-        let databaseRef = self.ref.child("Active Petitions").child(fileID.key ?? " ")
+        let databaseRef = self.ref.child("Active Petitions").child(userID)
         
         databaseRef.observeSingleEvent(of: .value, with: {snapshot in
             let postDict = snapshot.value as? [String:AnyObject] ?? [:]
