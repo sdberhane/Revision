@@ -22,6 +22,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var schoolNameTextField: UITextField!
     
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var signupButton: UIButton!
     
     //Instances that will need to be used multiple times throughout signing up
@@ -47,7 +50,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 
                 //Checks to see if they are not a freshmen, if they aren't it adds an s so that
                 //it will be Sophmores and not Sophmore in the database
-                guard var role = self.role else {return}
+                guard let role = self.role else {return}
                 
                 //Creates the user
                 let ref = Database.database().reference().child("Users/\(uid)")
@@ -56,9 +59,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 ref.child("Name").setValue(name)
                 ref.child("School").setValue(school)
                 ref.child("Grade").setValue(role)
-                ref.child("Signed Petitions").setValue(nil)
-                ref.child("Created Petitions").setValue(nil)
-                
+
                 //Dismisses to Home Screen View Controller
                 self.dismiss(animated: true, completion: nil)
             }
@@ -81,7 +82,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         schoolNameTextField.delegate = self
         gradeRoleChooser.delegate = self
         
-        
+        emailTextField.becomeFirstResponder()
 
         // Do any additional setup after loading the view.
     }
@@ -90,16 +91,53 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //Text field protocol
         if emailTextField.isFirstResponder {
-            passwordTextField.becomeFirstResponder()
+            if emailTextField?.text?.count ?? 0 == 0{
+                let alreadySignedAlert = UIAlertController(title: "NO EMAIL", message: "Please Insert Email", preferredStyle: .alert)
+                let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alreadySignedAlert.addAction(dismiss)
+                self.present(alreadySignedAlert, animated: true, completion: nil)
+                emailTextField.text = ""
+            }else{
+                passwordTextField.becomeFirstResponder()
+            }
         }
         else if passwordTextField.isFirstResponder {
-            usernameTextField.becomeFirstResponder()
+            if passwordTextField?.text?.count ?? 0 < 8{
+                let alreadySignedAlert = UIAlertController(title: "Poor Password", message: "Please Make Password Longer", preferredStyle: .alert)
+                let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alreadySignedAlert.addAction(dismiss)
+                self.present(alreadySignedAlert, animated: true, completion: nil)
+                
+            }else{
+                usernameTextField.becomeFirstResponder()
+            }
         }
         else if usernameTextField.isFirstResponder {
-            schoolNameTextField.becomeFirstResponder()
+            if !(usernameTextField?.text?.contains(" ") ?? false){
+                let alreadySignedAlert = UIAlertController(title: "ONLY ONE NAME", message: "Please Insert First and Last Name", preferredStyle: .alert)
+                let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alreadySignedAlert.addAction(dismiss)
+                self.present(alreadySignedAlert, animated: true, completion: nil)
+                
+            }else if usernameTextField?.text?.count ?? 0 == 0{
+                let alreadySignedAlert = UIAlertController(title: "NO NAME", message: "Please Insert NAME", preferredStyle: .alert)
+                let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alreadySignedAlert.addAction(dismiss)
+                self.present(alreadySignedAlert, animated: true, completion: nil)
+                emailTextField.text = ""
+            }else{
+                schoolNameTextField.becomeFirstResponder()
+            }
+            
         }
         else if schoolNameTextField.isFirstResponder {
-            passwordTextField.becomeFirstResponder()
+            if schoolNameTextField?.text?.count ?? 0 == 0{
+                let alreadySignedAlert = UIAlertController(title: "NO School", message: "Please Insert The High School", preferredStyle: .alert)
+                let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alreadySignedAlert.addAction(dismiss)
+                self.present(alreadySignedAlert, animated: true, completion: nil)
+            }
+
         }   
         else {
             passwordTextField.resignFirstResponder()
@@ -125,16 +163,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         choices.append("Senior")
         choices.append("Teacher")
         choices.append("Parent")
+        role = choices[row]
         return choices[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //So they won't have a blank role
-        if choices[row] != ""{
-            role = choices[row]
-            emailTextField.becomeFirstResponder()
-        }else{
-            emailTextField.resignFirstResponder()
-        }
+//        if choices[row] != ""{
+//            role = choices[row]
+//            emailTextField.becomeFirstResponder()
+//        }else{
+//            emailTextField.resignFirstResponder()
+//        }
     }
 }
