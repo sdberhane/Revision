@@ -197,11 +197,11 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
         print("hello this is me")
-        imageName = randomString(20)
+        imageName = randomString(20) as String
         let storage = Storage.storage().reference().child("petition media files").child(imageName ?? " ")
         print("media files")
         
-        //images must be saved as data objects so convert and compress the image
+        //images must be saved as data objects to convert and compress the image
         guard let image = petitionImageView?.image, let imageData = image.jpegData(compressionQuality: 0.75) else {return}
         
         print("this is me again")
@@ -219,31 +219,11 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         print("hows it going")
     }
     
-
     
     func randomString(_ length: Int)-> String{
         let letters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
-    
-//    func videoPreview(videoUrl:URL) -> UIImage? {
-//
-//        let asset = AVURLAsset(url: videoUrl as URL)
-//        let generator = AVAssetImageGenerator(asset: asset)
-//        generator.appliesPreferredTrackTransform = true
-//
-//        let timestamp = CMTime(seconds: 2, preferredTimescale: 60)
-//
-//        do {
-//            let imageRef = try generator.copyCGImage(at: timestamp, actualTime: nil)
-//            return UIImage(cgImage: imageRef)
-//        }
-//        catch let error as NSError
-//        {
-//            print("Image generation failed with error \(error)")
-//            return nil
-//        }
-//    }
     
     func getfileUrl(_ completion: @escaping((_ url:String?)->())){
         let databaseRef = self.ref.child("Active Petitions").child(userID)

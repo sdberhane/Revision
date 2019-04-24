@@ -18,48 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homescreen" translatesAutoresizingMaskIntoConstraints="NO" id="axW-la-TZi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-s1-HDE">
-                                <rect key="frame" x="112" y="680" width="191" height="74"/>
+                                <rect key="frame" x="144" y="527" width="90" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="53"/>
-                                <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="1" green="0.73393332200000005" blue="0.20408709829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <color key="backgroundColor" red="0.60626585580000003" green="1" blue="0.75029753840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUpButton:" destination="STV-We-pIC" eventType="touchUpInside" id="Xyb-xJ-fYU"/>
                                     <segue destination="m3n-oF-sLy" kind="show" id="IJK-5A-gYd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4S-9V-ToI">
-                                <rect key="frame" x="129" y="540" width="157" height="74"/>
+                                <rect key="frame" x="152" y="433" width="70" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="53"/>
-                                <state key="normal" title="LOG IN">
-                                    <color key="titleColor" red="1" green="0.73393332200000005" blue="0.20408709829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <color key="backgroundColor" red="0.60626585580000003" green="1" blue="0.75029753840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logInButton:" destination="STV-We-pIC" eventType="touchUpInside" id="7AI-VJ-CA6"/>
                                     <segue destination="0Gc-RX-Rrr" kind="show" id="h5o-1o-d8a"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R e V i s i o n" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8v-hW-1U7">
-                                <rect key="frame" x="28" y="244" width="359" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="90"/>
-                                <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="shadowColor" red="1" green="0.73393332200000005" blue="0.20408709829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="2" height="2"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ItB-kq-Aq1" firstAttribute="trailing" secondItem="axW-la-TZi" secondAttribute="trailing" id="HWV-m5-5Nb"/>
+                            <constraint firstItem="ItB-kq-Aq1" firstAttribute="bottom" secondItem="axW-la-TZi" secondAttribute="bottom" id="OpH-pS-jDl"/>
+                            <constraint firstItem="axW-la-TZi" firstAttribute="top" secondItem="ItB-kq-Aq1" secondAttribute="top" id="ULh-mX-3Km"/>
+                            <constraint firstItem="axW-la-TZi" firstAttribute="leading" secondItem="ItB-kq-Aq1" secondAttribute="leading" id="yOm-iV-TfE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ItB-kq-Aq1"/>
                     </view>
                     <connections>
-                        <outlet property="logIn" destination="s4S-9V-ToI" id="seI-xf-eGC"/>
-                        <outlet property="signUp" destination="e5p-s1-HDE" id="fEq-AD-u8K"/>
                         <segue destination="fph-X6-bw6" kind="show" identifier="toContainerViewController" id="hbD-hJ-BZd"/>
                     </connections>
                 </viewController>
@@ -143,7 +137,7 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rw8-ux-Ql1">
                                 <rect key="frame" x="0.0" y="188" width="414" height="708"/>
-                                <color key="backgroundColor" red="0.41335538459999999" green="0.77688721770000002" blue="1" alpha="0.61229093310000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchedPetition" rowHeight="110" id="3aG-et-fKY" customClass="SearchTableViewCell" customModule="ReVision" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="110"/>
@@ -182,7 +176,6 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="FJC-hI-6Gp" secondAttribute="trailing" constant="10" id="yQy-OP-FU3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.41335538459999999" green="0.77688721770000002" blue="1" alpha="0.61229093310000005" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="author" destination="Fch-aY-UcW" id="Lqo-g8-t2J"/>
                                             <outlet property="subtitle" destination="BIi-9Z-FNh" id="z2C-pH-VYC"/>
@@ -198,7 +191,6 @@
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Enter Information Here" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HbI-zW-hvl">
                                 <rect key="frame" x="0.0" y="88" width="414" height="100"/>
-                                <color key="backgroundColor" red="0.41335538459999999" green="0.77688721770000002" blue="1" alpha="0.61229093310000005" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Active</string>
@@ -559,7 +551,7 @@
             <objects>
                 <tableViewController id="yKe-rQ-opj" customClass="SideMenuViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hPz-bY-lUp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -1359,7 +1351,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.66728648009587666" green="0.82862048625117768" blue="0.96567655456852797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ypu-nv-hnS" firstAttribute="leading" secondItem="kzT-DP-KWD" secondAttribute="leading" constant="10" id="aVY-hL-csY"/>
                             <constraint firstAttribute="trailing" secondItem="ypu-nv-hnS" secondAttribute="trailing" constant="10" id="n9m-FO-dAN"/>
@@ -1563,6 +1555,7 @@
         <image name="facilitiesIcon" width="50" height="50"/>
         <image name="freshmanIcon" width="50" height="50"/>
         <image name="graduationIcon" width="50" height="50"/>
+        <image name="homescreen" width="3000" height="5333"/>
         <image name="juniorIcon" width="50" height="50"/>
         <image name="lmhs" width="1024" height="683"/>
         <image name="otherIcon" width="50" height="50"/>
