@@ -39,7 +39,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet var scrollView: UIScrollView!
     @IBAction func createPetitionButton(_ sender: UIButton) {
         
-        if titleTextField?.text?.count ?? 10 > 30{
+        if titleTextField?.text?.count ?? 10 > 50{
             let alreadySignedAlert = UIAlertController(title: "Too Many Characters", message: "Please Make Title Shorter", preferredStyle: .alert)
             let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alreadySignedAlert.addAction(dismiss)
