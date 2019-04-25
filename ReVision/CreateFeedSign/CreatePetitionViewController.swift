@@ -187,7 +187,6 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             }
             
             petitionImageView.image = selectedImageFromPicker
-            print("what are u doing")
 //        }
         
         imagePicker?.dismiss(animated: true, completion: nil)
