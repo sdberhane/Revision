@@ -18,31 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="projectIcon" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1y7-lh-bCo">
-                                <rect key="frame" x="123.5" y="280" width="128" height="127"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="projectIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7L5-AP-bK9">
+                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="Og1-tx-aG9"/>
-                                    <constraint firstAttribute="height" constant="127" id="dEz-9s-2RC"/>
+                                    <constraint firstAttribute="width" constant="240" id="MJ1-e6-AwG"/>
+                                    <constraint firstAttribute="height" constant="240" id="e3Y-Fb-Oe7"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <constraints>
-                            <constraint firstItem="1y7-lh-bCo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="260" id="2eH-ed-F0c"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1y7-lh-bCo" secondAttribute="bottom" constant="260" id="4AB-Tb-Zoe"/>
-                            <constraint firstItem="1y7-lh-bCo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Djh-hv-oYZ"/>
-                            <constraint firstItem="1y7-lh-bCo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Mqg-YO-MqQ"/>
-                            <constraint firstItem="1y7-lh-bCo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cPC-1i-CV0"/>
-                            <constraint firstItem="1y7-lh-bCo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fy1-gj-jMI"/>
-                            <constraint firstItem="1y7-lh-bCo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="nPS-he-hUK"/>
-                            <constraint firstItem="1y7-lh-bCo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="yIR-n8-pbj"/>
+                            <constraint firstItem="7L5-AP-bK9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nbs-su-BfT"/>
+                            <constraint firstItem="7L5-AP-bK9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wi6-Gm-bMT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
