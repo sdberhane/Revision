@@ -115,8 +115,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="772-mI-u4A">
-                                <rect key="frame" x="461.5" y="408" width="101" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="772-mI-u4A">
+                                <rect key="frame" x="461.5" y="408" width="101" height="59"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="36"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,6 +146,7 @@
                             <constraint firstItem="fAy-U5-tAH" firstAttribute="leading" secondItem="QJ0-wX-Ewx" secondAttribute="leading" constant="45" id="hTh-O0-tgU"/>
                             <constraint firstItem="9dy-Rn-5KA" firstAttribute="top" secondItem="QJ0-wX-Ewx" secondAttribute="top" id="rZH-Kb-EP2"/>
                             <constraint firstItem="QJ0-wX-Ewx" firstAttribute="trailing" secondItem="tvg-au-pEh" secondAttribute="trailing" constant="45" id="u3P-5A-KR8"/>
+                            <constraint firstItem="772-mI-u4A" firstAttribute="top" secondItem="fAy-U5-tAH" secondAttribute="bottom" constant="109" id="uLO-Hm-fji"/>
                             <constraint firstItem="fAy-U5-tAH" firstAttribute="top" secondItem="tvg-au-pEh" secondAttribute="bottom" constant="8" id="wrq-U6-ceU"/>
                             <constraint firstItem="9dy-Rn-5KA" firstAttribute="trailing" secondItem="QJ0-wX-Ewx" secondAttribute="trailing" id="xFn-Bh-exs"/>
                         </constraints>
@@ -271,7 +272,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="geometry" translatesAutoresizingMaskIntoConstraints="NO" id="C5X-YI-aqR">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <rect key="frame" x="0.0" y="20" width="1024" height="1346"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ2-vh-S1E">
                                 <rect key="frame" x="45" y="219.5" width="869" height="31.5"/>
@@ -325,23 +326,6 @@
                                 <color key="textColor" red="0.93333333333333335" green="0.85882352941176465" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgU-vh-e6T">
-                                <rect key="frame" x="416.5" y="1247" width="191" height="74"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="53"/>
-                                <size key="titleShadowOffset" width="-3" height="0.0"/>
-                                <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="1" green="0.73393332200000005" blue="0.20408709829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="signUpButtonTouchedUp:" destination="m3n-oF-sLy" eventType="touchUpInside" id="EmR-P9-5yE"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orf-yH-WRB">
                                 <rect key="frame" x="0.0" y="20" width="1024" height="50"/>
                                 <textAttributes key="titleTextAttributes">
@@ -361,6 +345,22 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgU-vh-e6T">
+                                <rect key="frame" x="446.5" y="885" width="131" height="59"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="36"/>
+                                <size key="titleShadowOffset" width="-3" height="0.0"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpButtonTouchedUp:" destination="m3n-oF-sLy" eventType="touchUpInside" id="EmR-P9-5yE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -370,10 +370,11 @@
                             <constraint firstItem="U4K-aw-nRN" firstAttribute="trailing" secondItem="C5X-YI-aqR" secondAttribute="trailing" id="6im-7x-UgZ"/>
                             <constraint firstItem="7Hk-1T-XIf" firstAttribute="leading" secondItem="U4K-aw-nRN" secondAttribute="leading" constant="45" id="8wa-bM-Qxi"/>
                             <constraint firstItem="orf-yH-WRB" firstAttribute="top" secondItem="U4K-aw-nRN" secondAttribute="top" id="B3L-36-19p"/>
-                            <constraint firstItem="U4K-aw-nRN" firstAttribute="bottom" secondItem="TgU-vh-e6T" secondAttribute="bottom" constant="45" id="Dn0-bV-AS9"/>
                             <constraint firstItem="YWS-LP-q3Z" firstAttribute="leading" secondItem="U4K-aw-nRN" secondAttribute="leading" constant="45" id="FmE-qV-mPZ"/>
+                            <constraint firstItem="TgU-vh-e6T" firstAttribute="top" secondItem="j7V-CO-dkq" secondAttribute="bottom" constant="134" id="Glt-vG-3YQ"/>
                             <constraint firstItem="C5X-YI-aqR" firstAttribute="leading" secondItem="U4K-aw-nRN" secondAttribute="leading" id="ImG-SP-Gpg"/>
                             <constraint firstItem="U4K-aw-nRN" firstAttribute="trailing" secondItem="YWS-LP-q3Z" secondAttribute="trailing" constant="45" id="KfS-dg-Kd0"/>
+                            <constraint firstItem="C5X-YI-aqR" firstAttribute="top" secondItem="U4K-aw-nRN" secondAttribute="top" id="Kmf-5k-e5m"/>
                             <constraint firstItem="j7V-CO-dkq" firstAttribute="leading" secondItem="U4K-aw-nRN" secondAttribute="leading" id="Kwm-jl-FQ5"/>
                             <constraint firstItem="ahU-bX-0tO" firstAttribute="top" secondItem="YWS-LP-q3Z" secondAttribute="bottom" constant="50" id="NSq-qH-8KT"/>
                             <constraint firstItem="U4K-aw-nRN" firstAttribute="trailing" secondItem="Flu-MV-EYN" secondAttribute="trailing" constant="45" id="NiR-7W-TGs"/>
@@ -382,7 +383,6 @@
                             <constraint firstItem="TgU-vh-e6T" firstAttribute="centerX" secondItem="xCz-JK-MD2" secondAttribute="centerX" id="QZw-f9-XXW"/>
                             <constraint firstItem="ahU-bX-0tO" firstAttribute="leading" secondItem="U4K-aw-nRN" secondAttribute="leading" constant="45" id="Vuc-Hn-8wt"/>
                             <constraint firstAttribute="bottom" secondItem="C5X-YI-aqR" secondAttribute="bottom" id="b7j-uY-46n"/>
-                            <constraint firstItem="C5X-YI-aqR" firstAttribute="top" secondItem="xCz-JK-MD2" secondAttribute="top" id="bKn-pw-orF"/>
                             <constraint firstItem="U4K-aw-nRN" firstAttribute="trailing" secondItem="KNw-i5-uST" secondAttribute="trailing" constant="45" id="cML-az-5bn"/>
                             <constraint firstItem="U4K-aw-nRN" firstAttribute="trailing" secondItem="ahU-bX-0tO" secondAttribute="trailing" constant="110" id="d4u-xA-iRd"/>
                             <constraint firstItem="Flu-MV-EYN" firstAttribute="leading" secondItem="U4K-aw-nRN" secondAttribute="leading" constant="45" id="dPN-na-22q"/>
