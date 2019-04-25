@@ -138,11 +138,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let string = "myString"
-        return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        choices = [String]()
+        choices.append("")
+        choices.append("Freshmen")
+        choices.append("Sophmore")
+        choices.append("Junior")
+        choices.append("Senior")
+        choices.append("Teacher")
+        choices.append("Parent")
+        return NSAttributedString(string: choices[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        choices = [String]()
         choices.append("")
         choices.append("Freshmen")
         choices.append("Sophmore")
