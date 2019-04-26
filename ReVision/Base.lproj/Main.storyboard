@@ -46,12 +46,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ItB-kq-Aq1" firstAttribute="bottom" secondItem="e5p-s1-HDE" secondAttribute="bottom" constant="354" id="71b-bb-aDy"/>
+                            <constraint firstItem="e5p-s1-HDE" firstAttribute="top" secondItem="s4S-9V-ToI" secondAttribute="bottom" constant="69" id="HD8-1F-RZc"/>
                             <constraint firstItem="ItB-kq-Aq1" firstAttribute="trailing" secondItem="axW-la-TZi" secondAttribute="trailing" id="HWV-m5-5Nb"/>
                             <constraint firstItem="s4S-9V-ToI" firstAttribute="centerX" secondItem="jI6-Tc-pEt" secondAttribute="centerX" id="OEi-A5-Mun"/>
                             <constraint firstItem="ItB-kq-Aq1" firstAttribute="bottom" secondItem="axW-la-TZi" secondAttribute="bottom" id="OpH-pS-jDl"/>
+                            <constraint firstItem="ItB-kq-Aq1" firstAttribute="bottom" secondItem="e5p-s1-HDE" secondAttribute="bottom" constant="354" id="TCW-p7-S3P"/>
                             <constraint firstItem="axW-la-TZi" firstAttribute="top" secondItem="ItB-kq-Aq1" secondAttribute="top" id="ULh-mX-3Km"/>
-                            <constraint firstItem="e5p-s1-HDE" firstAttribute="top" secondItem="s4S-9V-ToI" secondAttribute="bottom" constant="69" id="ZFb-B0-pnQ"/>
                             <constraint firstItem="e5p-s1-HDE" firstAttribute="centerX" secondItem="jI6-Tc-pEt" secondAttribute="centerX" id="wIl-ej-tGt"/>
                             <constraint firstItem="axW-la-TZi" firstAttribute="leading" secondItem="ItB-kq-Aq1" secondAttribute="leading" id="yOm-iV-TfE"/>
                         </constraints>
