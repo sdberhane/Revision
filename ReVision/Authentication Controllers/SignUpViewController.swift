@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         gradeRoleChooser.delegate = self
         
         emailTextField.becomeFirstResponder()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -137,7 +137,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return 7
     }
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        choices = [String]()
+        choices.append("")
+        choices.append("Freshmen")
+        choices.append("Sophmore")
+        choices.append("Junior")
+        choices.append("Senior")
+        choices.append("Teacher")
+        choices.append("Parent")
+        return NSAttributedString(string: choices[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+    }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        choices = [String]()
         choices.append("")
         choices.append("Freshmen")
         choices.append("Sophmore")
