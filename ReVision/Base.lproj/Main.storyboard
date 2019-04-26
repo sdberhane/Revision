@@ -415,17 +415,20 @@
             <objects>
                 <viewController id="UB8-dj-Hru" customClass="CreatePetitionViewController" customModule="ReVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mcc-o6-rgl">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTh-Dk-7L9">
-                                <rect key="frame" x="0.0" y="70" width="1024" height="1680"/>
+                                <rect key="frame" x="0.0" y="70" width="1024" height="2080"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N51-Ib-QGN">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="2200"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="geometry" translatesAutoresizingMaskIntoConstraints="NO" id="Xb7-an-Lct">
+                                                <rect key="frame" x="0.0" y="0.0" width="1024" height="2200"/>
+                                            </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Petition Title " textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-lE-rMv">
-                                                <rect key="frame" x="402" y="30" width="220" height="50"/>
+                                                <rect key="frame" x="402" y="92.5" width="220" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="220" id="ASZ-Iv-IzY"/>
                                                     <constraint firstAttribute="height" constant="50" id="tr8-Lp-XiG"/>
@@ -435,25 +438,43 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWm-NA-T3L">
-                                                <rect key="frame" x="352" y="683" width="320" height="170"/>
+                                                <rect key="frame" x="352" y="823.5" width="320" height="170"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="170" id="8Bl-o9-S8Q"/>
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2f-d4-tnu">
-                                                <rect key="frame" x="459.5" y="654" width="105.5" height="30"/>
+                                                <rect key="frame" x="459.5" y="794.5" width="105.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="25"/>
+                                                <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olk-YT-pqS">
+                                                <rect key="frame" x="423.5" y="35" width="177" height="37.5"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="32"/>
+                                                <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuA-4X-hZN">
+                                                <rect key="frame" x="429.5" y="182.5" width="165" height="34"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="29"/>
+                                                <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXN-af-8bn">
+                                                <rect key="frame" x="429.5" y="316.5" width="165" height="34"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="29"/>
                                                 <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azt-if-gzp">
-                                                <rect key="frame" x="447" y="878" width="130.5" height="30"/>
+                                                <rect key="frame" x="447" y="1018.5" width="130.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="25"/>
                                                 <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Write Your Petition" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lAX-FP-ReV">
-                                                <rect key="frame" x="135" y="220" width="754" height="384"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lAX-FP-ReV">
+                                                <rect key="frame" x="135" y="360.5" width="754" height="384"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="lAX-FP-ReV" secondAttribute="height" multiplier="377:192" id="sbF-9h-601"/>
@@ -461,8 +482,8 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="onDrag" text="Enter Sub Title" translatesAutoresizingMaskIntoConstraints="NO" id="UWY-At-5kA">
-                                                <rect key="frame" x="200" y="120" width="624" height="50"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="UWY-At-5kA">
+                                                <rect key="frame" x="200" y="226.5" width="624" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="byh-yp-ZIF"/>
@@ -471,7 +492,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zum-ys-LRu">
-                                                <rect key="frame" x="424" y="1376" width="176" height="74"/>
+                                                <rect key="frame" x="424" y="1926" width="176" height="74"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="53"/>
                                                 <size key="titleShadowOffset" width="-3" height="0.0"/>
@@ -487,8 +508,18 @@
                                                     <action selector="createPetitionButton:" destination="UB8-dj-Hru" eventType="touchUpInside" id="zU2-Qm-aCE"/>
                                                 </connections>
                                             </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Goal Number of Signatures" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOO-af-WRq">
+                                                <rect key="frame" x="387" y="1419" width="250" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="iBT-Lw-yzO"/>
+                                                    <constraint firstAttribute="height" constant="40" id="q0V-my-tkJ"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                                            </textField>
                                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QRo-mK-wTX">
-                                                <rect key="frame" x="277.5" y="921" width="469" height="312.5"/>
+                                                <rect key="frame" x="277.5" y="1061.5" width="469" height="312.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -499,41 +530,41 @@
                                                     <outletCollection property="gestureRecognizers" destination="TLb-JV-IEv" appends="YES" id="F4N-mw-21X"/>
                                                 </connections>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Goal Number of Signatures" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOO-af-WRq">
-                                                <rect key="frame" x="387" y="1278.5" width="250" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="250" id="iBT-Lw-yzO"/>
-                                                    <constraint firstAttribute="height" constant="40" id="q0V-my-tkJ"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
-                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.70336579623287676" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="zum-ys-LRu" secondAttribute="bottom" constant="50" id="2Xd-4W-GGx"/>
+                                            <constraint firstAttribute="bottom" secondItem="zum-ys-LRu" secondAttribute="bottom" constant="200" id="2Xd-4W-GGx"/>
+                                            <constraint firstItem="uXN-af-8bn" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="37S-oh-8ef"/>
                                             <constraint firstItem="azt-if-gzp" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="3Bx-cW-jnU"/>
                                             <constraint firstItem="Y1y-lE-rMv" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="5GN-wk-n2Q"/>
                                             <constraint firstItem="PWm-NA-T3L" firstAttribute="top" secondItem="lAX-FP-ReV" secondAttribute="bottom" constant="79" id="5lm-Iu-ajg"/>
                                             <constraint firstItem="QRo-mK-wTX" firstAttribute="top" secondItem="azt-if-gzp" secondAttribute="bottom" constant="13" id="65j-gP-M32"/>
-                                            <constraint firstItem="lAX-FP-ReV" firstAttribute="top" secondItem="UWY-At-5kA" secondAttribute="bottom" constant="50" id="9hz-yT-hVt"/>
                                             <constraint firstItem="lAX-FP-ReV" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="9k9-SA-cFE"/>
+                                            <constraint firstItem="Olk-YT-pqS" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="HLX-U5-frx"/>
                                             <constraint firstItem="UWY-At-5kA" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="Hmn-VZ-Bfd"/>
                                             <constraint firstItem="zum-ys-LRu" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="I3Z-Gq-OyP"/>
-                                            <constraint firstItem="Y1y-lE-rMv" firstAttribute="top" secondItem="N51-Ib-QGN" secondAttribute="top" constant="30" id="JjA-ZB-tKf"/>
+                                            <constraint firstItem="Y1y-lE-rMv" firstAttribute="top" secondItem="Olk-YT-pqS" secondAttribute="bottom" constant="20" id="Ihw-y7-Rba"/>
                                             <constraint firstItem="DOO-af-WRq" firstAttribute="top" secondItem="QRo-mK-wTX" secondAttribute="bottom" constant="45" id="Juw-Zt-gBM"/>
                                             <constraint firstItem="azt-if-gzp" firstAttribute="top" secondItem="PWm-NA-T3L" secondAttribute="bottom" constant="25" id="Krd-DP-8Hh"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xb7-an-Lct" secondAttribute="bottom" id="Ldf-yu-4Y5"/>
+                                            <constraint firstItem="lAX-FP-ReV" firstAttribute="top" secondItem="uXN-af-8bn" secondAttribute="bottom" constant="10" id="Mde-xZ-YGX"/>
                                             <constraint firstAttribute="trailing" secondItem="lAX-FP-ReV" secondAttribute="trailing" constant="135" id="OfS-Zu-e3n"/>
+                                            <constraint firstItem="Olk-YT-pqS" firstAttribute="top" secondItem="N51-Ib-QGN" secondAttribute="top" constant="35" id="Qhz-QY-e3p"/>
                                             <constraint firstAttribute="trailing" secondItem="UWY-At-5kA" secondAttribute="trailing" constant="200" id="S05-kO-2Ad"/>
                                             <constraint firstItem="lAX-FP-ReV" firstAttribute="leading" secondItem="N51-Ib-QGN" secondAttribute="leading" constant="135" id="YTt-mz-iFT"/>
                                             <constraint firstItem="PWm-NA-T3L" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="aOX-x3-fTf"/>
-                                            <constraint firstAttribute="height" constant="1500" id="gLt-ZK-Wx6"/>
+                                            <constraint firstItem="BuA-4X-hZN" firstAttribute="top" secondItem="Y1y-lE-rMv" secondAttribute="bottom" constant="40" id="c9w-dB-E7I"/>
+                                            <constraint firstItem="Xb7-an-Lct" firstAttribute="leading" secondItem="N51-Ib-QGN" secondAttribute="leading" id="cAf-Yt-gjW"/>
+                                            <constraint firstAttribute="height" constant="2200" id="gLt-ZK-Wx6"/>
                                             <constraint firstItem="DOO-af-WRq" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="hwZ-5I-cOs"/>
+                                            <constraint firstItem="UWY-At-5kA" firstAttribute="top" secondItem="BuA-4X-hZN" secondAttribute="bottom" constant="10" id="iTQ-ZQ-Lvr"/>
+                                            <constraint firstItem="BuA-4X-hZN" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="jg4-TC-mAn"/>
                                             <constraint firstItem="UWY-At-5kA" firstAttribute="leading" secondItem="N51-Ib-QGN" secondAttribute="leading" constant="200" id="mMO-fl-8CO"/>
+                                            <constraint firstItem="uXN-af-8bn" firstAttribute="top" secondItem="UWY-At-5kA" secondAttribute="bottom" constant="40" id="mhe-xY-8x8"/>
                                             <constraint firstItem="d2f-d4-tnu" firstAttribute="top" secondItem="lAX-FP-ReV" secondAttribute="bottom" constant="50" id="qem-7t-r5i"/>
-                                            <constraint firstItem="UWY-At-5kA" firstAttribute="top" secondItem="Y1y-lE-rMv" secondAttribute="bottom" constant="40" id="sjZ-WA-oGY"/>
+                                            <constraint firstItem="Xb7-an-Lct" firstAttribute="top" secondItem="N51-Ib-QGN" secondAttribute="top" id="sPn-T4-3XW"/>
                                             <constraint firstItem="d2f-d4-tnu" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="vge-we-WUs"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xb7-an-Lct" secondAttribute="trailing" id="ywX-q7-061"/>
                                             <constraint firstItem="QRo-mK-wTX" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="zHj-pe-ZQJ"/>
                                         </constraints>
                                     </view>
@@ -557,7 +588,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Fr-hp-eHi"/>
                     </view>
-                    <size key="freeformSize" width="1024" height="1800"/>
+                    <size key="freeformSize" width="1024" height="2200"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="lAX-FP-ReV" id="Xff-2F-3Rl"/>
                         <outlet property="goalTextField" destination="DOO-af-WRq" id="AeF-e5-A7v"/>

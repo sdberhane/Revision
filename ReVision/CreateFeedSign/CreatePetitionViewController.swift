@@ -72,15 +72,16 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
        // view.safeAreaLayoutGuide
         //view.addConstraint(view.sa) view.safeAreaLayoutGuide.widthAnchor
-        petitionImageView.layer.cornerRadius = 3
+    
+        petitionImageView.layer.cornerRadius = 10
         petitionImageView.layer.borderWidth = 10
         petitionImageView.layer.borderColor = UIColor.gray.cgColor
         
-        titleTextField.layer.cornerRadius = 3
+        titleTextField.layer.cornerRadius = 6
         titleTextField.layer.borderWidth = 1.5
         titleTextField.layer.borderColor = UIColor.gray.cgColor
         
-        goalTextField.layer.cornerRadius = 3
+        goalTextField.layer.cornerRadius = 6
         goalTextField.layer.borderWidth = 1.5
         goalTextField.layer.borderColor = UIColor.gray.cgColor
         
@@ -89,12 +90,12 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         scrollView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         //view.widthAnchor.constraint(equalToConstant: width).isActive = true
       //  scrollView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        descriptionTextView.layer.cornerRadius = 5
+        descriptionTextView.layer.cornerRadius = 10
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor
         descriptionTextView.layer.borderWidth = 1.5
         
         
-        subtitleTextView.layer.cornerRadius = 5
+        subtitleTextView.layer.cornerRadius = 10
         subtitleTextView.layer.borderColor = UIColor.gray.cgColor
         subtitleTextView.layer.borderWidth = 1.5
         guard let uid = Auth.auth().currentUser?.uid else {return}
@@ -280,5 +281,22 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         tag = tagOptions[row]
     }
-
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        tagOptions.append("Freshmen")
+        tagOptions.append("Sophomore")
+        tagOptions.append("Juniors")
+        tagOptions.append("Seniors")
+        tagOptions.append("Sports")
+        tagOptions.append("Parents")
+        tagOptions.append("Teachers")
+        tagOptions.append("Sports")
+        tagOptions.append("Clubs")
+        tagOptions.append("Academics")
+        tagOptions.append("Graduation")
+        tagOptions.append("Facilities")
+        tagOptions.append("Schedule")
+        tagOptions.append("Other")
+        return NSAttributedString(string: tagOptions[row] ?? "Freshmen", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+    }
 }
