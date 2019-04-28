@@ -84,7 +84,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchedPetition", for: indexPath) as! SearchTableViewCell
         let row = indexPath.row
-        cell.title.font = Fonts().titleFont
         if filteredPetitions.count > 0{
             //cell.textLabel?.text = filteredPetitions[row].title
             cell.title.text = filteredPetitions[row].title
