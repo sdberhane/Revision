@@ -37,7 +37,6 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondFeedCell", for: indexPath) as! PetitionTableViewCell
         let section = indexPath.section
-        cell.petitionTitle.font = Fonts().titleFont
         if filteredPetitions?.count ?? 0 > 0 {
             cell.petitionTitle.text = filteredPetitions?[section].title
             cell.petitionSubtitle.text = filteredPetitions?[section].subtitle
