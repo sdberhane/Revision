@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-
+ 
 class HomescreenViewController: UIViewController {
 
     @IBAction func logInButton(_ sender: UIButton) {
@@ -16,6 +16,11 @@ class HomescreenViewController: UIViewController {
     }
     @IBAction func signUpButton(_ sender: UIButton) {
     }
+    
+    @IBOutlet weak var logIn: UIButton!
+    @IBOutlet weak var signUp: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
