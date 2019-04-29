@@ -162,11 +162,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //So they won't have a blank role
-//        if choices[row] != ""{
-//            role = choices[row]
-//            emailTextField.becomeFirstResponder()
-//        }else{
-//            emailTextField.resignFirstResponder()
-//        }
+        if choices[row] != ""{
+            role = choices[row]
+            emailTextField.becomeFirstResponder()
+        }else{
+            emailTextField.resignFirstResponder()
+        }
     }
 }
