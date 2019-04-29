@@ -11,7 +11,6 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
 import AVFoundation
-//import MobileCoreServices
 
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -148,31 +147,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//
-//        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL {
-//           //selected a video
-//            let storage = Storage.storage().reference().child("petition media files").child("123")
-//
-//            storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
-//                if error == nil && metadata != nil{
-//
-//                }
-//
-//                storage.downloadURL(completion: { (url, error) in
-//                    if error != nil {
-//                        print("Failed to download url:", error!)
-//                        return
-//                    } else {
-//                        guard let i = url else {return}
-//                        self.fileUrl = i.absoluteString
-//                        print("this is the url",i)
-//                      //  self.petitionImageView.image = self.videoPreview(videoUrl: url!)
-//                        self.reloadInputViews()
-//                    }
-//                })
-//            })
-//
-//        } else {
+        
             var selectedImageFromPicker:UIImage?
   
             if let originalImage = info[.originalImage] as? UIImage{
@@ -184,14 +159,13 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                     self.fileUrl = i.absoluteString
                     print("this is the url",i.absoluteString)
                     print("uploaded image")
+                    self.imagePicker?.dismiss(animated: true, completion: nil)
                 }
             }
             
             petitionImageView.image = selectedImageFromPicker
-            print("what are u doing")
-//        }
         
-        imagePicker?.dismiss(animated: true, completion: nil)
+      //  imagePicker?.dismiss(animated: true, completion: nil)
         print("dimissed please")
     }
     
