@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Sets the id for the item saved
 class SaveForLaterBarButtonItem: UIBarButtonItem {
     var id : String? = nil
     

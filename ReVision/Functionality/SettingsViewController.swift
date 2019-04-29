@@ -11,11 +11,13 @@ import FirebaseAuth
 
 class SettingsViewController: UIViewController {
     
+    //Logs the user out and sents them to the homescreen
     @IBAction func logOutButton(_ sender: UIButton) {
         try! Auth.auth().signOut()
         self.dismiss(animated: true, completion: nil)
     }
     
+    //Sets the nav title to settings
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Settings"

@@ -9,11 +9,14 @@
 import UIKit
 import FirebaseDatabase
 
+//Purpose: Allow user to search through petitions to find their desired petition
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    
+    //Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    //Instance Fields
     var ref : DatabaseReference?
     var handle : DatabaseHandle?
     var activePetitions = [Petition]()
@@ -22,11 +25,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        //Sets the returnkey
         searchBar.returnKeyType = UIReturnKeyType.done
+        
+        //Sets the reference
         ref = Database.database().reference().child("Active Petitions")
         
-        
+        //Sets values for thsi reference
         ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             //Creating a dictionary of the Petitions
             let dicts = snapshot.value as? [String : AnyObject] ?? [:]
@@ -48,8 +54,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.tableView.reloadData()
         })
         
+        //redfines this reference
         ref = Database.database().reference().child("Completed Petitions")
-
+        
+        //Sets values for this reference
         ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             //Creating a dictionary of the Petitions
             let dict = snapshot.value as? [String : AnyObject] ?? [:]
@@ -74,6 +82,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
 
+    //Sets the number of rows in the table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if filteredPetitions.count > 0{
             return filteredPetitions.count
@@ -81,6 +90,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 0
     }
     
+    //Fills the table view with information based off of teh indexpath
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchedPetition", for: indexPath) as! SearchTableViewCell
         let row = indexPath.row
@@ -97,6 +107,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    //Sends information to the Petition View
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? SearchTableViewCell {
             if let vc = segue.destination as? PetitionViewController {
@@ -107,11 +118,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    //Uses the search bar to filter throught petitions and display it in the table view
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.selectedScopeButtonIndex == 0 {
             filteredPetitions = activePetitions.filter({ (petition) -> Bool in
                 guard let text = searchBar.text else {return false}
-    //            return petition.title?.contains(text) ?? false
                 if petition.title?.lowercased().contains(text.lowercased()) ?? false || petition.creator?.lowercased().contains(text.lowercased()) ?? false || petition.subtitle?.lowercased().contains(text.lowercased()) ?? false || petition.description?.lowercased().contains(text.lowercased()) ?? false {
                     return true
                 }
@@ -120,7 +131,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{
             filteredPetitions = completedPetitoins.filter({ (petition) -> Bool in
                 guard let text = searchBar.text else {return false}
-                //            return petition.title?.contains(text) ?? false
                 if petition.title?.lowercased().contains(text.lowercased()) ?? false || petition.creator?.lowercased().contains(text.lowercased()) ?? false || petition.subtitle?.lowercased().contains(text.lowercased()) ?? false || petition.description?.lowercased().contains(text.lowercased()) ?? false {
                     return true
                 }
@@ -128,9 +138,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             })
         }
         tableView.reloadData()
-        //searchBar.text
     }
     
+    //Removes all in the filtered petitions if user changes scope of search
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         searchBar.text = ""
         filteredPetitions.removeAll()
