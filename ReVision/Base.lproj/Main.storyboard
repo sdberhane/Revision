@@ -493,7 +493,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zum-ys-LRu">
-                                                <rect key="frame" x="435.5" y="1762.5" width="153" height="221"/>
+                                                <rect key="frame" x="435.5" y="1762.5" width="153" height="77"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
                                                 <size key="titleShadowOffset" width="-3" height="0.0"/>
                                                 <state key="normal" title="Create">
@@ -544,6 +544,7 @@
                                             <constraint firstItem="lAX-FP-ReV" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="9k9-SA-cFE"/>
                                             <constraint firstAttribute="height" constant="2100" id="Dmf-Lz-lKd"/>
                                             <constraint firstItem="DOO-af-WRq" firstAttribute="top" secondItem="KfR-Ia-Jpu" secondAttribute="bottom" constant="10" id="Ed0-9p-apy"/>
+                                            <constraint firstAttribute="bottom" secondItem="zum-ys-LRu" secondAttribute="bottom" constant="260.5" id="Geh-RQ-GnN"/>
                                             <constraint firstItem="Olk-YT-pqS" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="HLX-U5-frx"/>
                                             <constraint firstItem="UWY-At-5kA" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="Hmn-VZ-Bfd"/>
                                             <constraint firstItem="zum-ys-LRu" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="I3Z-Gq-OyP"/>
@@ -565,14 +566,12 @@
                                             <constraint firstItem="QRo-mK-wTX" firstAttribute="top" secondItem="azt-if-gzp" secondAttribute="bottom" constant="10" id="tx8-LD-Zks"/>
                                             <constraint firstItem="KfR-Ia-Jpu" firstAttribute="top" secondItem="QRo-mK-wTX" secondAttribute="bottom" constant="50" id="vPz-pr-BJq"/>
                                             <constraint firstItem="d2f-d4-tnu" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="vge-we-WUs"/>
-                                            <constraint firstAttribute="bottom" secondItem="zum-ys-LRu" secondAttribute="bottom" constant="116.5" id="ytI-bJ-APF"/>
                                             <constraint firstItem="QRo-mK-wTX" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="zHj-pe-ZQJ"/>
                                             <constraint firstItem="KfR-Ia-Jpu" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="ztW-D5-Pxx"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="N51-Ib-QGN" firstAttribute="width" secondItem="uTh-Dk-7L9" secondAttribute="width" id="6ce-Dm-Jk2"/>
                                     <constraint firstItem="N51-Ib-QGN" firstAttribute="leading" secondItem="uTh-Dk-7L9" secondAttribute="leading" id="Ihd-hZ-5aJ"/>
                                     <constraint firstAttribute="bottom" secondItem="Xb7-an-Lct" secondAttribute="bottom" id="Inm-XS-9yj"/>
                                     <constraint firstAttribute="trailing" secondItem="Xb7-an-Lct" secondAttribute="trailing" id="SLo-lc-0Fs"/>
@@ -589,6 +588,7 @@
                             <constraint firstItem="uTh-Dk-7L9" firstAttribute="leading" secondItem="8Fr-hp-eHi" secondAttribute="leading" id="A7K-Cj-VVa"/>
                             <constraint firstItem="uTh-Dk-7L9" firstAttribute="trailing" secondItem="8Fr-hp-eHi" secondAttribute="trailing" id="Kyc-Dw-omi"/>
                             <constraint firstItem="uTh-Dk-7L9" firstAttribute="top" secondItem="8Fr-hp-eHi" secondAttribute="top" id="f4c-aM-e5u"/>
+                            <constraint firstItem="N51-Ib-QGN" firstAttribute="width" secondItem="Mcc-o6-rgl" secondAttribute="width" id="iuY-D4-KLO"/>
                             <constraint firstItem="uTh-Dk-7L9" firstAttribute="bottom" secondItem="8Fr-hp-eHi" secondAttribute="bottom" id="pMb-nB-WS6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Fr-hp-eHi"/>
