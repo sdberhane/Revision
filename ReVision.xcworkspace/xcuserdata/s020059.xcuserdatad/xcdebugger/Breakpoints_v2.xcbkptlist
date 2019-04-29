@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ReVision/CreateFeedSign/CreatePetitionViewController.swift"
-            timestampString = "578198327.826058"
+            timestampString = "578224071.773219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "uploadPetitionImage(_:_:)"
             landmarkType = "7">
          </BreakpointContent>

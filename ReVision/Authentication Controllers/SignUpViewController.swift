@@ -16,11 +16,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     //Outlets
     @IBOutlet weak var gradeRoleChooser: UIPickerView!
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
-    
+    // dismissing if canceled
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -41,8 +40,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         //Creates the user and then adds information about them into the database
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if user != nil, error == nil{
-                print("user created")
-                
                 guard let uid = Auth.auth().currentUser?.uid else {return}
                 
                 //Checks to see if they are not a freshmen, if they aren't it adds an s so that
@@ -63,9 +60,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 print(error.debugDescription)
             }
         }
-        
- 
-        
+    
     }
     
     
@@ -84,7 +79,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //Text field protocol
+        //Text field protocol, checking to ensure validity of information and transferring first responder
         if emailTextField.isFirstResponder {
             if emailTextField?.text?.count ?? 0 == 0{
                 let alreadySignedAlert = UIAlertController(title: "NO EMAIL", message: "Please Insert Email", preferredStyle: .alert)
@@ -121,7 +116,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 self.present(alreadySignedAlert, animated: true, completion: nil)
                 emailTextField.text = ""
             }else{
-                 passwordTextField.resignFirstResponder()
+                passwordTextField.resignFirstResponder()
+                // enabling sign up after all text fields are confirmed
                 signupButton.isEnabled = true
             }
         }
@@ -137,6 +133,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return 7
     }
     
+    // turning all text white
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         choices = [String]()
         choices.append("")
@@ -149,6 +146,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return NSAttributedString(string: choices[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
+    // adding all choices
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         choices = [String]()
         choices.append("")
@@ -164,11 +162,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //So they won't have a blank role
-//        if choices[row] != ""{
-//            role = choices[row]
-//            emailTextField.becomeFirstResponder()
-//        }else{
-//            emailTextField.resignFirstResponder()
-//        }
+        if choices[row] != ""{
+            role = choices[row]
+            emailTextField.becomeFirstResponder()
+        }else{
+            emailTextField.resignFirstResponder()
+        }
     }
 }

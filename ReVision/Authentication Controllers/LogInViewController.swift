@@ -6,16 +6,19 @@
 //  Copyright © 2019 Eugenia Feng (student LM). All rights reserved.
 //
 
+// import statement
 import UIKit
 import FirebaseAuth
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
 
+    // outlets
     @IBAction func logInButton(_ sender: UIButton) {
-        
+        // storing email and password
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         
+        // signing in the user and dismissing unless an error occurs
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             
             if error == nil && user != nil{
@@ -28,6 +31,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    // dismissing view after user logs in
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -35,17 +39,5 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
     }
-    //hola
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

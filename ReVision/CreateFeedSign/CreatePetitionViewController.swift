@@ -6,6 +6,7 @@
 //  Copyright © 2019 Eugenia Feng (student LM). All rights reserved.
 //
 
+// import statements
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
@@ -14,7 +15,7 @@ import AVFoundation
 
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    
+    // declaring variables
     var ref = Database.database().reference()
     var petition:Petition?
     let userID = Auth.auth().currentUser?.uid ?? ""
@@ -28,16 +29,16 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     var grade : String?
     var imageName: String?
     
+    // outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextView: UITextView!
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var petitionImageView: UIImageView!
     @IBOutlet weak var tagPicker: UIPickerView!
-    
     @IBOutlet var scrollView: UIScrollView!
     @IBAction func createPetitionButton(_ sender: UIButton) {
-        
+        // checking if the title is too long or not
         if titleTextField?.text?.count ?? 10 > 50{
             let alreadySignedAlert = UIAlertController(title: "Too Many Characters", message: "Please Make Title Shorter", preferredStyle: .alert)
             let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -45,6 +46,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             self.present(alreadySignedAlert, animated: true, completion: nil)
             titleTextField.text = ""
         }
+        // storing the values from the create into an array
         petitionDict = [
             "Title" : titleTextField?.text ?? " ",
             "Subtitle" : subtitleTextView.text ?? " ",
@@ -55,13 +57,16 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             "Media File URL" : fileUrl,
             "Author" : author ?? " "
         ]
+        // setting the petition into firebase
         guard let uid = Auth.auth().currentUser?.uid else {return}
         fileID.setValue(petitionDict)
         
+        // returning to the feed view after the user creates a petition
         self.navigationController?.popViewController(animated: true)
 
     }
 
+    // opening the image picker when the user taps the image
     @IBAction func petitionImageViewTapped(_ sender: UITapGestureRecognizer) {
         self.present(imagePicker!, animated: true, completion: nil)
         
@@ -69,60 +74,62 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // view.safeAreaLayoutGuide
-        //view.addConstraint(view.sa) view.safeAreaLayoutGuide.widthAnchor
-    
+        // petition image view display settings
         petitionImageView.layer.cornerRadius = 10
         petitionImageView.layer.borderWidth = 10
         petitionImageView.layer.borderColor = UIColor.gray.cgColor
         
+        // title text field display settings
         titleTextField.layer.cornerRadius = 6
         titleTextField.layer.borderWidth = 1.5
         titleTextField.layer.borderColor = UIColor.gray.cgColor
         
+        // goal text field display settings
         goalTextField.layer.cornerRadius = 6
         goalTextField.layer.borderWidth = 1.5
         goalTextField.layer.borderColor = UIColor.gray.cgColor
         
-        
+        // constraining the view and implementing scroll view
         view.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
-        //view.widthAnchor.constraint(equalToConstant: width).isActive = true
-      //  scrollView.widthAnchor.constraint(equalToConstant: width).isActive = true
+     
+        // description text view display settings
         descriptionTextView.layer.cornerRadius = 10
         descriptionTextView.layer.borderColor = UIColor.gray.cgColor
         descriptionTextView.layer.borderWidth = 1.5
         
-        
+        // subtitle text view display settings
         subtitleTextView.layer.cornerRadius = 10
         subtitleTextView.layer.borderColor = UIColor.gray.cgColor
         subtitleTextView.layer.borderWidth = 1.5
+        
+        // getting the author's name
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let refere = Database.database().reference().child("Users/\(uid)/Name")
         refere.observeSingleEvent(of: .value) { (snapshot) in
             self.author = snapshot.value as? String
         }
         
+        // implementing tag picker
         tagPicker.delegate = self
         tagPicker.dataSource = self
         
+        // petition image view display settings
         petitionImageView.isUserInteractionEnabled = true
-        
         petitionImageView.layer.borderWidth = 1
         petitionImageView.layer.masksToBounds = false
         petitionImageView.layer.borderColor = UIColor.blue.cgColor
         petitionImageView.clipsToBounds = true
         
-//        imagePicker?.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-        
+        // checking if the photo library is accessible
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             imagePicker = UIImagePickerController()
             imagePicker?.allowsEditing = true
             imagePicker?.delegate = self
             imagePicker?.sourceType = .photoLibrary
-            print("another one")
         }
         
+        // storing the image file and loading it
         getfileUrl(){url in
             let storage = Storage.storage()
             guard let fileUrl = url else {return}
@@ -138,51 +145,48 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                 }
             }
         }
-        
+        // setting the title on the navigation bar
         self.navigationItem.title = "Create A Petition"
     }
     
+    // dismissing the image picker
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         imagePicker?.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
             var selectedImageFromPicker:UIImage?
-  
+        
+            // uploading the image and dismissing the picker
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
-                print("inside if")
+           
+                petitionImageView.image = selectedImageFromPicker
+                
                 uploadPetitionImage(originalImage){ url in
-                    print("inside the method")
                     guard let i = url else {return}
                     self.fileUrl = i.absoluteString
-                    print("this is the url",i.absoluteString)
-                    print("uploaded image")
-                    self.imagePicker?.dismiss(animated: true, completion: nil)
+               //     self.imagePicker?.dismiss(animated: true, completion: nil)
                 }
             }
-            
-            petitionImageView.image = selectedImageFromPicker
         
-      //  imagePicker?.dismiss(animated: true, completion: nil)
-        print("dimissed please")
+        
+        // dismissing image picker
+        imagePicker?.dismiss(animated: true, completion: nil)
     }
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
-        print("hello this is me")
         imageName = randomString(20) as String
         let storage = Storage.storage().reference().child("petition media files").child(imageName ?? " ")
-        print("media files")
-        
+
         //images must be saved as data objects to convert and compress the image
         guard let image = petitionImageView?.image, let imageData = image.jpegData(compressionQuality: 0.75) else {return}
-        
-        print("this is me again")
+    
         //store image
         storage.putData(imageData,metadata: StorageMetadata()){
             (metaData, error) in
+           
             if error == nil && metaData != nil{
                 storage.downloadURL{ url, error in guard let downloadURL = url else {return}
                     completion(downloadURL)
@@ -191,15 +195,15 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                 completion(nil)
             }
         }
-        print("hows it going")
     }
     
-    
+    // producing a random string
     func randomString(_ length: Int)-> String{
         let letters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
+    // retrieving the photoURL
     func getfileUrl(_ completion: @escaping((_ url:String?)->())){
         let databaseRef = self.ref.child("Active Petitions").child(userID)
         
@@ -213,11 +217,12 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         }
     }
 
-    
+    // returning number of components in pickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    // number of rows in pickerView
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 14
     }
@@ -225,15 +230,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
   
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        guard let uid = Auth.auth().currentUser?.uid else {return "ERROR"}
-//        var handler = Database.database().reference().child("Users/\(uid)/Grade").observe(.value) { (snapshot) in
-//            self.grade = snapshot.value as? String
-//        }
-//        if let grd = grade {
-//            tagOptions.append(grd)
-//        }else{
-//            tagOptions.append("Freshmen")
-//        }
+        // adding all the pickerView options
         tagOptions.append("Freshmen")
         tagOptions.append("Sophomore")
         tagOptions.append("Juniors")
@@ -252,11 +249,13 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         
     }
     
+    // storing the tag from the one that was selected
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         tag = tagOptions[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        // turning all the tags white in the pickerView
         tagOptions.append("Freshmen")
         tagOptions.append("Sophomore")
         tagOptions.append("Juniors")
