@@ -425,7 +425,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1956"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N51-Ib-QGN">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1956"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="2100"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Petition Title " textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-lE-rMv">
                                                 <rect key="frame" x="212" y="84" width="600" height="50"/>
@@ -493,7 +493,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zum-ys-LRu">
-                                                <rect key="frame" x="435.5" y="1762.5" width="153" height="77"/>
+                                                <rect key="frame" x="435.5" y="1762.5" width="153" height="221"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
                                                 <size key="titleShadowOffset" width="-3" height="0.0"/>
                                                 <state key="normal" title="Create">
@@ -542,7 +542,7 @@
                                             <constraint firstItem="azt-if-gzp" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="3Bx-cW-jnU"/>
                                             <constraint firstItem="Y1y-lE-rMv" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="5GN-wk-n2Q"/>
                                             <constraint firstItem="lAX-FP-ReV" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="9k9-SA-cFE"/>
-                                            <constraint firstAttribute="height" constant="1956" id="Dmf-Lz-lKd"/>
+                                            <constraint firstAttribute="height" constant="2100" id="Dmf-Lz-lKd"/>
                                             <constraint firstItem="DOO-af-WRq" firstAttribute="top" secondItem="KfR-Ia-Jpu" secondAttribute="bottom" constant="10" id="Ed0-9p-apy"/>
                                             <constraint firstItem="Olk-YT-pqS" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="HLX-U5-frx"/>
                                             <constraint firstItem="UWY-At-5kA" firstAttribute="centerX" secondItem="N51-Ib-QGN" secondAttribute="centerX" id="Hmn-VZ-Bfd"/>
