@@ -121,7 +121,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         petitionImageView.layer.borderColor = UIColor.blue.cgColor
         petitionImageView.clipsToBounds = true
         
-        // using the photo library for the image picker
+        // checking if the photo library is accessible
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             imagePicker = UIImagePickerController()
             imagePicker?.allowsEditing = true
@@ -160,14 +160,17 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             // uploading the image and dismissing the picker
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
+           
+                petitionImageView.image = selectedImageFromPicker
+                
                 uploadPetitionImage(originalImage){ url in
                     guard let i = url else {return}
                     self.fileUrl = i.absoluteString
-                    self.imagePicker?.dismiss(animated: true, completion: nil)
+               //     self.imagePicker?.dismiss(animated: true, completion: nil)
                 }
             }
-        // setting the image
-        petitionImageView.image = selectedImageFromPicker
+        
+        
         // dismissing image picker
         imagePicker?.dismiss(animated: true, completion: nil)
     }
@@ -176,13 +179,14 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
         //reference to storage object
         imageName = randomString(20) as String
         let storage = Storage.storage().reference().child("petition media files").child(imageName ?? " ")
-        
+
         //images must be saved as data objects to convert and compress the image
         guard let image = petitionImageView?.image, let imageData = image.jpegData(compressionQuality: 0.75) else {return}
-        
+    
         //store image
         storage.putData(imageData,metadata: StorageMetadata()){
             (metaData, error) in
+           
             if error == nil && metaData != nil{
                 storage.downloadURL{ url, error in guard let downloadURL = url else {return}
                     completion(downloadURL)
