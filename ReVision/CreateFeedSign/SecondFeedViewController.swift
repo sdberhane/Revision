@@ -6,6 +6,7 @@
 //  Copyright © 2019 Eugenia Feng (student LM). All rights reserved.
 //
 
+// import statements
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
@@ -13,6 +14,7 @@ import FirebaseStorage
 
 class SecondFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // declaring variables and outlets
     @IBOutlet weak var tableView: UITableView!
     var ref: DatabaseReference?
     var handle: DatabaseHandle?
@@ -22,29 +24,35 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     var petitionCategory: Int?
     var name: String?
     
+    // returning 1 row in section in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    // returning number of sections based on filteredPetitions count
     func numberOfSections(in tableView: UITableView) -> Int {
         return filteredPetitions?.count ?? 1
     }
     
+    // height for header is 5
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // declaring variables
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondFeedCell", for: indexPath) as! PetitionTableViewCell
         let section = indexPath.section
+        
+        // storing and dipslaying values of the petition
         if filteredPetitions?.count ?? 0 > 0 {
             cell.petitionTitle.text = filteredPetitions?[section].title
             cell.petitionSubtitle.text = filteredPetitions?[section].subtitle
             cell.petitionTag.text = filteredPetitions?[section].tag
-            //cell.author.text = "By: \(filteredPetitions[section].author ?? "ERROR")"
             cell.creator = filteredPetitions?[section].creator
             cell.active = filteredPetitions?[section].active ?? false
             cell.id = filteredPetitions?[section].ID
+            // displaying image of petition
             if let petitionImageUrl = filteredPetitions?[section].imageURL{
                 let url = NSURL(string: petitionImageUrl as! String)
                 URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
@@ -54,14 +62,17 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                     cell.petitionImage.image = UIImage(data:data!)
                 }).resume()
             }
+            // cell display settings
             cell.layer.borderColor = UIColor.gray.cgColor
             cell.layer.borderWidth = 1
             cell.layer.cornerRadius = 8
             cell.clipsToBounds = true
             
+            // petition progress view display
             let percentDone = Float(Double(filteredPetitions?[section].signatures.count ?? 0) / Double(filteredPetitions?[section].goalSignatures ?? 100))
             cell.petitionProgressView.setProgress(percentDone, animated: true)
 
+            // username text setting
             cell.petitionUserName.text = filteredPetitions?[section].author ?? "ERROR"
 
         }
@@ -72,18 +83,20 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // variable declarations
         activePetitions = [Petition]()
         savedPetitions = [String]()
         activePetitions?.removeAll()
         ref = Database.database().reference().child("Active Petitions")
 
+        // observing the values of active petitions
         ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             let dict = snapshot.value as? [String : AnyObject] ?? [:]
             for d in dict.keys {
                 let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
                 let petition = Petition()
                 
+                // storing all the values of the petition
                 petition.title = petitionKey["Title"] as? String
                 petition.subtitle = petitionKey["Subtitle"] as? String
                 petition.author = petitionKey["Author"] as? String
@@ -96,21 +109,24 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.imageURL = petitionKey["Media File URL"] as? String
                 petition.active = true
                 
+                // adding to an array of petitions
                 self.activePetitions?.append(petition)
                 
             }
-            
+            // reloading tableView
             self.tableView.reloadData()
         })
         
         ref = Database.database().reference().child("Completed Petitions")
         
+        // observing the values of completed petitions
         ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             let dict = snapshot.value as? [String : AnyObject] ?? [:]
             for d in dict.keys {
                 let petitionKey = dict[d] as? [String : AnyObject] ?? [:]
                 let petition = Petition()
                 
+                // storing values of petitions
                 petition.title = petitionKey["Title"] as? String
                 petition.subtitle = petitionKey["Subtitle"] as? String
                 petition.author = petitionKey["Author"] as? String
@@ -123,18 +139,19 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 petition.active = false
                 petition.ID = d
 
+                // adding to array of petitiosn
                 self.activePetitions?.append(petition)
-                
-                
             }
-            
+            // reloading tableView
             self.tableView.reloadData()
             
         })
-    Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
+        // storing the name of the user for the my created petitions
+        Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Name").observeSingleEvent(of: .value) { (snapshot) in
             self.name = snapshot.value as? String
         }
         
+        // reading in and storing the saved petitions of the user
         if petitionCategory == 1 {
             Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("Saved Petitions").observeSingleEvent(of: .value) { (snapshot) in
                 let dict = snapshot.value as? [String : String] ?? [:]
@@ -149,7 +166,8 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidAppear(_ animated: Bool) {
         filteredPetitions = [Petition]()
         
-        //need to figure out how to pass what type of feed they want
+        // changing the navigation title and correct petitions based on tag and other categories
+        // filtering through based on which category they chose
         filteredPetitions = activePetitions?.filter({ (petition) -> Bool in
             switch petitionCategory {
             case 0: // show signed petitions
@@ -252,14 +270,16 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 return false
             }
         })
-        
+        // reloading tableView
         self.tableView.reloadData()
     }
     
+    // seguing to petition view to display petition
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "petitionView2", sender: tableView.cellForRow(at: indexPath))
     }
 
+    // preparing segue by passing the userID, active state, petition ID
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? PetitionTableViewCell {
             if let vc = segue.destination as? PetitionViewController {
