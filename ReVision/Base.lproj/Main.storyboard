@@ -450,20 +450,20 @@
                                                 <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olk-YT-pqS">
-                                                <rect key="frame" x="448" y="35" width="128" height="35"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olk-YT-pqS">
+                                                <rect key="frame" x="485.5" y="35" width="53" height="35"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                                                 <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuA-4X-hZN">
-                                                <rect key="frame" x="427" y="180" width="170.5" height="35"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuA-4X-hZN">
+                                                <rect key="frame" x="464.5" y="180" width="95.5" height="35"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                                                 <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write Petition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXN-af-8bn">
-                                                <rect key="frame" x="427.5" y="325" width="169" height="35"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXN-af-8bn">
+                                                <rect key="frame" x="440.5" y="325" width="143" height="35"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                                                 <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -520,8 +520,8 @@
                                                     <outletCollection property="gestureRecognizers" destination="TLb-JV-IEv" appends="YES" id="F4N-mw-21X"/>
                                                 </connections>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Goal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfR-Ia-Jpu">
-                                                <rect key="frame" x="434.5" y="1476.5" width="155.5" height="35"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signature Goal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfR-Ia-Jpu">
+                                                <rect key="frame" x="419.5" y="1476.5" width="185" height="35"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                                                 <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1349,7 +1349,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOy-Oi-9xX">
-                                                    <rect key="frame" x="30" y="868" width="944" height="41"/>
+                                                    <rect key="frame" x="30" y="883" width="944" height="41"/>
                                                     <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1411,7 +1411,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="2cC-bP-V4o" secondAttribute="bottom" constant="0.67000000000000004" id="hb0-Ds-fSr"/>
                                                 <constraint firstItem="ESX-sP-KeU" firstAttribute="top" secondItem="Sxt-a5-vBT" secondAttribute="bottom" constant="9" id="iqE-eu-sdF"/>
                                                 <constraint firstItem="Bcz-So-Agy" firstAttribute="top" secondItem="kQb-qq-EaB" secondAttribute="bottom" constant="120" id="pqg-cd-42I"/>
-                                                <constraint firstItem="2cC-bP-V4o" firstAttribute="top" secondItem="jOy-Oi-9xX" secondAttribute="bottom" constant="50" id="ptn-Lt-hRg"/>
+                                                <constraint firstItem="2cC-bP-V4o" firstAttribute="top" secondItem="jOy-Oi-9xX" secondAttribute="bottom" constant="35" id="ptn-Lt-hRg"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ESX-sP-KeU" secondAttribute="trailing" constant="15" id="qJt-9d-1vt"/>
                                                 <constraint firstItem="WHN-c2-aNC" firstAttribute="trailing" secondItem="0dW-fO-RLc" secondAttribute="trailingMargin" constant="-8" id="x89-xn-fqH"/>
                                                 <constraint firstItem="Bcz-So-Agy" firstAttribute="leading" secondItem="0dW-fO-RLc" secondAttribute="leading" id="yeZ-hm-6ca"/>
@@ -1528,7 +1528,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lap-LJ-auN">
-                                                    <rect key="frame" x="30" y="868" width="944" height="41"/>
+                                                    <rect key="frame" x="30" y="883" width="944" height="41"/>
                                                     <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1587,7 +1587,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="R4O-kP-K0O" secondAttribute="trailing" id="Ovi-KN-PSR"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qgi-QC-7c6" secondAttribute="bottom" constant="0.67000000000000004" id="QGO-89-K1B"/>
                                                 <constraint firstItem="q1Q-bo-3ZX" firstAttribute="top" secondItem="JDC-8k-PWm" secondAttribute="topMargin" constant="10" id="aKJ-32-Ppv"/>
-                                                <constraint firstItem="Qgi-QC-7c6" firstAttribute="top" secondItem="lap-LJ-auN" secondAttribute="bottom" constant="50" id="dZw-3R-FIA"/>
+                                                <constraint firstItem="Qgi-QC-7c6" firstAttribute="top" secondItem="lap-LJ-auN" secondAttribute="bottom" constant="35" id="dZw-3R-FIA"/>
                                                 <constraint firstItem="R4O-kP-K0O" firstAttribute="leading" secondItem="JDC-8k-PWm" secondAttribute="leading" id="hEL-tp-reD"/>
                                                 <constraint firstItem="DAk-KD-7xI" firstAttribute="top" secondItem="TId-IZ-83Y" secondAttribute="bottom" constant="5" id="jvg-pt-t2H"/>
                                                 <constraint firstItem="lap-LJ-auN" firstAttribute="leading" secondItem="JDC-8k-PWm" secondAttribute="leadingMargin" constant="15" id="myG-gm-JT8"/>
@@ -1658,6 +1658,6 @@
         <image name="userIcon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1Tw-sO-vCF"/>
+        <segue reference="sFx-HF-xhn"/>
     </inferredMetricsTieBreakers>
 </document>
