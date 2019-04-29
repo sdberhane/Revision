@@ -11,7 +11,6 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
 import AVFoundation
-//import MobileCoreServices
 
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
