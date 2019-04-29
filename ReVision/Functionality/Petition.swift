@@ -14,7 +14,7 @@ import FirebaseDatabase
 //Creates a set of values that constitues a petition that can be used throughout the app
 class Petition {
     
-    var title: String?  //The petition's title
+    var title: String?  //The petition's title 
     var description: String?    //the actual petition
     var subtitle: String?   //the subtitle for the petition
     var creator: String?    //the uid of the user who creates the petition
