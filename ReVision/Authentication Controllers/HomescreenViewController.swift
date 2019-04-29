@@ -6,19 +6,17 @@
 //  Copyright © 2019 Eugenia Feng (student LM). All rights reserved.
 //
 
+// import statements
 import UIKit
 import FirebaseAuth
  
 class HomescreenViewController: UIViewController {
 
+    // outlets
     @IBAction func logInButton(_ sender: UIButton) {
-        //performSegue(withIdentifier: "toContainerViewController", sender: nil)
     }
     @IBAction func signUpButton(_ sender: UIButton) {
     }
-    
-    @IBOutlet weak var logIn: UIButton!
-    @IBOutlet weak var signUp: UIButton!
     
     
     override func viewDidLoad() {
@@ -28,20 +26,10 @@ class HomescreenViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // seguing to container view controller if the user is already logged in
         if Auth.auth().currentUser != nil{
             performSegue(withIdentifier: "toContainerViewController", sender: nil)
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

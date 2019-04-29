@@ -10,11 +10,12 @@ import UIKit
 
 class SideMenuViewController: UITableViewController {
 
-    
+    // outlets
     @IBOutlet var sideMenuView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // display settings of the side menu
         sideMenuView.layer.shadowOpacity = 1
         sideMenuView.layer.shadowRadius = 6
         sideMenuView.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
@@ -25,9 +26,9 @@ class SideMenuViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-                
+        // posting the notification
         NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
+        // posting the notification for whichever path was selected
         switch indexPath.section{
         case 0:
             switch indexPath.row {
@@ -58,7 +59,7 @@ class SideMenuViewController: UITableViewController {
         default:
             break
         }
-        
+        // deselecting the row after it is selected
         if let index = self.sideMenuView.indexPathForSelectedRow{
             self.sideMenuView.deselectRow(at: index, animated: true)
         }
