@@ -11,7 +11,6 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
 import AVFoundation
-//import MobileCoreServices
 
 class CreatePetitionViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -148,64 +147,34 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//
-//        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL {
-//           //selected a video
-//            let storage = Storage.storage().reference().child("petition media files").child("123")
-//
-//            storage.putFile(from: videoUrl as! URL, metadata: StorageMetadata(), completion: {(metadata,error) in
-//                if error == nil && metadata != nil{
-//
-//                }
-//
-//                storage.downloadURL(completion: { (url, error) in
-//                    if error != nil {
-//                        print("Failed to download url:", error!)
-//                        return
-//                    } else {
-//                        guard let i = url else {return}
-//                        self.fileUrl = i.absoluteString
-//                        print("this is the url",i)
-//                      //  self.petitionImageView.image = self.videoPreview(videoUrl: url!)
-//                        self.reloadInputViews()
-//                    }
-//                })
-//            })
-//
-//        } else {
+        
             var selectedImageFromPicker:UIImage?
   
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
-                print("inside if")
                 uploadPetitionImage(originalImage){ url in
-                    print("inside the method")
                     guard let i = url else {return}
                     self.fileUrl = i.absoluteString
                     print("this is the url",i.absoluteString)
                     print("uploaded image")
+                    self.imagePicker?.dismiss(animated: true, completion: nil)
                 }
             }
             
             petitionImageView.image = selectedImageFromPicker
-            print("what are u doing")
 //        }
         
         imagePicker?.dismiss(animated: true, completion: nil)
-        print("dimissed please")
     }
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
-        print("hello this is me")
         imageName = randomString(20) as String
         let storage = Storage.storage().reference().child("petition media files").child(imageName ?? " ")
-        print("media files")
         
         //images must be saved as data objects to convert and compress the image
         guard let image = petitionImageView?.image, let imageData = image.jpegData(compressionQuality: 0.75) else {return}
         
-        print("this is me again")
         //store image
         storage.putData(imageData,metadata: StorageMetadata()){
             (metaData, error) in
@@ -217,7 +186,6 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                 completion(nil)
             }
         }
-        print("hows it going")
     }
     
     
