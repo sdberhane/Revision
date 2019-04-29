@@ -12,7 +12,8 @@ import FirebaseAuth
 import MessageUI
 
 class PetitionViewController: UIViewController, MFMailComposeViewControllerDelegate {
-
+    
+    // Declaring Variables
     var userId: String?
     var petitionID: String?
     var ref : DatabaseReference?
@@ -20,7 +21,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     var active: Bool?
     var name: String?
     
-    //Outlets
+    // Outlets
     @IBOutlet weak var petitionTitle: UILabel!
     @IBOutlet weak var petitionAuthor: UILabel!
     @IBOutlet weak var petitionImage: UIImageView!
@@ -29,7 +30,7 @@ class PetitionViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var signButton: UIButton!
     @IBOutlet weak var signaturesLabel: UILabel!
     
-    //Action that Signs the petition or Sends the Petitoin if the proper requirements have been met
+    //Action that Signs the petition or Sends the Petition if the proper requirements have been met
     @IBAction func sign(_ sender: Any) {
         if signButton.titleLabel?.text == "SIGN" {
             
