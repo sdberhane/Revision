@@ -152,9 +152,7 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
   
             if let originalImage = info[.originalImage] as? UIImage{
                 selectedImageFromPicker = originalImage
-                print("inside if")
                 uploadPetitionImage(originalImage){ url in
-                    print("inside the method")
                     guard let i = url else {return}
                     self.fileUrl = i.absoluteString
                     print("this is the url",i.absoluteString)
@@ -164,22 +162,19 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
             }
             
             petitionImageView.image = selectedImageFromPicker
+//        }
         
-      //  imagePicker?.dismiss(animated: true, completion: nil)
-        print("dimissed please")
+        imagePicker?.dismiss(animated: true, completion: nil)
     }
     
     func uploadPetitionImage(_ image: UIImage, _ completion: @escaping((_ url:URL?)->())){
         //reference to storage object
-        print("hello this is me")
         imageName = randomString(20) as String
         let storage = Storage.storage().reference().child("petition media files").child(imageName ?? " ")
-        print("media files")
         
         //images must be saved as data objects to convert and compress the image
         guard let image = petitionImageView?.image, let imageData = image.jpegData(compressionQuality: 0.75) else {return}
         
-        print("this is me again")
         //store image
         storage.putData(imageData,metadata: StorageMetadata()){
             (metaData, error) in
@@ -191,7 +186,6 @@ class CreatePetitionViewController: UIViewController, UIImagePickerControllerDel
                 completion(nil)
             }
         }
-        print("hows it going")
     }
     
     
