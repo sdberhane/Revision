@@ -168,7 +168,7 @@ class SecondFeedViewController: UIViewController, UITableViewDataSource, UITable
                 self.navigationItem.title = "My Created Petitions"
                 if petition.creator == Auth.auth().currentUser?.uid {
                     return true
-                }
+                } 
                 return false
             case 3: // show petitions with freshmen tag
                 self.navigationItem.title = "Freshmen Petitions"
